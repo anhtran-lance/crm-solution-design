@@ -4,60 +4,141 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Giải pháp CRM cho đội Sales B2B</title>
-<meta name="description" content="Solution design tương tác: hành trình quản lý khách hàng và bán hàng cho doanh nghiệp B2B SME có 10–15 nhân viên Sales, minh họa trên Base CRM.">
+<meta name="description" content="Solution design: hành trình quản lý khách hàng và bán hàng cho doanh nghiệp B2B SME có 10–15 nhân viên Sales, minh họa trên giao diện Base CRM.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-<a class="skip" href="#view">Bỏ qua điều hướng</a>
+<a class="skip" href="#bai-toan">Bỏ qua phần mở đầu</a>
 
-<header class="top">
-  <a class="brand" href="#s-mo-dau" title="Về slide mở đầu">Giải pháp CRM</a>
-  <nav class="journey" id="journey" aria-label="Hành trình khách hàng"></nav>
-  <div class="top-r">
-    <div class="mode" role="group" aria-label="Chế độ xem" id="modeSwitch">
-      <button type="button" data-mode="s" aria-pressed="true">Trình bày</button>
-      <button type="button" data-mode="d" aria-pressed="false">Chi tiết</button>
-    </div>
+<header class="nav" id="nav">
+  <div class="nav-pill">
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>Giải pháp CRM</a>
+    <nav class="jnav" id="jnav" aria-label="Hành trình khách hàng"></nav>
+    <button type="button" class="btn-blue sm" id="presentBtn" aria-pressed="false" title="Phím P">Trình bày</button>
   </div>
 </header>
 
-<main id="view" tabindex="-1"></main>
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="h-hero">
+    <div class="hero-in">
+      <p class="eyebrow dark">Solution design · Base CRM cho đội 10–15 Sales</p>
+      <h1 id="h-hero">Quản lý khách hàng và đội Sales <span class="grad">trên một hành trình liền mạch</span></h1>
+      <p class="hero-lead">Từ lúc khách để lại thông tin đến lúc quản lý đọc được kết quả. Sáu chặng, mỗi chặng trả lời một câu hỏi quản lý, minh họa bằng giao diện Base CRM.</p>
+      <div class="hero-cta">
+        <a class="btn-white" href="#hanh-trinh">Đi theo hành trình <span aria-hidden="true">→</span></a>
+        <button type="button" class="btn-ghost-dark" id="presentBtn2">Bắt đầu trình bày</button>
+      </div>
+    </div>
+    <div class="hero-stage">
+      <figure class="hero-side left">
+        <p class="hero-tag">Chấm điểm và phân bổ</p>
+        <img src="assets/base/crm-journey-lead.webp" alt="Thẻ Lead trên Base CRM: chấm điểm hạng A2, tự động chia cho chuyên viên Thu Hà, cam kết SLA 15 phút" width="1208" height="398">
+      </figure>
+      <figure class="hero-win">
+        <p class="hero-tag">Một hồ sơ Lead</p>
+        <div class="win">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Lead · Tiếp nhận</span></div>
+          <img src="assets/base/crm-hero-lead.webp" alt="Màn hình Tiếp nhận Lead của Base CRM: danh sách khách với nguồn, điểm, người phụ trách, SLA và hồ sơ Thu Trang bên phải" width="1876" height="1206">
+        </div>
+      </figure>
+      <figure class="hero-side right">
+        <p class="hero-tag">Chuyển thành cơ hội</p>
+        <img src="assets/base/crm-journey-sales.webp" alt="Thẻ Sales trên Base CRM: chuyển Lead thành cơ hội Deal trị giá 320 triệu đồng, giai đoạn Đàm phán" width="1208" height="398">
+      </figure>
+    </div>
+    <p class="hero-src">Giao diện minh họa trên <a href="https://base.vn/platform/crm" target="_blank" rel="noopener">base.vn/platform/crm</a>, dữ liệu mẫu của Base.</p>
+  </section>
 
-<footer class="bar" id="bar">
-  <button type="button" class="nav-btn" id="prev"><span aria-hidden="true">←</span> <span class="lbl">Trước</span></button>
-  <div class="bar-mid">
-    <a class="map-btn" href="#s-tong-quan" id="mapBtn">Sơ đồ hành trình</a>
-    <span class="where" id="where" aria-live="polite"></span>
-    <button type="button" class="ghost-btn" id="notesBtn" aria-pressed="false" aria-controls="notes" title="Phím N">Ghi chú người trình bày</button>
-    <button type="button" class="ghost-btn" id="fsBtn" title="Phím F">Toàn màn hình</button>
-    <nav class="extra" aria-label="Tài liệu người trình bày">
-      <a href="#script" id="lnkScript">Kịch bản</a>
-      <a href="#qa" id="lnkQa">Kiểm tra</a>
-    </nav>
+  <section class="sec" id="bai-toan" aria-labelledby="h-bt">
+    <div class="wrap split">
+      <div class="split-l">
+        <p class="eyebrow">Bài toán</p>
+        <h2 id="h-bt">Khách hàng là tài sản lớn nhất, <span class="green">nhưng đang nằm rải rác.</span></h2>
+        <p class="sub">Thông tin khách nằm trong Excel, Zalo và trí nhớ của từng người. Quản lý không nhìn thấy thì không quản lý được.</p>
+        <div class="ctx" id="ctx"></div>
+      </div>
+      <ol class="problems" id="problems"></ol>
+    </div>
+  </section>
+
+  <section class="sec dark" id="hanh-trinh" aria-labelledby="h-ht">
+    <div class="wrap">
+      <div class="center-head">
+        <p class="eyebrow dark">Hành trình khách hàng</p>
+        <h2 id="h-ht">Một hành trình. <span class="grad">Sáu câu hỏi quản lý.</span></h2>
+        <p class="sub">Đi theo đúng thứ tự một khách hàng đi qua doanh nghiệp. Chọn một chặng để xem cách tổ chức và thao tác trên hệ thống.</p>
+      </div>
+      <div class="journey" id="journey"></div>
+    </div>
+  </section>
+
+  <div id="stages"></div>
+
+  <section class="sec" id="tong-ket" aria-labelledby="h-tk">
+    <div class="wrap">
+      <div class="sum-panel">
+        <div class="sum-l">
+          <p class="eyebrow dark">Tổng kết</p>
+          <h2 id="h-tk">Sáu câu hỏi, <span class="grad">giờ đã có chỗ để xem câu trả lời.</span></h2>
+          <ol class="answers" id="answers"></ol>
+        </div>
+        <figure class="sum-r">
+          <button type="button" class="zoom" data-zoom="crm-360" aria-label="Phóng to: Hồ sơ khách hàng 360°"><img src="assets/base/crm-360.webp" alt="Hồ sơ Customer 360° của Base CRM: mọi điểm chạm của Công ty An Phát từ quảng cáo đến chăm sóc sau bán" width="1304" height="1974" loading="lazy"></button>
+          <figcaption>Mọi điểm chạm hội tụ về một hồ sơ khách hàng. Nguồn: <a href="https://base.vn/platform/crm" target="_blank" rel="noopener">base.vn/platform/crm</a></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec soft" id="buoc-tiep" aria-label="Bước tiếp theo">
+    <div class="wrap">
+      <div class="next-row">
+        <div>
+          <p class="eyebrow">Bước tiếp theo đề xuất</p>
+          <h2 class="h-next">Thay giả định bằng <span class="green">số liệu thật của doanh nghiệp.</span></h2>
+          <ol class="next" id="next"></ol>
+        </div>
+        <div class="sum-detail">
+          <button type="button" class="detail-btn" aria-expanded="false" aria-controls="sumDetail"><span>Giá trị, điều kiện và cách đo</span><i aria-hidden="true">+</i></button>
+          <div class="detail" id="sumDetail" hidden></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p><b>Nguồn tham chiếu:</b> <a href="https://base.vn/platform/crm" target="_blank" rel="noopener">base.vn/platform/crm</a>, <a href="https://base.vn/app/lead" target="_blank" rel="noopener">base.vn/app/lead</a>, <a href="https://base.vn/app/sales" target="_blank" rel="noopener">base.vn/app/sales</a> (truy cập 02/11/2026). Ảnh giao diện chụp từ các trang này; dữ liệu trong ảnh là dữ liệu mẫu của Base. Bối cảnh doanh nghiệp, quy tắc và chỉ số là đề xuất để thiết kế.</p>
+    <p class="foot-links"><a href="script.html">Kịch bản trình bày 10 phút</a><a href="qa.html">Kiểm tra và xác minh</a></p>
   </div>
-  <button type="button" class="nav-btn primary" id="next"><span class="lbl">Tiếp</span> <span aria-hidden="true">→</span></button>
 </footer>
 
+<div class="hud" id="hud" hidden>
+  <button type="button" class="hud-btn" id="hudPrev" aria-label="Lùi một bước">←</button>
+  <span class="hud-where" id="hudWhere" aria-live="polite"></span>
+  <button type="button" class="hud-btn" id="hudNext" aria-label="Tiến một bước">→</button>
+  <span class="hud-sep" aria-hidden="true"></span>
+  <button type="button" class="hud-txt" id="hudNotes" aria-pressed="false" title="Phím N">Ghi chú</button>
+  <span class="hud-time" id="hudTime">00:00</span>
+  <button type="button" class="hud-txt" id="hudTimer">Bắt đầu giờ</button>
+  <button type="button" class="hud-txt" id="hudExit" title="Phím Esc">Thoát</button>
+</div>
 <aside class="notes" id="notes" hidden aria-label="Ghi chú người trình bày">
-  <div class="notes-h">
-    <b id="notesTitle"></b>
-    <span class="timer"><span id="timerVal">00:00</span> <button type="button" id="timerBtn">Bắt đầu</button> <button type="button" id="timerReset">Đặt lại</button></span>
-    <button type="button" class="x" id="notesClose" aria-label="Đóng ghi chú">×</button>
-  </div>
   <p class="notes-plan" id="notesPlan"></p>
   <ul id="notesList"></ul>
 </aside>
 
 <dialog class="lightbox" id="lightbox" aria-label="Ảnh phóng to">
-  <form method="dialog"><button class="x" aria-label="Đóng ảnh">×</button></form>
+  <form method="dialog"><button class="lb-x" aria-label="Đóng ảnh">×</button></form>
   <div id="lbBody"></div>
 </dialog>
 
 <script src="js/content.js"></script>
-<script src="js/qa-results.js"></script>
-<script src="js/app.js"></script>
+<script src="js/marks.js"></script>
+<script src="js/site.js"></script>
 </body>
 </html>

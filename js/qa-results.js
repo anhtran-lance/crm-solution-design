@@ -1,29 +1,29 @@
-/* Kết quả kiểm tra thực tế. Cập nhật mỗi lần kiểm tra lại. */
+/* Kết quả kiểm tra thực tế, cập nhật mỗi lần kiểm tra lại */
 window.QA_RESULTS = {
- "summary": "Kiểm tra ngày 02/11/2026 trên Chromium headless. Điều hướng và tương tác đạt toàn bộ phép thử tự động. Chưa truy cập được base.vn từ môi trường làm việc, nên mọi khả năng của Base CRM vẫn ở trạng thái Cần xác minh và chưa có ảnh giao diện thật.",
+ "summary": "Kiểm tra ngày 02/11/2026 trên Chromium (Playwright). Nội dung sản phẩm và ảnh giao diện được đối chiếu trực tiếp với base.vn/platform/crm, base.vn/app/lead và base.vn/app/sales cùng ngày.",
  "groups": [
   {
    "h": "A. Kiểm tra nghiệp vụ",
    "items": [
     {
-     "t": "Các chặng nối tiếp nhau: chặng 4 dùng điều kiện từ chặng 3, chặng 5 bắt đầu từ chặng 4, chặng 6 đọc dữ liệu chặng 1–5 và chỉ ngược về chặng có điểm nghẽn",
+     "t": "Các chặng nối tiếp nhau: lead đã nhập (1) được phân bổ (2), có đồng hồ liên hệ và nuôi dưỡng (3), đủ điều kiện thì thành cơ hội (4), đi qua các giai đoạn (5), số liệu của 1–5 thành báo cáo (6)",
      "st": "pass",
      "how": "Rà soát nội dung thủ công"
     },
     {
-     "t": "Mỗi chặng bắt đầu từ vấn đề nghiệp vụ (Hiện trạng, Hệ quả) trước khi nói tới hệ thống",
+     "t": "Mỗi chặng bắt đầu từ câu hỏi nghiệp vụ; phần Chi tiết giải pháp nêu hiện trạng và hệ quả trước khi nói tới hệ thống",
      "st": "pass",
      "how": "Rà soát nội dung thủ công"
     },
     {
-     "t": "Tách bạch Đề xuất quy trình và Khả năng sản phẩm bằng nhãn riêng trên mọi slide và trang chi tiết",
+     "t": "Tách bạch đề xuất quy trình (nhãn xanh dương) và khả năng Base CRM (dòng cam 'Trên Base CRM')",
      "st": "pass",
-     "how": "Rà soát giao diện và dữ liệu nội dung"
+     "how": "Rà soát giao diện"
     },
     {
-     "t": "Không khẳng định tính năng chưa xác minh",
-     "st": "pending",
-     "how": "Mọi khả năng của Base CRM được gắn nhãn Cần xác minh vì không truy cập được base.vn (mạng của môi trường làm việc chặn tên miền này). Danh sách đầy đủ ở bên dưới."
+     "t": "Không giới thiệu tính năng chưa xác minh",
+     "st": "pass",
+     "how": "23 khả năng được nhắc tới đều đọc thấy trên 3 trang base.vn; 4 điểm chưa thấy mô tả được đưa vào mục 'Cần xác nhận thêm' và không được khẳng định"
     }
    ]
   },
@@ -31,29 +31,29 @@ window.QA_RESULTS = {
    "h": "B. Kiểm tra nội dung",
    "items": [
     {
-     "t": "Ngôn ngữ cho người chưa biết CRM: dùng 'khách hàng tiềm năng', 'cơ hội bán hàng', 'giai đoạn', có trang giải thích thuật ngữ",
-     "st": "pass",
-     "how": "Rà soát thủ công; thuật ngữ ở trang Chi tiết của slide Mở đầu"
-    },
-    {
-     "t": "Lớp Chi tiết bổ sung (luồng, quy tắc, vai trò, giả định, câu hỏi xác minh), không chép lại câu chữ của slide",
+     "t": "Ngôn ngữ cho người chưa biết CRM, thuật ngữ Lead / cơ hội được giải thích bằng câu hỏi quản lý",
      "st": "pass",
      "how": "Rà soát thủ công"
     },
     {
-     "t": "Không có số liệu hiệu quả giả định; cột 'Trước triển khai' để trống",
+     "t": "Lớp chi tiết bổ sung luồng xử lý, quy tắc, vai trò, giả định; không chép lại câu chữ của phần trình bày",
      "st": "pass",
-     "how": "Rà soát thủ công. Các ngưỡng 14 ngày và 21 ngày được ghi là đề xuất để doanh nghiệp chốt."
+     "how": "Rà soát thủ công"
+    },
+    {
+     "t": "Không có số liệu hiệu quả giả định; số trong ảnh được ghi rõ là dữ liệu mẫu của Base",
+     "st": "pass",
+     "how": "Rà soát thủ công. Ngưỡng 15 phút, 14 ngày, xác suất giai đoạn được ghi là đề xuất."
     },
     {
      "t": "Kịch bản cộng đủ 10 phút",
      "st": "pass",
-     "how": "Tổng thời lượng tính tự động trên trang Kịch bản"
+     "how": "Tính tự động trên trang Kịch bản"
     },
     {
-     "t": "Trình bày trọn trong 10 phút với người thật",
+     "t": "Trình bày trọn 10 phút với người thật",
      "st": "limit",
-     "how": "Chưa diễn tập. Cần một buổi chạy thử có bấm giờ."
+     "how": "Chưa diễn tập có bấm giờ."
     }
    ]
   },
@@ -61,104 +61,124 @@ window.QA_RESULTS = {
    "h": "C. Kiểm tra UI/UX",
    "items": [
     {
-     "t": "Mặc định mở slide Mở đầu",
+     "t": "Tất cả 20 ảnh thao tác ở 6 chặng tải được",
+     "st": "pass",
+     "how": "Kiểm tra tự động bằng Playwright (20 ảnh)"
+    },
+    {
+     "t": "Mọi ảnh có chú thích đều có điểm đánh dấu tương ứng trên ảnh",
      "st": "pass",
      "how": "Kiểm tra tự động bằng Playwright"
     },
     {
-     "t": "9 mục trên thanh hành trình mở đúng slide và đánh dấu mục đang chọn",
+     "t": "Ảnh ở phần mở đầu và tổng kết tải được",
      "st": "pass",
      "how": "Kiểm tra tự động bằng Playwright"
     },
     {
-     "t": "Nút Tiếp đi đúng thứ tự 9 slide",
-     "st": "pass",
-     "how": "Kiểm tra tự động bằng Playwright (tong-quan,c1,c2,c3,c4,c5,c6,tong-ket)"
-    },
-    {
-     "t": "Nút Tiếp bị vô hiệu ở slide cuối",
+     "t": "9 mục trên thanh điều hướng cuộn tới đúng phần và đánh dấu mục đang xem",
      "st": "pass",
      "how": "Kiểm tra tự động bằng Playwright"
     },
     {
-     "t": "Nút Trước quay về slide đầu, bị vô hiệu ở slide đầu",
+     "t": "6 thẻ trên sơ đồ hành trình dẫn tới đúng chặng",
      "st": "pass",
      "how": "Kiểm tra tự động bằng Playwright"
     },
     {
-     "t": "Phím tắt →, số 1–6, D, O hoạt động",
-     "st": "pass",
-     "how": "Kiểm tra tự động bằng Playwright (true,true,true,true,true,true)"
-    },
-    {
-     "t": "Chuyển Trình bày ↔ Chi tiết giữ nguyên chặng; thanh hành trình trong chế độ Chi tiết mở trang chi tiết",
-     "st": "pass",
-     "how": "Kiểm tra tự động bằng Playwright (true,true,true)"
-    },
-    {
-     "t": "Nút xem chi tiết trên cả 9 slide mở đúng trang chi tiết có nội dung",
+     "t": "6 dòng trả lời ở phần Tổng kết dẫn về đúng chặng",
      "st": "pass",
      "how": "Kiểm tra tự động bằng Playwright"
     },
     {
-     "t": "Mục lục trong trang chi tiết cuộn tới đúng mục, không đổi route",
-     "st": "pass",
-     "how": "Kiểm tra tự động bằng Playwright (5 mục)"
-    },
-    {
-     "t": "6 thẻ chặng trên sơ đồ hành trình mở đúng chặng",
+     "t": "4 liên kết \"Giải ở chặng\" trong phần Bài toán dẫn đúng chặng",
      "st": "pass",
      "how": "Kiểm tra tự động bằng Playwright"
     },
     {
-     "t": "6 dòng câu trả lời ở slide Tổng kết mở đúng chặng",
+     "t": "Bấm và phím mũi tên chọn đúng thao tác, ảnh đổi theo",
+     "st": "pass",
+     "how": "Kiểm tra tự động bằng Playwright (false,false,true,false | 3 | 0)"
+    },
+    {
+     "t": "Sau khi người xem tự chọn, thao tác không tự chuyển nữa",
+     "st": "pass",
+     "how": "Kiểm tra tự động bằng Playwright (0)"
+    },
+    {
+     "t": "Thao tác tự chuyển sau 7 giây khi chặng đang hiện trên màn hình",
+     "st": "pass",
+     "how": "Kiểm tra tự động bằng Playwright (0→1)"
+    },
+    {
+     "t": "Trang không bị xô lệch khi ảnh tự chuyển",
+     "st": "pass",
+     "how": "Kiểm tra tự động bằng Playwright (8918 / 8918)"
+    },
+    {
+     "t": "Nút Chi tiết giải pháp mở/đóng đúng ở 6 chặng và phần Bước tiếp theo, giữ nguyên vị trí chặng",
      "st": "pass",
      "how": "Kiểm tra tự động bằng Playwright"
     },
     {
-     "t": "Nút Sơ đồ hành trình về slide Tổng quan",
+     "t": "Bấm ảnh để phóng to, Esc để đóng",
      "st": "pass",
      "how": "Kiểm tra tự động bằng Playwright"
     },
     {
-     "t": "Nút Back của trình duyệt quay về chặng trước",
+     "t": "Liên kết nguồn chỉ trỏ tới 3 trang tham chiếu của base.vn",
+     "st": "pass",
+     "how": "Kiểm tra tự động bằng Playwright (35 liên kết)"
+    },
+    {
+     "t": "Chế độ trình bày: phím → đi qua 11 màn hình, 20 thao tác và 6 phần giá trị theo đúng thứ tự",
      "st": "pass",
      "how": "Kiểm tra tự động bằng Playwright"
     },
     {
-     "t": "Ghi chú người trình bày bật/tắt (nút và phím N), hiển thị đúng chặng, đồng hồ chạy",
+     "t": "Chế độ trình bày: phím ← lùi đúng từng bước, đối xứng với chiều tiến",
      "st": "pass",
-     "how": "Kiểm tra tự động bằng Playwright (Chặng 1 · Tiếp nhận khách hàng tiềm năng | 00:01)"
+     "how": "Kiểm tra tự động bằng Playwright (9/11 · Chặng 6 · Hiệu quả · bước 3/3)"
     },
     {
-     "t": "Trang Kịch bản: 6 phần, tổng 10:00, quay lại đúng slide đang trình bày",
+     "t": "Phím số tới đúng chặng; ghi chú, đồng hồ hoạt động; Esc thoát; phần chi tiết ẩn khi trình bày",
      "st": "pass",
-     "how": "Kiểm tra tự động bằng Playwright (disabledModeSwitch=true)"
+     "how": "Kiểm tra tự động bằng Playwright (6/11 · Chặng 3 · Chăm sóc · bước 1/4 | 00:01)"
     },
     {
-     "t": "Trang Kiểm tra liệt kê khả năng cần xác minh và ảnh cần bổ sung",
+     "t": "Trang script.html hiển thị",
+     "st": "pass",
+     "how": "Kiểm tra tự động bằng Playwright (1 bảng)"
+    },
+    {
+     "t": "Kịch bản cộng đủ 10:00 và 6 phần",
+     "st": "pass",
+     "how": "Kiểm tra tự động bằng Playwright (Tổng10:00)"
+    },
+    {
+     "t": "Mọi liên kết trong kịch bản trỏ tới phần có thật trên website",
+     "st": "pass",
+     "how": "Kiểm tra tự động bằng Playwright (9 liên kết)"
+    },
+    {
+     "t": "Trang qa.html hiển thị",
+     "st": "pass",
+     "how": "Kiểm tra tự động bằng Playwright (2 bảng)"
+    },
+    {
+     "t": "Không cuộn ngang ở 1440, 1280, 1024, 768 và 390px (cả 3 trang)",
      "st": "pass",
      "how": "Kiểm tra tự động bằng Playwright"
     },
     {
-     "t": "Khi có file ảnh: ảnh hiển thị, bấm để phóng to, Esc để đóng; chặng chưa có ảnh vẫn hiện khung cần bổ sung",
+     "t": "Không có lỗi JavaScript hay tài nguyên lỗi",
      "st": "pass",
      "how": "Kiểm tra tự động bằng Playwright"
     },
     {
-     "t": "Không có cuộn ngang ở 390px (18 trang)",
+     "t": "Chế độ trình bày vừa màn hình 1440×900, 1366×768 và 1280×720",
      "st": "pass",
-     "how": "Kiểm tra tự động bằng Playwright"
-    },
-    {
-     "t": "Không có lỗi JavaScript trong toàn bộ phiên kiểm tra",
-     "st": "pass",
-     "how": "Kiểm tra tự động bằng Playwright"
-    },
-    {
-     "t": "Mọi slide hiển thị vừa một màn hình, không cần cuộn, ở 1440×900, 1366×768 và 1280×720",
-     "st": "pass",
-     "how": "Đo chiều cao trang của 9 slide ở 3 kích thước màn hình bằng Playwright và xem ảnh chụp"
+     "how": "Đo bằng Playwright: mỗi chặng hiện tiêu đề, các thao tác và ảnh trong một màn hình; phần cách tổ chức và giá trị hiện ở bước bấm riêng"
     },
     {
      "t": "Hiển thị trên Safari, Firefox, Edge",
@@ -166,14 +186,14 @@ window.QA_RESULTS = {
      "how": "Môi trường kiểm tra chỉ có Chromium. Cần mở thử trước buổi trình bày."
     },
     {
-     "t": "Hiển thị trên máy chiếu thật và nút bấm của bút trình chiếu (PageUp/PageDown)",
+     "t": "Máy chiếu thật và bút trình chiếu",
      "st": "limit",
-     "how": "Đã kiểm tra phím PageUp/PageDown trong mã, chưa thử trên thiết bị thật."
+     "how": "Đã thử phím PageUp/PageDown trong trình duyệt, chưa thử trên thiết bị thật."
     },
     {
-     "t": "Nút Toàn màn hình",
+     "t": "Nút toàn màn hình (phím F)",
      "st": "limit",
-     "how": "Trình duyệt headless không cho vào chế độ toàn màn hình. Cần bấm thử trên máy thật."
+     "how": "Trình duyệt headless không vào được chế độ toàn màn hình; cần bấm thử trên máy thật."
     }
    ]
   },
@@ -181,24 +201,24 @@ window.QA_RESULTS = {
    "h": "D. Kiểm tra hình ảnh",
    "items": [
     {
-     "t": "Không có giao diện tự dựng nào được giới thiệu là giao diện Base CRM",
+     "t": "Ảnh lấy từ trang tham chiếu base.vn, mỗi ảnh ghi nguồn ngay dưới ảnh",
      "st": "pass",
-     "how": "Vị trí chưa có ảnh hiển thị khung gạch chéo, ghi rõ 'Cần bổ sung ảnh'. Bản cũ có màn hình dựng lại đã được chuyển vào thư mục archive và không dùng nữa."
+     "how": "21 ảnh chụp từ /platform/crm, /app/lead, /app/sales"
     },
     {
-     "t": "Ảnh giao diện Base CRM thật lấy từ base.vn/platform/crm và base.vn",
-     "st": "limit",
-     "how": "Không tải được: mạng của môi trường làm việc chặn base.vn. Đã liệt kê 8 ảnh cần có ở bảng bên dưới."
-    },
-    {
-     "t": "Nội dung ảnh khớp chú thích, điểm đánh dấu đúng vị trí",
-     "st": "limit",
-     "how": "Kiểm tra sau khi có ảnh; điền tọa độ điểm chú thích trong js/content.js"
-    },
-    {
-     "t": "Cơ chế hiển thị ảnh, phóng to và điểm chú thích hoạt động khi có file",
+     "t": "Không dựng giao diện giả; không chỉnh sửa nội dung ảnh",
      "st": "pass",
-     "how": "Kiểm tra bằng ảnh thử nạp qua Playwright, không ghi file ảnh nào vào dự án"
+     "how": "Chỉ cắt khung; danh sách phần cắt ghi ở bảng ảnh bên dưới"
+    },
+    {
+     "t": "Điểm chú thích đặt đúng vị trí trên ảnh",
+     "st": "pass",
+     "how": "Tọa độ lấy từ vị trí chữ thật trên trang lúc chụp; 5 điểm ở ảnh đã cắt được đặt tay và kiểm tra bằng mắt"
+    },
+    {
+     "t": "Ảnh trên base.vn là giao diện minh họa của Base với dữ liệu mẫu, không phải ảnh chụp từ tài khoản đang vận hành",
+     "st": "limit",
+     "how": "Nếu cần ảnh từ tài khoản thật, chụp thêm trên tài khoản demo của doanh nghiệp."
     }
    ]
   }
