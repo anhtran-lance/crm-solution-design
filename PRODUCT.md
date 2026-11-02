@@ -14,4 +14,4 @@
 
 **Ngôn ngữ:** từ nghiệp vụ của khách (khách hỏi giá, chia khách, báo giá, doanh số dự kiến). Tránh từ hệ thống (lead, deal, pipeline, SLA); tên ứng dụng Base chỉ xuất hiện trên thanh tiêu đề ảnh.
 
-**Truth rules:** không bịa khách hàng, doanh số, trích dẫn. Điểm vướng ghi rõ là "thường gặp, xác nhận khi khảo sát"; lộ trình ghi rõ là đề xuất.
+**Truth rules:** không bịa khách hàng, doanh số, trích dẫn. Chế độ "Hôm nay" mô tả các điểm vướng thường gặp, cần xác nhận với khách.
