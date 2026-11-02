@@ -16,10 +16,10 @@ Sau đó mở `http://localhost:8000`. Có thể đưa nguyên thư mục lên G
 
 | Lớp | Đường dẫn | Mục đích |
 |---|---|---|
-| Presentation Mode | `#/s/<slide>` | 9 slide: Mở đầu, Tổng quan, 6 chặng, Tổng kết. Mỗi màn hình một thông điệp. |
-| Solution Detail | `#/d/<slide>` | Vấn đề, luồng xử lý, quy tắc, vai trò, thao tác trên hệ thống, giả định và câu hỏi cần xác minh. Giữ nguyên chặng đang xem. |
-| Kịch bản | `#/script` | Phân bổ 10 phút, mốc thời gian, lời dẫn cho từng slide. |
-| Kiểm tra | `#/qa` | Kết quả kiểm tra A–D, danh sách khả năng sản phẩm cần xác minh, danh sách ảnh cần bổ sung. |
+| Presentation Mode | `#s-<slide>` | 9 slide: Mở đầu, Tổng quan, 6 chặng, Tổng kết. Mỗi màn hình một thông điệp. |
+| Solution Detail | `#d-<slide>` | Vấn đề, luồng xử lý, quy tắc, vai trò, thao tác trên hệ thống, giả định và câu hỏi cần xác minh. Giữ nguyên chặng đang xem. |
+| Kịch bản | `#script` | Phân bổ 10 phút, mốc thời gian, lời dẫn cho từng slide. |
+| Kiểm tra | `#qa` | Kết quả kiểm tra A–D, danh sách khả năng sản phẩm cần xác minh, danh sách ảnh cần bổ sung. |
 
 Phím tắt: `→`/`←` (hoặc PageDown/PageUp của bút trình chiếu), `1`–`6` đi tới chặng, `D` mở/đóng Chi tiết, `O` về sơ đồ hành trình, `N` ghi chú người trình bày kèm đồng hồ, `F` toàn màn hình.
 
@@ -35,7 +35,7 @@ Toàn bộ chữ nằm trong `js/content.js` và được tách thành:
 
 Trong lúc xây dựng, môi trường làm việc không truy cập được `base.vn` (chính sách mạng chặn tên miền này). Vì vậy:
 
-1. **Chưa có ảnh giao diện Base CRM thật.** Các vị trí ảnh hiển thị khung "Cần bổ sung ảnh" có mô tả ảnh cần chụp. Xem danh sách ở `assets/base/README.md` hoặc trang `#/qa`.
+1. **Chưa có ảnh giao diện Base CRM thật.** Các vị trí ảnh hiển thị khung "Cần bổ sung ảnh" có mô tả ảnh cần chụp. Xem danh sách ở `assets/base/README.md` hoặc trang `#qa`.
 2. **Mọi khả năng của Base CRM đang ở trạng thái Cần xác minh.** Đối chiếu từng mục với https://base.vn/platform/crm và https://base.vn/, rồi:
    - đúng: đổi thành `sys("...", "verified", "URL nguồn")`;
    - không đúng hoặc không có: xóa mục đó, hoặc chuyển nội dung thành đề xuất quy trình.

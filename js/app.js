@@ -1,10 +1,10 @@
 /* =====================================================================
    ỨNG DỤNG: điều hướng, hiển thị slide, lớp chi tiết, kịch bản, kiểm tra
    Route (hash):
-     #/s/<id>   Presentation Mode
-     #/d/<id>   Solution Detail của cùng slide (giữ ngữ cảnh chặng)
-     #/script   Kịch bản trình bày 10 phút
-     #/qa       Kết quả kiểm tra & danh sách cần xác minh
+     #s-<id>    Presentation Mode
+     #d-<id>    Solution Detail của cùng slide (giữ ngữ cảnh chặng)
+     #script   Kịch bản trình bày 10 phút
+     #qa       Kết quả kiểm tra & danh sách cần xác minh
    ===================================================================== */
 (() => {
   const { SHOTS, CONTEXT, SLIDES, ROLE_VALUE, ROLE_LABEL, QA } = window.CRM;
@@ -85,7 +85,7 @@
     const el = $("#journey");
     el.innerHTML = `<ol>${SLIDES.map((s) => {
       const num = s.kind === "stage" ? `<i>${s.stage}</i>` : "";
-      return `<li class="${s.kind === "stage" ? "st" : "ex"}"><a href="#/${route.mode === "d" ? "d" : "s"}/${s.id}" data-id="${s.id}" title="${esc(s.navLong || s.nav)}">${num}<span>${esc(s.nav)}</span></a></li>`;
+      return `<li class="${s.kind === "stage" ? "st" : "ex"}"><a href="#${route.mode === "d" ? "d" : "s"}-${s.id}" data-id="${s.id}" title="${esc(s.navLong || s.nav)}">${num}<span>${esc(s.nav)}</span></a></li>`;
     }).join("")}</ol>`;
   }
   function updateJourney() {
@@ -93,7 +93,7 @@
     const ci = idx(cur);
     document.querySelectorAll("#journey a").forEach((a) => {
       const i = idx(a.dataset.id);
-      a.href = `#/${route.mode === "d" ? "d" : "s"}/${a.dataset.id}`;
+      a.href = `#${route.mode === "d" ? "d" : "s"}-${a.dataset.id}`;
       a.classList.toggle("done", ci >= 0 && i < ci);
       if (a.dataset.id === cur && (route.mode === "s" || route.mode === "d")) a.setAttribute("aria-current", "step");
       else a.removeAttribute("aria-current");
@@ -127,7 +127,7 @@
       <div class="map">
         <div class="groups" aria-hidden="true">${groups.map((g) => `<span style="grid-column:${g.from} / ${g.to + 1}">${esc(g.h)}</span>`).join("")}</div>
         <ol class="nodes">${stages.map((x) => `<li>
-          <a href="#/s/${x.id}" class="node">
+          <a href="#s-${x.id}" class="node">
             <span class="n">${x.stage}</span>
             <b>${esc(x.navLong)}</b>
             <span class="q">${esc(x.question)}</span>
@@ -185,7 +185,7 @@
         <h1>${esc(s.title)}</h1>
         <ol class="answers">${s.answers.map((a) => {
           const st = SLIDES.find((x) => x.stage === a.s);
-          return `<li><a href="#/s/${st.id}"><span class="n">${a.s}</span><span class="q">${esc(a.q)}</span><span class="a">${esc(a.a)}</span></a></li>`;
+          return `<li><a href="#s-${st.id}"><span class="n">${a.s}</span><span class="q">${esc(a.q)}</span><span class="a">${esc(a.a)}</span></a></li>`;
         }).join("")}</ol>
       </div>
       <div class="sum-r">
@@ -197,7 +197,7 @@
   }
 
   const detailLink = (s, label) =>
-    `<a class="detail-link" href="#/d/${s.id}">${esc(label)} <span aria-hidden="true">→</span></a>`;
+    `<a class="detail-link" href="#d-${s.id}">${esc(label)} <span aria-hidden="true">→</span></a>`;
 
   function renderSlide(s) {
     const map = { intro: slideIntro, overview: slideOverview, stage: slideStage, summary: slideSummary };
@@ -215,7 +215,7 @@
         <h1>${esc(title)}</h1>
         <p class="lead">${esc(q)}</p>
       </div>
-      <a class="back" href="#/s/${s.id}"><span aria-hidden="true">←</span> Quay lại slide trình bày</a>
+      <a class="back" href="#s-${s.id}"><span aria-hidden="true">←</span> Quay lại slide trình bày</a>
     </header>
     <nav class="d-toc" aria-label="Mục trong trang chi tiết">${sections.map((x) => `<a href="#${x.id}" data-anchor="${x.id}">${esc(x.h)}</a>`).join("")}</nav>`;
   }
@@ -313,7 +313,7 @@
       return `<tr>
         <th scope="row"><span class="pn">${i + 1}</span> ${esc(pt.p)}</th>
         <td class="num">${fmtMin(m)}</td><td class="num">${fmtMin(start)}–${fmtMin(acc)}</td>
-        <td>${sl.map((x) => `<div class="sc-sl"><a href="#/s/${x.id}">${esc(stageLabel(x))}${x.kind === "stage" ? ` · ${esc(x.nav)}` : ""}</a> <span class="fine">${fmtMin(x.minutes)}</span>
+        <td>${sl.map((x) => `<div class="sc-sl"><a href="#s-${x.id}">${esc(stageLabel(x))}${x.kind === "stage" ? ` · ${esc(x.nav)}` : ""}</a> <span class="fine">${fmtMin(x.minutes)}</span>
           <ul>${x.notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul></div>`).join("")}</td>
       </tr>`;
     }).join("");
@@ -321,7 +321,7 @@
     view.innerHTML = `<article class="doc">
       <header class="d-head"><div><p class="kicker">Tài liệu người trình bày</p><h1>Kịch bản trình bày 10 phút</h1>
       <p class="lead">Thời lượng là phân bổ tham khảo. Khi khách quan tâm một chặng, mở lớp Chi tiết của chặng đó thay vì kéo dài slide.</p></div>
-      <a class="back" href="#/s/${route.lastId || "mo-dau"}"><span aria-hidden="true">←</span> Quay lại trình bày</a></header>
+      <a class="back" href="#s-${route.lastId || "mo-dau"}"><span aria-hidden="true">←</span> Quay lại trình bày</a></header>
       <div class="tbl-wrap"><table class="tbl script"><thead><tr><th scope="col">Phần</th><th scope="col">Thời lượng</th><th scope="col">Mốc</th><th scope="col">Slide và lời dẫn</th></tr></thead>
       <tbody>${rows}</tbody><tfoot><tr><th scope="row">Tổng</th><td class="num">${fmtMin(acc)}</td><td></td><td></td></tr></tfoot></table></div>
       <section class="d-sec"><h2>Phím tắt khi trình chiếu</h2>
@@ -356,7 +356,7 @@
     view.innerHTML = `<article class="doc">
       <header class="d-head"><div><p class="kicker">Tài liệu nội bộ</p><h1>Kết quả kiểm tra và nội dung cần xác minh</h1>
       <p class="lead">${esc((window.QA_RESULTS && window.QA_RESULTS.summary) || "Chưa có kết quả kiểm tra.")}</p></div>
-      <a class="back" href="#/s/${route.lastId || "mo-dau"}"><span aria-hidden="true">←</span> Quay lại trình bày</a></header>
+      <a class="back" href="#s-${route.lastId || "mo-dau"}"><span aria-hidden="true">←</span> Quay lại trình bày</a></header>
       ${groups.map((g) => `<section class="d-sec"><h2>${esc(g.h)}</h2><ul class="qa">${g.items.map((it) => {
         const [c, l] = stLabel[it.st] || stLabel.pending;
         return `<li><span class="vf ${c}">${l}</span><div><b>${esc(it.t)}</b>${it.how ? `<p class="fine">${esc(it.how)}</p>` : ""}</div></li>`;
@@ -374,19 +374,24 @@
   }
 
   /* ----------------------------- ROUTER ----------------------------- */
+  // Hash dạng #s-c1, #d-c1, #script, #qa (vẫn đọc được dạng cũ #/s/c1).
+  // Trả về null khi hash không phải một route (ví dụ #view của liên kết bỏ qua).
   function parse() {
     const h = location.hash.replace(/^#\/?/, "");
-    const [m, id] = h.split("/");
-    if (m === "script" || m === "qa") return { mode: m, id: null };
-    if ((m === "s" || m === "d") && idx(id) >= 0) return { mode: m, id };
-    return { mode: "s", id: SLIDES[0].id };
+    if (!h) return { mode: "s", id: SLIDES[0].id };
+    if (h === "script" || h === "qa") return { mode: h, id: null };
+    const m = h.match(/^([sd])[-/](.+)$/);
+    if (m && idx(m[2]) >= 0) return { mode: m[1], id: m[2] };
+    return null;
   }
 
-  function go(mode, id) { location.hash = `#/${mode}/${id}`; }
+  function go(mode, id) { location.hash = `#${mode}-${id}`; }
 
   function render() {
     const prevMode = route.mode, prevId = route.id;
-    route = { ...parse(), lastId: route.lastId };
+    const parsed = parse();
+    if (!parsed && view.childElementCount) return; // hash không phải route: giữ màn hình hiện tại
+    route = { ...(parsed || { mode: "s", id: SLIDES[0].id }), lastId: route.lastId };
     if (route.id) route.lastId = route.id;
     const s = route.id ? SLIDES[idx(route.id)] : null;
     if (route.mode === "s") renderSlide(s);
@@ -541,6 +546,7 @@
   });
 
   window.addEventListener("hashchange", render);
+  $(".skip").addEventListener("click", (e) => { e.preventDefault(); view.focus(); });
 
   probeShots().then(() => {
     renderJourney();
