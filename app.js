@@ -173,69 +173,135 @@
     if (btn) btn.click();
   }));
 
-  /* ---------------- Một cửa tiếp nhận: đường nối, thẻ sáng lần lượt, đồng hồ ---------------- */
+  /* ---------------- Một cửa tiếp nhận: Nguồn → Lead → Sales ----------------
+     Mỗi lượt: một nguồn sáng lên, chấm màu chạy vào Lead, qua 4 bước xử lý,
+     ra danh sách khách mới, thẻ khách chuẩn hóa, rồi sang quy trình bán.
+     Lượt thứ 2 là khách trùng (chị Trang gọi hotline sau khi đã nhắn Zalo) để thấy gộp trùng. */
   const hub = $('#hub');
   if (hub) {
-    const svg = $('#hubLines'), core = $('#hubCore');
-    const cards = $$('.acard', hub);
+    const svg = $('#hubLines'), core = $('.core', hub), coreWrap = $('#hubCore');
+    const srcs = $$('.src', hub), proc = $$('.proc li', hub);
+    const inCard = $('#hubIn'), std = $('#hubStd'), dst = $('#hubDst'), dup = $('#hubDup');
+    const list = $('#hubList'), dstCount = $('#dstCount'), timer = $('#hubTimer');
     const NS = 'http://www.w3.org/2000/svg';
-    let paths = [];
+    const COLORS = ['#6366F1', '#F97316', '#0EA5E9', '#16A34A'];
+    let pSrc = [], pIn, pStd, pDst;
+
+    const rel = (el) => { const h = hub.getBoundingClientRect(), r = el.getBoundingClientRect(); return { l: r.left - h.left, t: r.top - h.top, r: r.right - h.left, b: r.bottom - h.top, w: r.width, h: r.height }; };
+    const mk = (d, color) => { const p = document.createElementNS(NS, 'path'); p.setAttribute('d', d); p.setAttribute('class', 'hub-path'); if (color) p.style.setProperty('--hc', color); svg.appendChild(p); return p; };
+    const curve = (x1, y1, x2, y2) => `M${x1},${y1} C${(x1 + x2) / 2},${y1} ${(x1 + x2) / 2},${y2} ${x2},${y2}`;
 
     function drawHub() {
       svg.innerHTML = '';
-      paths = [];
+      pSrc = []; pIn = pStd = pDst = null;
       if (getComputedStyle(svg).display === 'none') return;
       const h = hub.getBoundingClientRect();
-      const c = core.getBoundingClientRect();
-      const cx = c.left - h.left, cy = c.top - h.top, R = 88;
       svg.setAttribute('viewBox', `0 0 ${h.width} ${h.height}`);
-      cards.forEach((card, i) => {
-        const r = card.getBoundingClientRect();
-        let x1, y1, x2, y2, d;
-        if (i === 0) { x1 = r.right - h.left; y1 = r.bottom - h.top - 24; x2 = cx - R * .72; y2 = cy - R * .7; }
-        else if (i === 1) { x1 = r.left - h.left; y1 = r.bottom - h.top - 24; x2 = cx + R * .72; y2 = cy - R * .7; }
-        else { x1 = r.left - h.left + r.width / 2; y1 = r.top - h.top; x2 = cx; y2 = cy + R; }
-        d = i < 2
-          ? `M${x1},${y1} C${(x1 + x2) / 2},${y1} ${x2},${(y1 + y2) / 2} ${x2},${y2}`
-          : `M${x1},${y1} C${x1},${y1 - 40} ${x2},${y2 + 40} ${x2},${y2}`;
-        const p = document.createElementNS(NS, 'path');
-        p.setAttribute('d', d);
-        p.setAttribute('class', 'hub-path');
-        p.style.setProperty('--hc', getComputedStyle(card).getPropertyValue('--hc'));
-        svg.appendChild(p);
-        paths.push(p);
+      const c = rel(core), cx = c.l + c.w / 2, cy = c.t + c.h / 2, R = c.w / 2;
+      srcs.forEach((s, i) => {
+        const r = rel(s);
+        const ty = cy + (i - 1.5) * 22;
+        pSrc.push(mk(curve(r.r, r.t + r.h / 2, cx - Math.sqrt(Math.max(R * R - (ty - cy) ** 2, 0)), ty), COLORS[i]));
       });
-      light(lit);
+      const ri = rel(inCard), rs = rel(std), rd = rel(dst);
+      pIn = mk(curve(cx + R * .93, cy - 30, ri.l, ri.t + ri.h / 2), '#3b82f6');
+      pStd = mk(curve(cx + R * .93, cy + 30, rs.l, rs.t + rs.h / 2), '#c2410c');
+      pDst = mk(`M${rs.l + rs.w / 2},${rs.b} L${rd.l + rd.w / 2},${rd.t}`, '#17936a');
     }
 
-    let lit = 1, cycle = null;
-    function light(i) {
-      lit = i;
-      cards.forEach((c, k) => c.classList.toggle('on', k === i));
-      paths.forEach((p, k) => p.classList.toggle('on', k === i));
+    // Chấm màu chạy dọc một đường
+    function travel(path, ms) {
+      return new Promise((res) => {
+        if (!path || reduce) return res();
+        const len = path.getTotalLength();
+        const dot = document.createElementNS(NS, 'circle');
+        dot.setAttribute('r', 4.5); dot.setAttribute('class', 'hub-dot');
+        dot.style.setProperty('--hc', path.style.getPropertyValue('--hc'));
+        svg.appendChild(dot);
+        const t0 = performance.now();
+        (function step(now) {
+          const k = Math.min((now - t0) / ms, 1);
+          const pt = path.getPointAtLength(len * k);
+          dot.setAttribute('cx', pt.x); dot.setAttribute('cy', pt.y);
+          if (k < 1) requestAnimationFrame(step); else { dot.remove(); res(); }
+        })(t0);
+      });
     }
+    const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+    const on = (el, v) => el && el.classList.toggle('on', v);
 
-    // Dải chip chạy liền mạch: nhân đôi nội dung
-    $$('.tick-track', hub).forEach((t) => {
-      const clone = t.innerHTML;
-      t.insertAdjacentHTML('beforeend', clone);
-      [...t.children].slice(t.children.length / 2).forEach((el) => el.setAttribute('aria-hidden', 'true'));
-    });
-
-    // Đồng hồ đếm ngược thời gian gọi lại
-    const timer = $('#hubTimer');
-    let secs = 14 * 60 + 52, tick = null;
+    const LEADS = [
+      { src: 0, n: 'Thu Trang', co: 'An Phát', ch: 'Zalo OA', chip: 'Prospect', s: 'A1', sale: 'Thu Hà', av: '#17936a' },
+      { src: 1, dup: true, n: 'Thu Trang', co: 'An Phát', ch: 'Zalo OA + Hotline', chip: 'Hotline', s: 'A1', sale: 'Thu Hà', av: '#17936a' },
+      { src: 2, n: 'Văn Bình', co: 'Halden Tech', ch: 'Form website', chip: 'Form web', s: 'B2', sale: 'Hoàng Nam', av: '#0ea5e9' },
+      { src: 3, n: 'Phương Hà', co: 'Nội thất Vĩnh Hằng', ch: 'Hội chợ', chip: 'Excel', s: 'B1', sale: 'Thu Hà', av: '#16a34a' },
+    ];
+    let idx = 0, running = false, alive = false, count = 12, secs = 15 * 60, tick = null;
     const fmt = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
 
+    function showStd(L) {
+      $('#stdAv').textContent = L.n[0]; $('#stdAv').style.background = L.av;
+      $('#stdName').textContent = L.n; $('#stdSub').textContent = `${L.co} · ${L.ch}`;
+      $('#stdScore').textContent = L.s; $('#stdAi').textContent = L.s; $('#stdSale').textContent = L.sale;
+      secs = 15 * 60; timer.textContent = fmt(secs);
+    }
+    function addRow(L) {
+      if (L.dup) {
+        const first = list.firstElementChild;
+        if (first) { first.classList.remove('new'); void first.offsetWidth; first.classList.add('new', 'merged'); }
+        return;
+      }
+      list.insertAdjacentHTML('afterbegin', `<li class="new"><span class="av" style="background:${L.av}">${L.n[0]}</span><div class="nm"><b>${L.n}</b><small>${L.co}</small></div><span class="chip">${L.chip}</span><span class="score">${L.s}</span></li>`);
+      while (list.children.length > 3) list.lastElementChild.remove();
+    }
+
+    async function runOne() {
+      const L = LEADS[idx % LEADS.length];
+      idx++;
+      if (idx % LEADS.length === 1) list.querySelectorAll('.merged').forEach((li) => li.classList.remove('merged'));
+      const s = srcs[L.src], p = pSrc[L.src];
+      on(s, true); on(p, true);
+      await travel(p, 900);
+      core.classList.remove('pulse'); void core.offsetWidth; core.classList.add('pulse');
+      for (let k = 0; k < proc.length; k++) {
+        proc.forEach((x, i) => on(x, i === k));
+        if (k === 0 && L.dup) on(dup, true);
+        await wait(260);
+      }
+      proc.forEach((x) => on(x, false));
+      on(s, false); on(p, false);
+      on(pIn, true); on(pStd, true);
+      await Promise.all([travel(pIn, 700), travel(pStd, 700)]);
+      on(inCard, true); addRow(L); showStd(L);
+      await wait(500);
+      on(inCard, false); on(pIn, false); on(pStd, false);
+      if (!L.dup) {
+        on(pDst, true); on(std, true);
+        await travel(pDst, 500);
+        on(dst, true); count++; dstCount.textContent = count;
+        await wait(700);
+        on(dst, false); on(pDst, false); on(std, false);
+      } else {
+        await wait(900);
+      }
+      on(dup, false);
+    }
+
+    async function loop() {
+      if (running) return;
+      running = true;
+      while (alive) { await runOne(); await wait(700); }
+      running = false;
+    }
     function start() {
       if (reduce) return;
-      if (!cycle) cycle = setInterval(() => light((lit + 1) % cards.length), 2800);
-      if (!tick) tick = setInterval(() => { secs = secs > 0 ? secs - 1 : 15 * 60; timer.textContent = fmt(secs); }, 1000);
+      alive = true; loop();
+      if (!tick) tick = setInterval(() => { secs = Math.max(secs - 1, 0); timer.textContent = fmt(secs); }, 1000);
     }
-    function stop() { clearInterval(cycle); clearInterval(tick); cycle = tick = null; }
+    function stop() { alive = false; clearInterval(tick); tick = null; }
 
     if ('IntersectionObserver' in window) {
-      new IntersectionObserver((ents) => ents.forEach((en) => (en.isIntersecting ? start() : stop()))).observe(hub);
+      new IntersectionObserver((ents) => ents.forEach((en) => (en.isIntersecting ? start() : stop())), { threshold: 0.3 }).observe(hub);
     } else start();
 
     let rz;
