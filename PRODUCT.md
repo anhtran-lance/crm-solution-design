@@ -2,9 +2,11 @@
 
 **Surface:** Solution design Base CRM cho công ty phân phối thiết bị văn phòng (bàn ghế, máy photocopy, máy in, máy chiếu), đội 10 sale, bán B2B. Trình bày 10 phút cho khách chưa từng dùng CRM. Tình huống giả định.
 
-**Phạm vi:** khách chỉ dùng 3 ứng dụng Prospect, Lead, Sales và một quy trình bán (Nhận thông tin → Liên hệ → Khảo sát → Báo giá → Đàm phán → Chốt đơn). Không nhắc tới ứng dụng khác (báo giá tự động, tồn kho, hợp đồng, chăm sóc sau bán...).
+**Phạm vi:** khách chỉ dùng 3 ứng dụng Prospect, Lead, Sales và một quy trình bán (Đủ điều kiện → Khảo sát, tư vấn → Báo giá → Đàm phán → Chốt đơn).
 
-**Mạch nội dung (4 phần, ~10 phút):** Tổng quan (CRM là gì, 1 câu) → Lưu đồ giải pháp (khối 1 "Mọi nguồn khách vào một cửa: Lead": luồng trái → phải đúng kiến trúc sản phẩm — Nguồn (Prospect, Hotline, Form website, Excel/Google Sheet) → Lead · Tiếp nhận (gộp trùng, chuẩn hóa, chấm điểm, chia sale) → khách mới, khách chuẩn hóa → Sales · một quy trình bán; mô phỏng từng khách chạy qua luồng, có ca gộp trùng; phong cách hình ảnh mượn từ phần kiến trúc Agent trên base.vn (chỉ thiết kế, không lấy nội dung); khối 2: kênh vào → 4 bước khách → khối Prospect / Lead / Sales → một hồ sơ khách → giám đốc thấy gì; nút "Hôm nay"/"Với Base CRM") → Chi tiết 4 bước (Hỏi giá: Prospect · Được gọi lại, Được tư vấn: Lead · Báo giá, chốt đơn: Sales) → Góc quản lý (doanh số dự kiến trong Sales). Không có phần triển khai hay chốt việc: tài liệu chỉ trình bày giải pháp.
+**Phân vai:** Lead là giai đoạn trước cơ hội bán (tiếp nhận, gộp trùng, chấm điểm, chia người, gọi lại xác nhận nhu cầu). Tư vấn, khảo sát, báo giá, chốt là việc của sale trong Sales. Không nhắc tới ứng dụng khác (báo giá tự động, tồn kho, hợp đồng, chăm sóc sau bán...).
+
+**Mạch nội dung (4 phần, ~10 phút):** Tổng quan (CRM là gì, 1 câu) → Lưu đồ giải pháp (khối 1 "Mọi nguồn khách vào một cửa: Lead": luồng trái → phải đúng kiến trúc sản phẩm — Nguồn (Prospect, Hotline, Form website, Excel/Google Sheet) → Lead · Tiếp nhận (gộp trùng, chuẩn hóa, chấm điểm, chia sale) → khách mới, khách chuẩn hóa → Sales · một quy trình bán; mô phỏng từng khách chạy qua luồng, có ca gộp trùng; phong cách hình ảnh mượn từ phần kiến trúc Agent trên base.vn (chỉ thiết kế, không lấy nội dung); khối 2: kênh vào → 4 bước khách → khối Prospect / Lead / Sales → một hồ sơ khách → giám đốc thấy gì; nút "Hôm nay"/"Với Base CRM") → Chi tiết 4 bước (Hỏi giá: Prospect · Được gọi lại, xác nhận nhu cầu: Lead · Được tư vấn và Báo giá, chốt đơn: Sales) → Góc quản lý (doanh số dự kiến trong Sales). Không có phần triển khai hay chốt việc: tài liệu chỉ trình bày giải pháp.
 
 **Nguyên tắc chữ:** mỗi bước tối đa ~30 chữ; ảnh hệ thống là nội dung chính.
 
