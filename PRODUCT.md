@@ -1,17 +1,15 @@
 # Product
 
-**Surface:** Solution design CRM cho công ty phân phối thiết bị văn phòng (bàn ghế, máy photocopy, máy in, máy chiếu), đội 10 sale, bán B2B. Dùng trong buổi gặp khách hàng; do Base.vn soạn. Tình huống giả định, dữ liệu mẫu.
+**Surface:** Solution design Base CRM cho công ty phân phối thiết bị văn phòng (bàn ghế, máy photocopy, máy in, máy chiếu), đội 10 sale, bán B2B. Trình bày 10 phút cho khách chưa từng dùng CRM. Tình huống giả định.
 
-**Mode:** Persuade (tài liệu thuyết phục giám đốc và trưởng nhóm sale xác nhận hiện trạng, chọn ưu tiên, đồng ý buổi khảo sát).
+**Mạch nội dung (6 phần, ~10 phút):** Tổng quan (CRM là gì) → Hiện trạng (6 điểm vướng, mỗi điểm gắn một bước) → Hành trình khách 6 bước (khách làm gì / hôm nay / với Base CRM / kết quả + ảnh hệ thống) → Góc quản lý → Triển khai 90 ngày → Bước tiếp theo.
 
-**Audience:** giám đốc công ty phân phối, trưởng nhóm sale. Đọc trên laptop trong buổi họp, đôi khi trên điện thoại sau đó.
+**Định vị người xem:** thanh tab dính (phần đang xem, phần đã qua, "Phần x/6 › Bước y/6"), thanh tiến độ, thanh 6 bước dính trong phần hành trình, địa chỉ trang đổi theo vị trí (#buoc-3 mở thẳng bước 3), phóng to ảnh rồi Esc về đúng chỗ, phím 1–6 và ←/→ khi trình bày.
 
-**Job:** chứng minh bằng logic (hiện trạng → điểm nghẽn → giải pháp → giá trị → hành trình 90 ngày) và bằng demo thao tác được; kết thúc bằng hẹn buổi khảo sát 90 phút.
+**Ảnh hệ thống:** chụp từ base.vn/platform/crm ngày 02/11/2026, lưu ở `assets/he-thong/`. Dữ liệu trên ảnh là dữ liệu mẫu của Base.
 
-**Truth rules:** không bịa khách hàng, doanh số, trích dẫn. Số minh họa phải ghi rõ là minh họa hoặc đề xuất. Cột "Trước" để trống khi chưa đo.
+**Nhận diện:** logo và màu Base (xanh #1F62E8, nền xanh rừng như base.vn), chữ Inter.
 
-**Content kept:** 6 bước pipeline và xác suất, quy tắc chia lead 15 phút, quét 8:00, bàn giao khi sale nghỉ, dự báo = giá trị × xác suất, bảng quy tắc cần chốt, danh sách chuẩn bị, giả định.
+**Ngôn ngữ:** từ nghiệp vụ của khách (khách hỏi giá, chia khách, báo giá, doanh số dự kiến). Tránh từ hệ thống (lead, deal, pipeline, SLA); tên ứng dụng Base chỉ xuất hiện trên thanh tiêu đề ảnh.
 
-**Brand commitments:** mượn cách chuyển động của base.vn (sản phẩm tự chạy trong hero, bước xử lý hiện dần, thẻ dịch vụ chuyển theo bước, đếm số khi cuộn). Không dùng bộ nhận diện thương hiệu Base.
-
-**Anti-references:** nền kem + serif; sand và moss của bản trước; thẻ icon + tiêu đề lặp lại; eyebrow; đánh số 01/02.
+**Truth rules:** không bịa khách hàng, doanh số, trích dẫn. Điểm vướng ghi rõ là "thường gặp, xác nhận khi khảo sát"; lộ trình ghi rõ là đề xuất.

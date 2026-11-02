@@ -1,317 +1,503 @@
 <!doctype html>
-<html lang="vi">
+<html lang="vi" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CRM cho đội 10 sale · Solution design</title>
-<meta name="description" content="Bản thiết kế giải pháp CRM cho công ty phân phối thiết bị văn phòng có 10 sale: hiện trạng, điểm nghẽn, vận hành mới, giá trị và hành trình 90 ngày.">
+<title>Giải pháp Base CRM · Phân phối thiết bị văn phòng</title>
+<meta name="description" content="Solution design Base CRM cho công ty phân phối thiết bị văn phòng có 10 sale: đi theo hành trình mua hàng của khách, từ lúc hỏi giá đến lúc mua lại.">
+<link rel="icon" type="image/png" href="assets/brand/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=33">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
-<div class="progress" aria-hidden="true"><i id="prog"></i></div>
+<a class="skip" href="#tong-quan">Bỏ qua thanh điều hướng</a>
 
-<header class="nav">
-  <a class="mark" href="#top">CRM 10 sale</a>
-  <nav aria-label="Các phần" id="nav">
-    <a href="#hanh-trinh">Hành trình</a>
-    <a href="#du-lieu">Dữ liệu</a>
-    <a href="#demo">Trên hệ thống</a>
-    <a href="#cau-hinh">Cấu hình</a>
-    <a href="#90-ngay">90 ngày</a>
-    <a href="#tiep-theo">Quyết định</a>
-  </nav>
-  <a class="btn sm" href="#tiep-theo">Đặt buổi khảo sát</a>
+<!-- ============ THANH ĐIỀU HƯỚNG: luôn cho biết đang ở phần nào ============ -->
+<header class="top" id="top">
+  <div class="top-in">
+    <a class="logo" href="#tong-quan" aria-label="Về đầu tài liệu">
+      <img src="assets/brand/logo-base.png" width="120" height="37" alt="Base.vn">
+    </a>
+    <nav class="tabs" id="tabs" aria-label="Các phần của tài liệu">
+      <a href="#tong-quan" data-sec="tong-quan"><b>1</b><span>Tổng quan</span></a>
+      <a href="#van-de" data-sec="van-de"><b>2</b><span>Hiện trạng</span></a>
+      <a href="#hanh-trinh" data-sec="hanh-trinh"><b>3</b><span>Hành trình khách</span></a>
+      <a href="#quan-ly" data-sec="quan-ly"><b>4</b><span>Góc quản lý</span></a>
+      <a href="#trien-khai" data-sec="trien-khai"><b>5</b><span>Triển khai</span></a>
+      <a href="#tiep-theo" data-sec="tiep-theo"><b>6</b><span>Bước tiếp theo</span></a>
+    </nav>
+    <p class="where" id="where" aria-live="polite"><span id="whereSec">Phần 1/6</span><span id="whereStep"></span></p>
+  </div>
+  <div class="bar" aria-hidden="true"><i id="bar"></i></div>
 </header>
 
-<main id="top">
+<main>
 
-<!-- ============ HERO: hành trình khách ============ -->
-<section class="hero2 wrap" aria-labelledby="h1">
-  <div class="hero2-copy">
-    <h1 id="h1">CRM cho đội 10 sale</h1>
-    <p class="lead">Thiết kế theo hành trình của khách mua thiết bị văn phòng, từ lúc để lại thông tin đến lúc ký hợp đồng. Mỗi giai đoạn nói rõ khách làm gì, đang vướng ở đâu và hệ thống làm gì.</p>
-    <div class="cta">
-      <a class="btn" href="#hanh-trinh">Đi theo hành trình</a>
-      <a class="btn ghost" href="#demo">Xem demo thao tác</a>
-    </div>
-  </div>
-  <div class="hj" id="hj" aria-label="Hành trình khách mua thiết bị, tự chạy">
-    <ol class="hj-nodes" id="hjNodes"></ol>
-    <div class="hj-track" aria-hidden="true"><i id="hjFill"></i><b id="hjDot"></b></div>
-    <div class="hj-cap" id="hjCap" aria-live="polite"></div>
-  </div>
-</section>
+<!-- ============ 1. TỔNG QUAN ============ -->
+<section id="tong-quan" class="sec hero" data-name="Tổng quan" aria-labelledby="h1">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="part">Phần 1/6 · Tổng quan</p>
+      <h1 id="h1">Không để sót một khách hỏi giá nào, <em>từ lúc khách hỏi đến lúc khách mua lại</em></h1>
+      <p class="lead">Giải pháp Base CRM cho công ty phân phối bàn ghế, máy photocopy, máy in, máy chiếu, có đội 10 sale bán cho doanh nghiệp.</p>
 
-<!-- ============ THIẾT BỊ ============ -->
-<section class="band wrap pics" aria-labelledby="h-pics">
-  <div class="pics-t">
-    <h2 id="h-pics" class="h2 rv">Thứ đội sale đang bán</h2>
-    <p class="rv">Bàn ghế, tủ hồ sơ, máy photocopy, máy in, máy chiếu. Deal từ vài chục triệu đến hơn một tỷ, nên mỗi lead bị bỏ sót là một khoản lớn.</p>
-  </div>
-  <figure class="pic wide rv-clip"><img data-par src="assets/office-furniture.jpg" width="1920" height="1010" alt="Bàn làm việc nhóm và ghế công thái học trong văn phòng mở" loading="lazy"><figcaption>Bàn làm việc nhóm và ghế công thái học: nhóm hàng của các deal như 40 bộ bàn ghế nhân viên, 60 ghế công thái học</figcaption></figure>
-  <figure class="pic rv-clip"><img data-par src="assets/chairs-in-a-meeting-room-unsplash.jpg" width="1920" height="1281" alt="Bàn họp gỗ và sáu ghế nhựa trắng chân gỗ" loading="lazy"><figcaption>Bàn ghế phòng họp</figcaption></figure>
-  <figure class="pic rv-clip"><img data-par src="assets/xerox-altalink-c8045-photocopier.jpg" width="1920" height="1535" alt="Máy photocopy Xerox AltaLink C8045 đặt trong văn phòng" loading="lazy"><figcaption>Máy photocopy đa chức năng</figcaption></figure>
-  <figure class="pic rv-clip"><video id="loop" autoplay muted loop playsinline preload="metadata" poster="assets/konica-copier-loop-poster.jpg" width="854" height="480" aria-label="Máy photocopy Konica Minolta đang sao chụp tài liệu"><source src="assets/konica-copier-loop.webm" type="video/webm"></video><figcaption>Máy photocopy đang chạy</figcaption></figure>
-  <figure class="pic rv-clip"><img data-par src="assets/canon-imagerunner-advance-c7570i-photocopier.jpg" width="1920" height="1457" alt="Máy photocopy Canon imageRUNNER Advance C7570i có bộ hoàn thiện" loading="lazy"><figcaption>Máy photocopy có bộ hoàn thiện</figcaption></figure>
-</section>
+      <div class="what">
+        <p class="what-q">CRM là gì?</p>
+        <p>Là <strong>cuốn sổ khách hàng chung của cả công ty</strong>: ai đang hỏi gì, sale nào phụ trách, đã báo giá bao nhiêu, khi nào cần gọi lại. Ghi một lần, cả đội cùng thấy, hệ thống tự nhắc việc.</p>
+      </div>
 
-<!-- ============ HÀNH TRÌNH (ghim khi cuộn) ============ -->
-<section id="hanh-trinh" class="jp" aria-labelledby="h-ht">
-  <div class="jp-stick">
-    <div class="wrap">
-      <h2 id="h-ht" class="h2">Hành trình của khách mua thiết bị</h2>
-      <div class="jp-grid">
-        <nav class="jp-rail" id="jpRail" aria-label="Giai đoạn của hành trình"></nav>
-        <div class="jp-panel" id="jpPanel" aria-live="polite"></div>
+      <ul class="gains">
+        <li><b>Một nơi</b> giữ mọi khách và mọi cuộc trao đổi</li>
+        <li><b>Tự chia khách</b> và nhắc khi sắp trễ hẹn</li>
+        <li><b>Giám đốc thấy</b> doanh số sắp về của từng sale</li>
+      </ul>
+
+      <div class="cta">
+        <a class="btn" href="#hanh-trinh">Đi theo hành trình khách <span aria-hidden="true">→</span></a>
+        <a class="btn ghost" href="#van-de">Bắt đầu từ hiện trạng</a>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ============ DỮ LIỆU ============ -->
-<section id="du-lieu" class="band" aria-labelledby="h-dl">
+    <div class="hero-shots" aria-label="Ảnh giao diện Base CRM">
+      <figure class="win w-back">
+        <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Hộp thư chung</span></div>
+        <img src="assets/he-thong/prospect.webp" width="1182" height="424" alt="Hộp thư chung gom tin nhắn Zalo, Facebook của khách về một chỗ">
+      </figure>
+      <figure class="win w-front">
+        <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Tiếp nhận &amp; chia khách</span></div>
+        <img src="assets/he-thong/lead.webp" width="1424" height="538" alt="Danh sách khách mới, mỗi khách có sale phụ trách và đồng hồ đếm thời gian phản hồi">
+      </figure>
+      <figure class="win w-side">
+        <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Doanh số dự kiến</span></div>
+        <img src="assets/he-thong/sales.webp" width="1422" height="692" alt="Bảng doanh số dự kiến tháng theo từng sale">
+      </figure>
+    </div>
+  </div>
+
   <div class="wrap">
-    <h2 id="h-dl" class="h2 rv">Dữ liệu đi về một nơi, rồi chia ra</h2>
-    <p class="lead s rv">Mọi lead từ ba nguồn đổ vào một dịch vụ lead duy nhất. Từ đó dữ liệu của hành trình được chia sang pipeline, hồ sơ khách, nhắc việc và báo cáo, nên mọi người nhìn cùng một con số.</p>
-    <div class="dflow rv" id="dflow" data-ui>
-      <svg class="df-svg" id="dfSvg" aria-hidden="true"></svg>
-      <div class="df-col" id="dfSrc"><h4 class="df-h">Nguồn</h4>
-        <div class="df-n"><b>Website</b><span>Form Yêu cầu báo giá</span></div>
-        <div class="df-n"><b>Hội chợ</b><span>Danh thiếp nhập nhanh</span></div>
-        <div class="df-n"><b>Zalo OA</b><span>Tin nhắn thành lead</span></div>
-      </div>
-      <div class="df-col mid"><h4 class="df-h">Dịch vụ lead</h4>
-        <div class="df-n core" id="dfCore"><b>Nguồn lead tập trung</b><span>Kiểm tra trùng, gắn nguồn</span><span>Chia sale theo lượt</span><span>Hạn gọi lần đầu 15 phút</span></div>
-      </div>
-      <div class="df-col" id="dfDst"><h4 class="df-h">Đích</h4>
-        <div class="df-n"><b>Pipeline bán hàng</b><span>6 giai đoạn, mỗi khách một thẻ</span></div>
-        <div class="df-n"><b>Hồ sơ khách và liên hệ</b><span>Lịch sử chăm sóc ở lại với khách</span></div>
-        <div class="df-n"><b>Nhắc việc và SLA</b><span>Cảnh báo lead, deal quá hạn</span></div>
-        <div class="df-n"><b>Báo cáo dự báo</b><span>Giá trị × xác suất, % chỉ tiêu</span></div>
-      </div>
-    </div>
+    <ol class="agenda" aria-label="Lộ trình trình bày 10 phút">
+      <li><a href="#tong-quan"><b>1</b>Tổng quan<small>1 phút</small></a></li>
+      <li><a href="#van-de"><b>2</b>Hiện trạng<small>1,5 phút</small></a></li>
+      <li><a href="#hanh-trinh"><b>3</b>Hành trình khách<small>4,5 phút</small></a></li>
+      <li><a href="#quan-ly"><b>4</b>Góc quản lý<small>1 phút</small></a></li>
+      <li><a href="#trien-khai"><b>5</b>Triển khai<small>1 phút</small></a></li>
+      <li><a href="#tiep-theo"><b>6</b>Bước tiếp theo<small>1 phút</small></a></li>
+    </ol>
   </div>
 </section>
 
-<section id="demo" class="band" aria-labelledby="h-demo">
+<!-- ============ 2. HIỆN TRẠNG ============ -->
+<section id="van-de" class="sec" data-name="Hiện trạng" aria-labelledby="h-vd">
   <div class="wrap">
-    <h2 id="h-demo" class="h2 rv">Toàn bộ khách trên một bảng</h2>
-    <p class="lead s rv">Mỗi cột là một giai đoạn của hành trình. Kéo thẻ khách sang cột khác để chuyển giai đoạn, và xem dự báo bên dưới đổi theo. Số liệu là dữ liệu mẫu.</p>
-    <div class="panel pipe" id="pipePanel">
-      <div class="panel-main">
-        <p class="pstat" id="plStat" role="status" aria-live="polite"></p>
-        <div class="pboard" id="board" role="group" aria-label="Pipeline 6 bước"></div>
-      </div>
-      <aside class="panel-ctl" aria-label="Điều khiển demo">
-        <div class="row"><span>Thẻ đang chọn</span><b id="selName">Logistics Hoàng Gia</b></div>
-        <div class="row two">
-          <button type="button" id="bPrev">Lùi bước</button>
-          <button type="button" id="bNext" class="primary">Qua bước</button>
-        </div>
-        <div class="row"><button type="button" id="bRun">Chạy demo 6 bước</button></div>
-        <div class="row"><span>Kỳ bán hàng</span>
-          <div class="seg" role="radiogroup" aria-label="Kỳ bán hàng" id="segPeriod">
-            <button type="button" role="radio" aria-checked="true" data-p="11">T11</button>
-            <button type="button" role="radio" aria-checked="false" data-p="12">T12</button>
-            <button type="button" role="radio" aria-checked="false" data-p="q4">Q4</button>
-          </div>
-        </div>
-        <div class="row"><label for="selSale">Dự báo của</label><select id="selSale"></select></div>
-        <div class="row"><button type="button" id="bLeave">Lê Phương nghỉ việc</button></div>
-        <div class="row"><button type="button" id="bReset" class="linkbtn">Đặt lại dữ liệu mẫu</button></div>
-        <p class="hand" id="handNote" role="status" aria-live="polite">Kéo thẻ sang cột khác. Trên điện thoại hoặc bàn phím: chọn thẻ rồi dùng nút Lùi bước, Qua bước hoặc phím mũi tên.</p>
-      </aside>
+    <div class="sec-head">
+      <p class="part">Phần 2/6 · Hiện trạng</p>
+      <h2 id="h-vd">Hôm nay, khách đi qua công ty mình bị “rơi” ở đâu?</h2>
+      <p class="sub">Sáu điểm thường gặp ở công ty phân phối thiết bị. Mỗi điểm nằm ở một bước trong hành trình mua hàng của khách. Bấm vào thẻ để xem cách giải quyết.</p>
     </div>
-    <div class="two-col">
-      <div class="panel" data-ui>
-        <div class="fc-head">
-          <div><span class="k">Mức dự báo</span><b id="fcVal" class="big">0</b></div>
-          <p id="fcCaption" class="fc-cap"></p>
-        </div>
-        <div id="fcBars" class="fc-bars"></div>
-        <p class="fc-note">Mức dự báo = tổng (giá trị deal × xác suất của bước) trong kỳ. Thanh dài là % chỉ tiêu tháng của từng sale.</p>
-      </div>
-      <div class="panel" data-ui>
-        <h3 class="h4">Lịch sử chăm sóc khách</h3>
-        <p class="fc-note" id="tlWho"></p>
-        <ol id="tl" class="tl"></ol>
-      </div>
+
+    <div class="pains">
+      <a class="pain rv" href="#buoc-1" data-step="1">
+        <span class="tag">Bước 1 · Hỏi giá</span>
+        <h3>Tin nhắn hỏi giá nằm rải trong Zalo, Facebook của từng sale</h3>
+        <p>Ngoài giờ không ai trả lời. Không biết quảng cáo nào mang về khách.</p>
+        <span class="go">Xem cách giải quyết →</span>
+      </a>
+      <a class="pain rv" href="#buoc-2" data-step="2">
+        <span class="tag">Bước 2 · Liên hệ</span>
+        <h3>Chia khách bằng tay qua nhóm Zalo, khách chờ cả ngày mới được gọi</h3>
+        <p>Đối thủ gọi trước. Khách gọi lại gặp người khác, phải kể lại từ đầu.</p>
+        <span class="go">Xem cách giải quyết →</span>
+      </a>
+      <a class="pain rv" href="#buoc-3" data-step="3">
+        <span class="tag">Bước 3 · Khảo sát</span>
+        <h3>Lịch hẹn khảo sát ghi sổ tay, ảnh mặt bằng nằm trong điện thoại riêng</h3>
+        <p>Trưởng nhóm không biết sale đã đến chưa, người làm báo giá thiếu thông tin.</p>
+        <span class="go">Xem cách giải quyết →</span>
+      </a>
+      <a class="pain rv" href="#buoc-4" data-step="4">
+        <span class="tag">Bước 4 · Báo giá</span>
+        <h3>Báo giá Excel mỗi người một mẫu, chiết khấu tùy sale</h3>
+        <p>Gửi báo giá rồi mới biết kho đã hết máy.</p>
+        <span class="go">Xem cách giải quyết →</span>
+      </a>
+      <a class="pain rv" href="#buoc-5" data-step="5">
+        <span class="tag">Bước 5 · Hợp đồng</span>
+        <h3>Giám đốc hỏi “tháng này về bao nhiêu” phải gọi từng sale</h3>
+        <p>Hợp đồng soạn tay, điều khoản bảo hành mỗi bản một kiểu.</p>
+        <span class="go">Xem cách giải quyết →</span>
+      </a>
+      <a class="pain rv" href="#buoc-6" data-step="6">
+        <span class="tag">Bước 6 · Sau bán</span>
+        <h3>Giao hàng xong là quên, hết hạn bảo trì không ai nhắc</h3>
+        <p>Khách mua lại ở nơi khác. Sale nghỉ việc mang theo danh sách khách.</p>
+        <span class="go">Xem cách giải quyết →</span>
+      </a>
     </div>
+    <p class="note">Đây là các điểm thường gặp. Mình sẽ cùng xác nhận đúng, sai trong buổi khảo sát.</p>
   </div>
 </section>
 
-<section id="auto-sec" class="band white" aria-labelledby="h-auto">
-  <div class="wrap two">
-    <div class="side-t">
-      <h2 id="h-auto" class="h2 s2 rv">Chia lead và nhắc việc</h2>
-      <p class="lead s rv">Bấm một nguồn để gửi lead thử và xem lead giao cho ai. Tua 15 phút để thấy cảnh báo trưởng nhóm. Chạy quét 8:00 để thấy deal nào bị nhắc.</p>
-    </div>
-    <div class="panel" id="auto">
-      <div class="auto-top">
-        <div class="src"><span class="k">Gửi lead thử từ</span>
-          <button type="button" data-src="Website">Website</button>
-          <button type="button" data-src="Hội chợ">Hội chợ</button>
-          <button type="button" data-src="Zalo">Zalo OA</button>
-        </div>
-        <div class="src">
-          <button type="button" id="bTime">Tua 15 phút</button>
-          <button type="button" id="bScan" class="primary">Chạy quét 8:00</button>
-          <button type="button" id="bClear" class="linkbtn">Xóa nhật ký</button>
-        </div>
-      </div>
-      <div class="auto-body">
-        <div><h3 class="h4">Lượt chia lead kế tiếp</h3><ol id="rota" class="rota" data-ui></ol></div>
-        <div><h3 class="h4">Nhật ký tự động</h3><ol id="log" class="log" data-ui aria-live="polite"><li class="muted">Chưa có sự kiện. Bấm một nguồn lead để bắt đầu.</li></ol></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ DỰNG TRÊN HỆ THỐNG ============ -->
-<section id="he-thong" class="band white" aria-labelledby="h-sys">
+<!-- ============ 3. HÀNH TRÌNH KHÁCH ============ -->
+<section id="hanh-trinh" class="sec journey" data-name="Hành trình khách" aria-labelledby="h-ht">
   <div class="wrap">
-    <h2 id="h-sys" class="h2 rv">Dựng trên hệ thống</h2>
-    <p class="lead s rv">Ba màn hình cấu hình chính, dựng lại theo cấu trúc Automation và SLA & Routing của Base, với dữ liệu mẫu của bài toán này.</p>
-    <div class="sys-tabs" role="tablist" aria-label="Màn hình cấu hình" id="sysTabs">
-      <button type="button" role="tab" aria-selected="true" data-i="0">Danh sách automation</button>
-      <button type="button" role="tab" aria-selected="false" data-i="1">Luồng đổi bước deal</button>
-      <button type="button" role="tab" aria-selected="false" data-i="2">SLA và chia lead</button>
-    </div>
-    <div class="sys-pane" id="sysPane" role="tabpanel"></div>
-  </div>
-</section>
-
-<!-- ============ CẤU HÌNH ============ -->
-<section id="cau-hinh" class="band" aria-labelledby="h-cfg">
-  <div class="wrap">
-    <h2 id="h-cfg" class="h2 rv">Cấu hình</h2>
-    <p class="lead s rv">Những gì sẽ được thiết lập trên hệ thống. Tất cả là đề xuất, chỉnh được ngay trong buổi khảo sát.</p>
-    <div class="cfg-flow-wrap rv">
-      <h3 class="h4">Pipeline 6 bước. Chọn một bước để xem điều kiện qua bước.</h3>
-      <div class="cfg-flow" id="cfgFlow" role="group" aria-label="Sáu bước pipeline"></div>
-      <div class="cfg-detail" id="cfgDetail" aria-live="polite"></div>
-    </div>
-    <div class="cfg-grid">
-      <div class="panel rv" data-ui>
-        <h3 class="h4">Biểu mẫu lead và deal</h3>
-        <p class="fc-note" style="margin-top:0">Trường bắt buộc khi nhập</p>
-        <div class="fm">
-          <div class="fm-r"><span>Tên công ty</span><i>Logistics Hoàng Gia</i><em class="chip">Bắt buộc</em></div>
-          <div class="fm-r"><span>Người liên hệ</span><i>Đặng Thu Trang</i><em class="chip">Bắt buộc</em></div>
-          <div class="fm-r"><span>Điện thoại hoặc email</span><i>0903 xxx xxx</i><em class="chip">Bắt buộc</em></div>
-          <div class="fm-r"><span>Nguồn lead</span><i>Website · Hội chợ · Zalo OA</i><em class="chip">Bắt buộc</em></div>
-          <div class="fm-r"><span>Giá trị deal</span><i>486.500.000</i><em class="chip">Bắt buộc</em></div>
-          <div class="fm-r"><span>Tháng dự kiến chốt</span><i>Tháng 11</i><em class="chip">Bắt buộc</em></div>
-          <div class="fm-r"><span>Lý do mất deal</span><i>Chỉ hiện khi chuyển sang Thua</i><em class="chip">Bắt buộc</em></div>
-        </div>
-      </div>
-      <div class="panel rv" data-ui>
-        <h3 class="h4">Quy tắc tự động</h3>
-        <div class="rules-v">
-          <div class="rl"><span class="chip warn">Khi lead mới về</span><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><span class="chip ok">Giao sale theo lượt</span></div>
-          <div class="rl"><span class="chip warn">Khi 15 phút chưa gọi</span><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><span class="chip ok">Báo trưởng nhóm</span></div>
-          <div class="rl"><span class="chip warn">Khi 8:00 deal quá hạn bước</span><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><span class="chip ok">Nhắc sale; quá gấp đôi hạn thì báo thêm trưởng nhóm</span></div>
-          <div class="rl"><span class="chip warn">Khi sale nghỉ</span><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><span class="chip ok">Bỏ khỏi lượt chia, chờ trưởng nhóm duyệt bàn giao</span></div>
-        </div>
-      </div>
-      <div class="panel rv" data-ui>
-        <h3 class="h4">Phân quyền</h3>
-        <table class="mx">
-          <thead><tr><th>Quyền</th><th>Sale</th><th>Trưởng nhóm</th><th>Giám đốc</th></tr></thead>
-          <tbody>
-            <tr><td>Xem, sửa deal của mình</td><td class="y"></td><td class="y"></td><td class="y"></td></tr>
-            <tr><td>Xem deal cả nhóm</td><td class="n"></td><td class="y"></td><td class="y"></td></tr>
-            <tr><td>Xem toàn bộ pipeline và dự báo</td><td class="n"></td><td class="n"></td><td class="y"></td></tr>
-            <tr><td>Duyệt bàn giao khi sale nghỉ</td><td class="n"></td><td class="y"></td><td class="y"></td></tr>
-            <tr><td>Đặt chỉ tiêu tháng</td><td class="n"></td><td class="n"></td><td class="y"></td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="sec-head">
+      <p class="part">Phần 3/6 · Hành trình khách</p>
+      <h2 id="h-ht">Đi cùng một khách hàng qua 6 bước</h2>
+      <p class="sub">Chị Thu Trang, Công ty An Phát, chuẩn bị chuyển văn phòng mới và cần trang bị chỗ làm việc cho 40 nhân viên. Mỗi bước gồm: khách làm gì, hôm nay đang vướng gì, và Base CRM giúp gì.</p>
     </div>
   </div>
-</section>
 
-<!-- ============ 90 NGÀY ============ -->
-<section id="90-ngay" class="band night compact" aria-labelledby="h-90">
-  <div class="wrap">
-    <h2 id="h-90" class="h2 rv">90 ngày đổi thói quen dùng và báo cáo</h2>
-    <p class="lead s rv">Kết quả đến từ hai thay đổi thói quen: sale ghi mọi thứ vào CRM, lãnh đạo chỉ nhìn số trên CRM. Tình huống minh họa.</p>
-    <div class="tline" id="tline">
-      <div class="tl-track" aria-hidden="true"><i id="tlFill"></i></div>
-      <ol class="tl-steps">
-        <li class="tl-s"><h3>Trước</h3>
-          <div class="hb"><b>Thói quen dùng</b><p>Lead ở Zalo, deal ở Excel riêng, ghi chú ở sổ tay.</p></div>
-          <div class="hb"><b>Cách báo cáo</b><p>Cuối tháng Excel của từng sale, cộng tay.</p></div></li>
-        <li class="tl-s"><h3>Tuần 1</h3>
-          <div class="hb"><b>Thói quen dùng</b><p>Nhóm 3 sale nhận và ghi lead vào CRM.</p></div>
-          <div class="hb"><b>Cách báo cáo</b><p>Trưởng nhóm xem cảnh báo, thôi hỏi miệng.</p></div></li>
-        <li class="tl-s"><h3>Tuần 3</h3>
-          <div class="hb"><b>Thói quen dùng</b><p>Cả 10 sale nhận lead theo lượt; lead cũ vào CRM.</p></div>
-          <div class="hb"><b>Cách báo cáo</b><p>Bỏ Excel cá nhân; số liệu ngày từ CRM.</p></div></li>
-        <li class="tl-s"><h3>Tuần 6</h3>
-          <div class="hb"><b>Thói quen dùng</b><p>Sale nghỉ: bàn giao một thao tác, người mới đọc lịch sử.</p></div>
-          <div class="hb"><b>Cách báo cáo</b><p>Không mất khách, không chờ sale cũ kể lại.</p></div></li>
-        <li class="tl-s"><h3>Ngày 90</h3>
-          <div class="hb"><b>Thói quen dùng</b><p>Cập nhật deal ngay sau mỗi cuộc gọi.</p></div>
-          <div class="hb"><b>Cách báo cáo</b><p>Họp doanh số hằng tuần trên màn hình dự báo.</p></div></li>
+  <!-- Thanh bước: dính dưới thanh điều hướng khi đang ở phần này -->
+  <div class="rail-wrap" id="railWrap">
+    <div class="wrap rail-in">
+      <button class="nav-btn" id="prevStep" type="button" aria-label="Bước trước">←</button>
+      <ol class="rail" id="rail" role="tablist" aria-label="Sáu bước trong hành trình khách">
+        <li role="presentation"><button role="tab" id="t1" aria-controls="buoc-1" data-step="1"><b>1</b><span>Tìm hiểu &amp; hỏi giá</span></button></li>
+        <li role="presentation"><button role="tab" id="t2" aria-controls="buoc-2" data-step="2"><b>2</b><span>Được liên hệ</span></button></li>
+        <li role="presentation"><button role="tab" id="t3" aria-controls="buoc-3" data-step="3"><b>3</b><span>Khảo sát nhu cầu</span></button></li>
+        <li role="presentation"><button role="tab" id="t4" aria-controls="buoc-4" data-step="4"><b>4</b><span>Nhận báo giá</span></button></li>
+        <li role="presentation"><button role="tab" id="t5" aria-controls="buoc-5" data-step="5"><b>5</b><span>Ký hợp đồng</span></button></li>
+        <li role="presentation"><button role="tab" id="t6" aria-controls="buoc-6" data-step="6"><b>6</b><span>Giao hàng &amp; chăm sóc</span></button></li>
       </ol>
+      <button class="nav-btn" id="nextStep" type="button" aria-label="Bước sau">→</button>
     </div>
-    <p class="lead s rv" style="margin-top:20px">Điểm bật: lãnh đạo ngừng nhận báo cáo Excel từ tuần 2 và chỉ họp trên màn hình dự báo. Khi cách báo cáo đổi, sale đổi thói quen ghi chép theo.</p>
+    <div class="rail-line" aria-hidden="true"><i id="railFill"></i></div>
+  </div>
+
+  <div class="wrap panels" id="panels">
+
+    <!-- Bước 1 -->
+    <article class="panel" id="buoc-1" role="tabpanel" aria-labelledby="t1" data-step="1" data-title="Tìm hiểu & hỏi giá">
+      <div class="p-copy">
+        <p class="p-count">Bước 1/6</p>
+        <h3>Tìm hiểu &amp; hỏi giá</h3>
+        <div class="who"><span class="who-l">Khách hàng</span><p>Chị Trang thấy quảng cáo trên Facebook, nhắn Zalo hỏi bảng giá ghế công thái học lúc 21 giờ. Tuần sau chị ghé gian hàng của công ty ở hội chợ nội thất.</p></div>
+        <div class="now"><span class="now-l">Hôm nay</span><p>Tin nhắn nằm trong Zalo cá nhân của một sale. Ngoài giờ không ai trả lời. Danh thiếp ở hội chợ nằm trong ngăn kéo.</p></div>
+        <div class="fix"><span class="fix-l">Với Base CRM</span>
+          <ul>
+            <li>Tin nhắn Zalo, Facebook, website, hotline về <strong>một hộp thư chung</strong>, ai trực cũng thấy.</li>
+            <li>Ngoài giờ, <strong>trợ lý AI trả lời</strong> câu hỏi cơ bản: bảng giá, catalogue, giờ mở cửa.</li>
+            <li>Khách ở hội chợ, showroom <strong>quét mã QR</strong> là vào danh sách, không cần nhập lại.</li>
+          </ul>
+        </div>
+        <p class="result"><b>Kết quả</b> Không còn tin nhắn bị bỏ quên. Mỗi khách đều biết đến từ đâu.</p>
+      </div>
+      <div class="p-shots" data-shots>
+        <div class="shot-tabs" role="tablist" aria-label="Màn hình minh họa bước 1">
+          <button role="tab" aria-selected="true">Hộp thư chung</button>
+          <button role="tab" aria-selected="false">Khách từ hội chợ</button>
+        </div>
+        <figure class="win shot is-on" data-cap="Bước 1 · Hộp thư chung">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Prospect · Hộp thư chung</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/prospect.webp" width="1182" height="424" loading="lazy" alt="Hộp thư chung: tin nhắn Zalo của khách, nhãn trợ lý AI đã trả lời sau 45 giây"></button>
+          <figcaption>Tin Zalo, Facebook về một chỗ. Nhãn “Trợ lý AI · 45s” là tin AI đã trả lời ngoài giờ.</figcaption>
+        </figure>
+        <figure class="win shot" data-cap="Bước 1 · Khách từ hội chợ">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Event · Check-in sự kiện</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/event.webp" width="1182" height="582" loading="lazy" alt="Danh sách khách check-in sự kiện bằng mã QR"></button>
+          <figcaption>Khách quét QR tại gian hàng, tên và công ty vào thẳng danh sách khách.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <!-- Bước 2 -->
+    <article class="panel" id="buoc-2" role="tabpanel" aria-labelledby="t2" data-step="2" data-title="Được liên hệ">
+      <div class="p-copy">
+        <p class="p-count">Bước 2/6</p>
+        <h3>Được liên hệ</h3>
+        <div class="who"><span class="who-l">Khách hàng</span><p>Chị Trang để lại số điện thoại và chờ được gọi. Chị cũng đang hỏi thêm hai nhà cung cấp khác.</p></div>
+        <div class="now"><span class="now-l">Hôm nay</span><p>Trưởng nhóm chia khách bằng tay qua nhóm Zalo. Sale bận nên đến chiều hôm sau mới gọi, lúc đó đối thủ đã gọi trước.</p></div>
+        <div class="fix"><span class="fix-l">Với Base CRM</span>
+          <ul>
+            <li><strong>Tự chia khách</strong> cho sale theo khu vực, nhóm hàng hoặc lần lượt.</li>
+            <li><strong>Đồng hồ 15 phút</strong>: quá giờ chưa gọi thì tự chuyển người khác và báo trưởng nhóm.</li>
+            <li>Tự tra thêm thông tin công ty khách (quy mô, chức danh người hỏi) và <strong>xếp khách nào nên gọi trước</strong>.</li>
+          </ul>
+        </div>
+        <p class="result"><b>Kết quả</b> Khách được gọi trong 15 phút, sale biết rõ mình đang nói chuyện với ai.</p>
+      </div>
+      <div class="p-shots" data-shots>
+        <div class="shot-tabs" role="tablist" aria-label="Màn hình minh họa bước 2">
+          <button role="tab" aria-selected="true">Chia khách</button>
+          <button role="tab" aria-selected="false">Gọi ai trước</button>
+          <button role="tab" aria-selected="false">Thông tin công ty</button>
+        </div>
+        <figure class="win shot is-on" data-cap="Bước 2 · Chia khách">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Lead · Tiếp nhận &amp; chia khách</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/lead.webp" width="1424" height="538" loading="lazy" alt="Danh sách khách mới với nguồn, mức ưu tiên, sale phụ trách và thời gian còn lại"></button>
+          <figcaption>Mỗi khách có sale phụ trách. Cột cuối đếm ngược thời gian còn lại để gọi.</figcaption>
+        </figure>
+        <figure class="win shot" data-cap="Bước 2 · Gọi ai trước">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Lead · AI xếp ưu tiên</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/ai-uu-tien.webp" width="1800" height="990" loading="lazy" alt="240 khách mới qua đêm, AI giải thích vì sao nên gọi chị Trang trước"></button>
+          <figcaption>Sáng ra có 240 khách mới. AI giải thích vì sao nên gọi chị Trang trước.</figcaption>
+        </figure>
+        <figure class="win shot" data-cap="Bước 2 · Thông tin công ty">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Radar · Bổ sung thông tin</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/radar.webp" width="1182" height="728" loading="lazy" alt="Hồ sơ khách được bổ sung email, số điện thoại, chức danh, quy mô công ty"></button>
+          <figcaption>Tự bổ sung email, số điện thoại, chức danh và quy mô công ty trước khi sale gọi.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <!-- Bước 3 -->
+    <article class="panel" id="buoc-3" role="tabpanel" aria-labelledby="t3" data-step="3" data-title="Khảo sát nhu cầu">
+      <div class="p-copy">
+        <p class="p-count">Bước 3/6</p>
+        <h3>Khảo sát nhu cầu</h3>
+        <div class="who"><span class="who-l">Khách hàng</span><p>Chị Trang hẹn sale đến văn phòng mới để xem mặt bằng, đo khu làm việc và tư vấn cần bao nhiêu máy in cho 40 người.</p></div>
+        <div class="now"><span class="now-l">Hôm nay</span><p>Lịch hẹn ghi sổ tay. Trưởng nhóm không biết sale đã đến chưa. Ảnh mặt bằng, số đo nằm trong điện thoại của sale.</p></div>
+        <div class="fix"><span class="fix-l">Với Base CRM</span>
+          <ul>
+            <li>Lịch hẹn gắn vào hồ sơ khách, <strong>nhắc trước giờ hẹn</strong>.</li>
+            <li>Sale <strong>check-in tại văn phòng khách</strong>, trưởng nhóm thấy ngay.</li>
+            <li><strong>Ảnh, số đo, biên bản khảo sát</strong> lưu vào hồ sơ, người làm báo giá dùng được luôn.</li>
+          </ul>
+        </div>
+        <p class="result"><b>Kết quả</b> Mọi thông tin khảo sát nằm cùng một chỗ với khách, không phụ thuộc điện thoại của ai.</p>
+      </div>
+      <div class="p-shots" data-shots>
+        <figure class="win shot is-on" data-cap="Bước 3 · Lịch khảo sát">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Fieldwork · Lịch khảo sát</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/fieldwork.webp" width="1182" height="610" loading="lazy" alt="Lịch khảo sát trong ngày, trạng thái đã check-in và cuộc hẹn tiếp theo"></button>
+          <figcaption>Lịch khảo sát trong ngày. “Đã check-in” xác nhận sale đã có mặt tại văn phòng khách.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <!-- Bước 4 -->
+    <article class="panel" id="buoc-4" role="tabpanel" aria-labelledby="t4" data-step="4" data-title="Nhận báo giá">
+      <div class="p-copy">
+        <p class="p-count">Bước 4/6</p>
+        <h3>Nhận báo giá</h3>
+        <div class="who"><span class="who-l">Khách hàng</span><p>Chị Trang cần báo giá rõ ràng, đúng chiết khấu và biết ngày giao để trình giám đốc duyệt ngân sách.</p></div>
+        <div class="now"><span class="now-l">Hôm nay</span><p>Báo giá làm bằng Excel, mỗi sale một mẫu, chiết khấu tùy người. Gửi rồi mới biết kho Hà Nội đã hết hàng.</p></div>
+        <div class="fix"><span class="fix-l">Với Base CRM</span>
+          <ul>
+            <li>Lập báo giá từ <strong>bảng giá chuẩn</strong>, chiết khấu theo chính sách. Vượt mức thì cần quản lý duyệt.</li>
+            <li><strong>Xem tồn kho từng kho</strong> ngay khi báo giá và giữ hàng cho khách.</li>
+            <li>Một mẫu báo giá thống nhất mang thương hiệu công ty.</li>
+          </ul>
+        </div>
+        <p class="result"><b>Kết quả</b> Báo giá ra nhanh, đúng giá, đúng hàng có sẵn.</p>
+      </div>
+      <div class="p-shots" data-shots>
+        <div class="shot-tabs" role="tablist" aria-label="Màn hình minh họa bước 4">
+          <button role="tab" aria-selected="true">Báo giá</button>
+          <button role="tab" aria-selected="false">Tồn kho</button>
+        </div>
+        <figure class="win shot is-on" data-cap="Bước 4 · Báo giá">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Commerce · Báo giá</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/commerce.webp" width="1424" height="840" loading="lazy" alt="Báo giá 40 bộ thiết bị với chiết khấu, gói lắp đặt và bảo hành"></button>
+          <figcaption>Giá và ưu đãi tự áp theo chính sách công ty, kèm lắp đặt và bảo hành.</figcaption>
+        </figure>
+        <figure class="win shot" data-cap="Bước 4 · Tồn kho">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Inventory · Kiểm tra tồn kho</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/inventory.webp" width="1182" height="664" loading="lazy" alt="Tồn kho tại kho Hà Nội và TP.HCM, số đang giữ chỗ và đang về"></button>
+          <figcaption>Tồn từng kho, số đang giữ cho khách khác và số đang về. Thiếu hàng thì biết ngay.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <!-- Bước 5 -->
+    <article class="panel" id="buoc-5" role="tabpanel" aria-labelledby="t5" data-step="5" data-title="Ký hợp đồng">
+      <div class="p-copy">
+        <p class="p-count">Bước 5/6</p>
+        <h3>Ký hợp đồng</h3>
+        <div class="who"><span class="who-l">Khách hàng</span><p>Chị Trang đề nghị bảo hành 36 tháng thay vì 24 tháng, rồi ký hợp đồng.</p></div>
+        <div class="now"><span class="now-l">Hôm nay</span><p>Hợp đồng soạn tay từ file cũ, điều khoản bảo hành mỗi bản một kiểu. Sale tự đồng ý, giám đốc biết sau.</p></div>
+        <div class="fix"><span class="fix-l">Với Base CRM</span>
+          <ul>
+            <li>Hợp đồng tạo từ <strong>mẫu chuẩn</strong>, lấy sẵn thông tin từ báo giá.</li>
+            <li>Điều khoản khác chuẩn, ví dụ bảo hành 36 tháng, <strong>tự báo cần duyệt</strong>.</li>
+            <li>Mỗi cơ hội bán có giai đoạn và khả năng chốt, nên <strong>doanh số dự kiến tự cộng lại</strong> (xem Phần 4).</li>
+          </ul>
+        </div>
+        <p class="result"><b>Kết quả</b> Hợp đồng nhanh, đúng quy định. Giám đốc kiểm soát được ngoại lệ.</p>
+      </div>
+      <div class="p-shots" data-shots>
+        <figure class="win shot is-on" data-cap="Bước 5 · Rà soát hợp đồng">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Contract · Rà soát hợp đồng</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/contract.webp" width="1182" height="720" loading="lazy" alt="Rà soát điều khoản bảo hành: phương án chuẩn, phương án ngoại lệ cần duyệt"></button>
+          <figcaption>Bảo hành 36 tháng vượt chuẩn 24 tháng, nên được đánh dấu “Cần phê duyệt”.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <!-- Bước 6 -->
+    <article class="panel" id="buoc-6" role="tabpanel" aria-labelledby="t6" data-step="6" data-title="Giao hàng & chăm sóc">
+      <div class="p-copy">
+        <p class="p-count">Bước 6/6</p>
+        <h3>Giao hàng &amp; chăm sóc</h3>
+        <div class="who"><span class="who-l">Khách hàng</span><p>An Phát nhận hàng, cần bảo trì máy photocopy định kỳ. Sáu tháng sau mở chi nhánh, chị Trang muốn mua thêm.</p></div>
+        <div class="now"><span class="now-l">Hôm nay</span><p>Giao xong là quên. Hết hạn bảo trì không ai nhắc. Khách gọi báo hỏng máy không biết ai xử lý.</p></div>
+        <div class="fix"><span class="fix-l">Với Base CRM</span>
+          <ul>
+            <li><strong>Lịch bảo trì, ngày gia hạn tự nhắc</strong> cho người phụ trách.</li>
+            <li>Yêu cầu sửa chữa được ghi nhận, <strong>giao kỹ thuật và theo dõi đến khi xong</strong>.</li>
+            <li>Khách muốn mua thêm thì <strong>tạo cơ hội bán mới ngay trên hồ sơ cũ</strong>, đủ lịch sử.</li>
+          </ul>
+        </div>
+        <p class="result"><b>Kết quả</b> Khách cũ quay lại mua, hợp đồng bảo trì không bị bỏ lỡ.</p>
+      </div>
+      <div class="p-shots" data-shots>
+        <figure class="win shot is-on" data-cap="Bước 6 · Chăm sóc sau bán">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Success · Chăm sóc khách hàng</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/success.webp" width="1182" height="614" loading="lazy" alt="Chăm sóc khách An Phát: bảo trì định kỳ, hóa đơn, báo giá mở rộng, ngày gia hạn hợp đồng"></button>
+          <figcaption>Bảo trì định kỳ, yêu cầu mua thêm cho chi nhánh và ngày gia hạn hợp đồng trên cùng một màn hình.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <div class="panel-foot">
+      <button class="btn ghost sm" id="footPrev" type="button">← Bước trước</button>
+      <p id="footInfo" aria-hidden="true">Bước 1/6</p>
+      <button class="btn sm" id="footNext" type="button">Bước sau →</button>
+    </div>
   </div>
 </section>
 
-<!-- ============ TIẾP THEO ============ -->
-<section id="tiep-theo" class="band" aria-labelledby="h-nx">
+<!-- ============ 4. GÓC QUẢN LÝ ============ -->
+<section id="quan-ly" class="sec alt" data-name="Góc quản lý" aria-labelledby="h-ql">
   <div class="wrap">
-    <h2 id="h-nx" class="h2 rv">Ba quyết định để bắt đầu</h2>
-    <div class="decide rv">
-      <article class="rv"><h4 class="h4">Họp doanh số trên màn hình dự báo</h4><p>Thay file Excel tổng hợp. Đây là cam kết quyết định sale dùng hay quay lại Zalo và Excel.</p></article>
-      <article class="rv"><h4 class="h4">Chốt mốc gọi lead và hạn từng bước</h4><p>Đề xuất 15 phút gọi lần đầu, hạn 2 đến 7 ngày cho từng bước. Giám đốc chốt cùng trưởng nhóm.</p></article>
-      <article class="rv"><h4 class="h4">Chỉ định người duyệt bàn giao</h4><p>Thường là trưởng nhóm sale. Người này nhận cảnh báo lead chưa gọi và duyệt khi sale nghỉ.</p></article>
+    <div class="sec-head">
+      <p class="part">Phần 4/6 · Góc quản lý</p>
+      <h2 id="h-ql">Giám đốc và trưởng nhóm thấy gì mỗi sáng</h2>
+      <p class="sub">Sale ghi việc hằng ngày trên hệ thống, nên quản lý không cần đi hỏi để biết các con số này.</p>
     </div>
-    <h3 class="h3 rv" style="margin-top:64px">Sau đó: bước tiếp theo</h3>
-    <div class="next">
-      <article class="nx rv"><h3 class="h4">Buổi khảo sát 90 phút</h3><p class="note">Lãnh đạo công ty, giám đốc kinh doanh và trưởng nhóm sale</p>
-        <ul class="plain"><li>Chốt tên 6 bước và điều kiện qua bước</li><li>Chốt quy tắc chia lead, thời hạn nhắc việc</li><li>Chốt chỉ tiêu tháng của từng sale</li><li>Đo số “Trước”: thời gian gọi lại, lead chưa ai chăm, giờ làm báo cáo</li></ul></article>
-      <article class="nx rv"><h3 class="h4">Công ty chuẩn bị</h3>
-        <ul class="plain"><li>Danh sách 10 sale và trưởng nhóm</li><li>Một file Excel lead hoặc deal đang dùng</li><li>Mẫu báo giá, chỉ tiêu tháng 11 và 12</li><li>Form website, Zalo OA nếu có</li></ul></article>
-      <article class="nx rv"><h3 class="h4">Base gửi lại sau buổi</h3>
-        <ul class="plain"><li>Hệ thống dựng trên dữ liệu thật của công ty</li><li>Lộ trình triển khai chi tiết: mốc, người phụ trách, nghiệm thu</li></ul></article>
+
+    <div class="mgr">
+      <div class="mgr-row rv">
+        <div class="mgr-t">
+          <span class="q">“Tháng này về bao nhiêu?”</span>
+          <h3>Doanh số dự kiến theo từng sale</h3>
+          <p>Cộng từ các cơ hội bán đang chạy: phần đã chắc chắn và phần còn khả năng. Thấy ngay sale nào đang thiếu so với chỉ tiêu.</p>
+        </div>
+        <figure class="win">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Sales · Dự báo doanh thu</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/sales.webp" width="1422" height="692" loading="lazy" alt="Dự báo doanh thu tháng: chỉ tiêu, dự báo, cam kết, khả quan theo từng sale"></button>
+        </figure>
+      </div>
+      <div class="mgr-row rv">
+        <div class="mgr-t">
+          <span class="q">“Khách này đang thế nào?”</span>
+          <h3>Một hồ sơ, đủ lịch sử</h3>
+          <p>Từ tin nhắn đầu tiên, báo giá, hợp đồng, xuất kho đến bảo trì. Sale nghỉ việc thì khách vẫn ở lại công ty.</p>
+        </div>
+        <figure class="win">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Customer 360° · Hồ sơ khách hàng</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/customer360.webp" width="1424" height="542" loading="lazy" alt="Hồ sơ tổng hợp công ty An Phát: nguồn khách, giao dịch, kho vận, chăm sóc"></button>
+        </figure>
+      </div>
+      <div class="mgr-row rv">
+        <div class="mgr-t">
+          <span class="q">“Tiền quảng cáo có ra đơn không?”</span>
+          <h3>Mỗi đồng quảng cáo ra bao nhiêu doanh số</h3>
+          <p>Vì mỗi khách đều ghi nguồn từ đầu, cuối tháng biết kênh nào đáng chi thêm, kênh nào nên cắt.</p>
+        </div>
+        <figure class="win">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Ads Manager · Hiệu quả quảng cáo</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/ads.webp" width="1150" height="414" loading="lazy" alt="Ngân sách quảng cáo so với doanh số chốt từ quảng cáo, chia theo kênh"></button>
+        </figure>
+      </div>
     </div>
-    <div class="assume rv">
-      <h3 class="h4">Giả định của bản thiết kế này</h3>
-      <ul class="plain cols">
-        <li>10 sale làm việc chủ yếu bằng điện thoại và máy tính; cập nhật deal ngay sau mỗi cuộc gọi.</li>
-        <li>Mốc 15 phút và thời hạn từng bước là đề xuất; chốt cùng giám đốc.</li>
-        <li>Giám đốc cam kết họp doanh số trên màn hình dự báo; nếu không, sale sẽ quay lại Excel.</li>
-        <li>Trao đổi với khách vẫn qua Zalo và điện thoại; CRM ghi lại kết quả, không thay kênh.</li>
+  </div>
+</section>
+
+<!-- ============ 5. TRIỂN KHAI ============ -->
+<section id="trien-khai" class="sec" data-name="Triển khai" aria-labelledby="h-tk">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="part">Phần 5/6 · Triển khai</p>
+      <h2 id="h-tk">Đưa vào dùng trong 90 ngày, từng phần một</h2>
+      <p class="sub">Lộ trình đề xuất. Sẽ chốt lại sau buổi khảo sát.</p>
+    </div>
+
+    <ol class="phases">
+      <li class="phase rv">
+        <p class="ph-when">Tuần 1–4</p>
+        <h3>Gom khách về một chỗ</h3>
+        <ul>
+          <li>Đưa danh sách khách hiện có từ Excel vào hệ thống</li>
+          <li>Kết nối Zalo OA, Facebook, website, hotline</li>
+          <li>Cài quy tắc chia khách và đồng hồ 15 phút</li>
+        </ul>
+        <p class="ph-out">Khách mới không còn bị sót</p>
+        <p class="ph-steps">Bước 1 · 2</p>
+      </li>
+      <li class="phase rv">
+        <p class="ph-when">Tuần 5–8</p>
+        <h3>Bán hàng trên hệ thống</h3>
+        <ul>
+          <li>Đưa bảng giá, chính sách chiết khấu, tồn kho vào hệ thống</li>
+          <li>Mẫu báo giá, mẫu hợp đồng chuẩn</li>
+          <li>Hướng dẫn 10 sale dùng hằng ngày trên điện thoại</li>
+        </ul>
+        <p class="ph-out">Báo giá, hợp đồng ra từ hệ thống</p>
+        <p class="ph-steps">Bước 3 · 4 · 5</p>
+      </li>
+      <li class="phase rv">
+        <p class="ph-when">Tuần 9–12</p>
+        <h3>Sau bán &amp; quản trị</h3>
+        <ul>
+          <li>Lịch bảo trì, nhắc gia hạn, tiếp nhận báo hỏng</li>
+          <li>Màn hình doanh số dự kiến cho giám đốc</li>
+          <li>Rà soát, tinh chỉnh theo thực tế 2 tháng đầu</li>
+        </ul>
+        <p class="ph-out">Giám đốc xem số liệu không cần đi hỏi</p>
+        <p class="ph-steps">Bước 6 · Phần 4</p>
+      </li>
+    </ol>
+
+    <div class="need rv">
+      <h3>Công ty cần chuẩn bị</h3>
+      <ul>
+        <li>01 người đầu mối, thường là trưởng nhóm sale</li>
+        <li>Danh sách khách hiện có (Excel)</li>
+        <li>Bảng giá và chính sách chiết khấu</li>
+        <li>Mẫu báo giá, hợp đồng đang dùng</li>
+        <li>Quy tắc chia khách mong muốn</li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="close" aria-label="Đặt lịch">
-  <div class="wrap close-in">
-    <h2 class="h2">Chốt buổi khảo sát đầu tiên</h2>
-    <p>90 phút với giám đốc và trưởng nhóm sale. Chúng tôi mang bản nháp này đến và sửa ngay tại chỗ.</p>
-    <a class="btn paper" href="mailto:?subject=Hẹn%20buổi%20khảo%20sát%20CRM%2010%20sale&amp;body=Xin%20chào%2C%20chúng%20tôi%20muốn%20hẹn%20buổi%20khảo%20sát%2090%20phút%20về%20CRM%20cho%20đội%2010%20sale.">Hẹn buổi khảo sát</a>
+<!-- ============ 6. BƯỚC TIẾP THEO ============ -->
+<section id="tiep-theo" class="sec close" data-name="Bước tiếp theo" aria-labelledby="h-tt">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="part">Phần 6/6 · Bước tiếp theo</p>
+      <h2 id="h-tt">Ba việc cần anh chị cùng chốt hôm nay</h2>
+    </div>
+    <ol class="decide">
+      <li class="rv"><b>1</b><div><h3>Xác nhận điểm vướng</h3><p>Trong 6 điểm ở <a href="#van-de">Phần 2</a>, điểm nào đúng với công ty mình?</p></div></li>
+      <li class="rv"><b>2</b><div><h3>Chọn bước ưu tiên</h3><p>Bước nào trong hành trình đang mất khách nhiều nhất? Làm bước đó trước.</p></div></li>
+      <li class="rv"><b>3</b><div><h3>Hẹn buổi khảo sát 90 phút</h3><p>Gặp trưởng nhóm sale và 1–2 sale để xem cách làm thực tế, rồi chốt lộ trình.</p></div></li>
+    </ol>
+    <div class="cta center">
+      <a class="btn lg" href="#hanh-trinh">Xem lại hành trình khách</a>
+      <a class="btn ghost lg" href="#tong-quan">Về đầu tài liệu</a>
+    </div>
+    <p class="source">Ảnh giao diện chụp từ trang <a href="https://base.vn/platform/crm" target="_blank" rel="noopener">base.vn/platform/crm</a> ngày 02/11/2026. Tên khách, số liệu trên ảnh là dữ liệu mẫu.</p>
   </div>
 </section>
 
 </main>
 
-<footer class="foot">
-  <div class="wrap">
-    <p class="foot-lead">Bản nháp này sẵn sàng để sửa cùng anh/chị trong buổi khảo sát đầu tiên.</p>
-    <p class="fine credits">Ảnh và video minh họa loại thiết bị, không phải sản phẩm của khách hàng. Ảnh: <a href="https://commons.wikimedia.org/wiki/File:Office_Furniture.jpg">“Office Furniture”</a> của MonarchErgoIndia (CC0); <a href="https://commons.wikimedia.org/wiki/File:Chairs_in_a_meeting_room_(Unsplash).jpg">“Chairs in a meeting room”</a> của Breather (CC0); <a href="https://commons.wikimedia.org/wiki/File:Xerox_AltaLink_C8045_photocopier.jpg">“Xerox AltaLink C8045 photocopier”</a> và <a href="https://commons.wikimedia.org/wiki/File:Canon_ImageRUNNER_Advance_C7570i_photocopier.jpg">“Canon ImageRUNNER Advance C7570i photocopier”</a> của Baron Maddock (<a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>). Video: <a href="https://commons.wikimedia.org/wiki/File:Konica_Minolta_photocopier_with_an_automatic_document_feeder,_School_of_Law,_Singapore_Management_University_-_20140611.webm">Konica Minolta photocopier with an automatic document feeder</a> của Smuconlaw (<a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>). Tất cả qua Wikimedia Commons.</p>
-    <p class="fine">Base.vn · Solution design CRM cho công ty phân phối thiết bị văn phòng · bản nháp 10/2026 để cùng xác nhận với khách hàng. Đây là tình huống giả định: tên công ty, người liên hệ, số liệu trong các màn hình và hành trình 90 ngày là dữ liệu mẫu.</p>
+<!-- Phóng to ảnh -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lbCap" hidden>
+  <div class="lb-top">
+    <p id="lbCap"></p>
+    <button type="button" class="lb-x" id="lbClose" aria-label="Đóng (Esc)">✕</button>
   </div>
-</footer>
+  <div class="lb-body"><img id="lbImg" alt=""></div>
+  <p class="lb-hint">Bấm ra ngoài hoặc nhấn Esc để quay lại đúng chỗ đang xem</p>
+</div>
 
-<noscript><p class="nojs">Các phần demo và đánh dấu điểm nghẽn cần JavaScript để chạy.</p></noscript>
-<script src="app.js?v=33"></script>
+<p class="keys" aria-hidden="true">Phím <kbd>1</kbd>–<kbd>6</kbd> chuyển phần · <kbd>←</kbd><kbd>→</kbd> chuyển bước</p>
+
+<script src="app.js?v=4"></script>
 </body>
 </html>
