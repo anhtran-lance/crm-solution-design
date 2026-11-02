@@ -173,10 +173,44 @@
     if (btn) btn.click();
   }));
 
+  /* ---------------- Phần mở đầu: Prospect → Lead → Sales lần lượt sáng, ảnh theo chuột ---------------- */
+  const heroSec = $('#tong-quan'), shots = $('#heroShots');
+  if (heroSec && shots) {
+    const apps = $$('#heroApps li'), toasts = $$('.toast', shots), layers = $$('[data-depth]', shots), hs = $$('.hs', shots);
+    let hi = -1, htimer = null;
+    function heroStep() {
+      hi = (hi + 1) % 3;
+      shots.classList.add('focus');
+      apps.forEach((li, k) => li.classList.toggle('on', k === hi));
+      toasts.forEach((t) => t.classList.toggle('on', +t.dataset.app === hi));
+      hs.forEach((h) => h.classList.toggle('on', +h.dataset.app === hi));
+    }
+    const hStart = () => { if (!reduce && !htimer) { heroStep(); htimer = setInterval(heroStep, 2600); } };
+    const hStop = () => { clearInterval(htimer); htimer = null; };
+    if (reduce) { toasts.forEach((t) => t.classList.add('on')); }
+    else if ('IntersectionObserver' in window) {
+      new IntersectionObserver((ents) => ents.forEach((en) => (en.isIntersecting ? hStart() : hStop())), { threshold: 0.25 }).observe(heroSec);
+    } else hStart();
+
+    if (!reduce && matchMedia('(pointer:fine)').matches) {
+      let raf = 0;
+      heroSec.addEventListener('mousemove', (e) => {
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+          raf = 0;
+          const r = heroSec.getBoundingClientRect();
+          const dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
+          layers.forEach((l) => { const d = +l.dataset.depth; l.style.translate = `${-dx * d * 2}px ${-dy * d * 2}px`; });
+        });
+      });
+      heroSec.addEventListener('mouseleave', () => layers.forEach((l) => (l.style.translate = '')));
+    }
+  }
+
   /* ---------------- Một cửa tiếp nhận: Nguồn → Lead → Sales ----------------
      Mỗi lượt: một nguồn sáng lên, chấm màu chạy vào Lead, qua 4 bước xử lý,
      ra danh sách khách mới, thẻ khách chuẩn hóa, rồi sang quy trình bán.
-     Lượt thứ 2 là khách trùng (chị Trang gọi hotline sau khi đã nhắn Zalo) để thấy gộp trùng. */
+     Lượt thứ 2 là khách trùng (cùng một người đã nhắn Zalo, sau đó điền form website) để thấy gộp trùng. */
   const hub = $('#hub');
   if (hub) {
     const svg = $('#hubLines'), core = $('.core', hub), coreWrap = $('#hubCore');
@@ -184,7 +218,7 @@
     const inCard = $('#hubIn'), std = $('#hubStd'), dst = $('#hubDst'), dup = $('#hubDup');
     const list = $('#hubList'), dstCount = $('#dstCount'), timer = $('#hubTimer');
     const NS = 'http://www.w3.org/2000/svg';
-    const COLORS = ['#6366F1', '#F97316', '#0EA5E9', '#16A34A'];
+    const COLORS = ['#6366F1', '#1877F2', '#0EA5E9', '#16A34A'];
     let pSrc = [], pIn, pStd, pDst;
 
     const rel = (el) => { const h = hub.getBoundingClientRect(), r = el.getBoundingClientRect(); return { l: r.left - h.left, t: r.top - h.top, r: r.right - h.left, b: r.bottom - h.top, w: r.width, h: r.height }; };
@@ -231,10 +265,10 @@
     const on = (el, v) => el && el.classList.toggle('on', v);
 
     const LEADS = [
-      { src: 0, n: 'Thu Trang', co: 'An Phát', ch: 'Zalo OA', chip: 'Prospect', s: 'A1', sale: 'Thu Hà', av: '#17936a' },
-      { src: 1, dup: true, n: 'Thu Trang', co: 'An Phát', ch: 'Zalo OA + Hotline', chip: 'Hotline', s: 'A1', sale: 'Thu Hà', av: '#17936a' },
-      { src: 2, n: 'Văn Bình', co: 'Halden Tech', ch: 'Form website', chip: 'Form web', s: 'B2', sale: 'Hoàng Nam', av: '#0ea5e9' },
-      { src: 3, n: 'Phương Hà', co: 'Nội thất Vĩnh Hằng', ch: 'Hội chợ', chip: 'Excel', s: 'B1', sale: 'Thu Hà', av: '#16a34a' },
+      { src: 0, n: 'Thu Trang', co: 'An Phát', ch: 'Zalo OA', chip: 'Prospect', s: 'Nóng', k: 'hot', sale: 'Thu Hà', av: '#17936a' },
+      { src: 2, dup: true, n: 'Thu Trang', co: 'An Phát', ch: 'Zalo OA + Form web', chip: 'Form web', s: 'Nóng', k: 'hot', sale: 'Thu Hà', av: '#17936a' },
+      { src: 1, n: 'Văn Bình', co: 'Halden Tech', ch: 'Quảng cáo Facebook', chip: 'QC Facebook', s: 'Ấm', k: 'warm', sale: 'Hoàng Nam', av: '#2563eb' },
+      { src: 3, n: 'Phương Hà', co: 'Nội thất Vĩnh Hằng', ch: 'Hội chợ', chip: 'Excel', s: 'Lạnh', k: 'cold', sale: 'Thu Hà', av: '#16a34a' },
     ];
     let idx = 0, running = false, alive = false, count = 12, secs = 15 * 60, tick = null;
     const fmt = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
@@ -242,7 +276,7 @@
     function showStd(L) {
       $('#stdAv').textContent = L.n[0]; $('#stdAv').style.background = L.av;
       $('#stdName').textContent = L.n; $('#stdSub').textContent = `${L.co} · ${L.ch}`;
-      $('#stdScore').textContent = L.s; $('#stdAi').textContent = L.s; $('#stdSale').textContent = L.sale;
+      $('#stdScore').textContent = L.s; $('#stdScore').className = 'score ' + L.k; $('#stdAi').textContent = L.s; $('#stdSale').textContent = L.sale;
       secs = 15 * 60; timer.textContent = fmt(secs);
     }
     function addRow(L) {
@@ -251,7 +285,7 @@
         if (first) { first.classList.remove('new'); void first.offsetWidth; first.classList.add('new', 'merged'); }
         return;
       }
-      list.insertAdjacentHTML('afterbegin', `<li class="new"><span class="av" style="background:${L.av}">${L.n[0]}</span><div class="nm"><b>${L.n}</b><small>${L.co}</small></div><span class="chip">${L.chip}</span><span class="score">${L.s}</span></li>`);
+      list.insertAdjacentHTML('afterbegin', `<li class="new"><span class="av" style="background:${L.av}">${L.n[0]}</span><div class="nm"><b>${L.n}</b><small>${L.co}</small></div><span class="chip">${L.chip}</span><span class="score ${L.k}">${L.s}</span></li>`);
       while (list.children.length > 3) list.lastElementChild.remove();
     }
 

@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=16">
+<link rel="stylesheet" href="style.css?v=18">
 </head>
 <body>
 <a class="skip" href="#tong-quan">Bỏ qua thanh điều hướng</a>
@@ -34,26 +34,39 @@
 
 <!-- ============ 1. TỔNG QUAN ============ -->
 <section id="tong-quan" class="sec hero" data-name="Tổng quan" aria-labelledby="h1">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="aurora"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+    <div class="dots"></div>
+  </div>
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <p class="part">Phần 1/4 · Tổng quan</p>
       <h1 id="h1">Không sót khách nào, <em>từ lúc hỏi giá đến lúc chốt đơn</em></h1>
       <p class="lead">Base CRM cho công ty phân phối thiết bị văn phòng · đội 10 sale</p>
       <p class="what"><b>CRM là gì?</b> Cuốn sổ khách hàng chung của cả công ty. Ghi một lần, cả đội cùng thấy, hệ thống tự nhắc việc.</p>
-      <ul class="apps" aria-label="Ba ứng dụng trong giải pháp">
+      <ul class="apps" id="heroApps" aria-label="Ba ứng dụng trong giải pháp">
         <li><img src="assets/brand/app-prospect.svg" alt="" width="28" height="28"><div><b>Prospect</b><span>Nhận mọi tin hỏi giá</span></div></li>
         <li><img src="assets/brand/app-lead.svg" alt="" width="28" height="28"><div><b>Lead</b><span>Chia khách, gọi lại đúng hạn</span></div></li>
-        <li><img src="assets/brand/app-sales.svg" alt="" width="28" height="28"><div><b>Sales</b><span>Theo đến khi chốt đơn</span></div></li>
+        <li><img src="assets/brand/app-sales.svg" alt="" width="28" height="28"><div><b>Sales</b><span>Tư vấn đến khi chốt đơn</span></div></li>
       </ul>
       <div class="cta">
         <a class="btn" href="#giai-phap">Xem lưu đồ giải pháp <span aria-hidden="true">→</span></a>
       </div>
     </div>
 
-    <div class="hero-shots" aria-label="Ảnh giao diện 3 ứng dụng Base CRM">
-      <img class="hs hs-l" src="assets/he-thong/prospect-hopthu.webp" width="586" height="993" alt="Prospect: hộp thư chung">
-      <img class="hs hs-r" src="assets/he-thong/sales-cohoi.webp" width="575" height="993" alt="Sales: một cơ hội bán đi qua các giai đoạn">
-      <img class="hs hs-c" src="assets/he-thong/lead-hoso.webp" width="1996" height="1286" alt="Lead: danh sách khách mới và hồ sơ một khách">
+    <div class="hero-shots" id="heroShots" aria-label="Ảnh giao diện 3 ứng dụng Base CRM">
+      <div class="hrings" data-depth="6" aria-hidden="true">
+        <span class="hr r1"><i style="--a:30deg;--c:#8fe3bf"></i></span>
+        <span class="hr r2"><i style="--a:160deg;--c:#a8c4ff"></i><i style="--a:290deg;--c:#c4b5fd"></i></span>
+        <span class="hr r3"><i style="--a:80deg;--c:#fdba74"></i></span>
+      </div>
+      <div class="hs hs-l" data-depth="14" data-app="0"><img src="assets/he-thong/prospect-hopthu.webp" width="586" height="993" alt="Prospect: hộp thư chung"></div>
+      <div class="hs hs-r" data-depth="18" data-app="2"><img src="assets/he-thong/sales-cohoi.webp" width="575" height="993" alt="Sales: một cơ hội bán đi qua các giai đoạn"></div>
+      <div class="hs hs-c" data-depth="8" data-app="1"><img src="assets/he-thong/lead-hoso.webp" width="1996" height="1286" alt="Lead: danh sách khách mới và hồ sơ một khách"></div>
+
+      <div class="toast t1" data-app="0" aria-hidden="true"><img src="assets/brand/app-prospect.svg" alt="" width="26" height="26"><div><b>Tin Zalo mới</b><small>Hỏi giá 40 ghế công thái học · 21:04</small></div></div>
+      <div class="toast t2" data-app="1" aria-hidden="true"><img src="assets/brand/app-lead.svg" alt="" width="26" height="26"><div><b>Đã chia cho sale</b><small><span class="score hot">Nóng</span> còn 15:00 để gọi lại</small></div></div>
+      <div class="toast t3" data-app="2" aria-hidden="true"><img src="assets/brand/app-sales.svg" alt="" width="26" height="26"><div><b>Chuyển sang Sales</b><small>Đủ điều kiện · hẹn khảo sát</small></div></div>
     </div>
   </div>
   <div class="wrap">
@@ -86,14 +99,14 @@
 
       <ul class="srcs" aria-label="Các nguồn khách">
         <li class="src" data-src="0"><img class="ic" src="assets/brand/app-prospect.svg" alt="" width="30" height="30"><div><b>Prospect</b><small>Zalo OA · Facebook · chat web</small></div><em>đang nhận</em></li>
-        <li class="src" data-src="1"><span class="ic" style="--c:#F97316">☎</span><div><b>Hotline</b><small>Sale ghi nhận cuộc gọi</small></div><em>đang nhận</em></li>
+        <li class="src" data-src="1"><span class="ic" style="--c:#1877F2">f</span><div><b>Quảng cáo Facebook</b><small>Form đăng ký tư vấn</small></div><em>đang nhận</em></li>
         <li class="src" data-src="2"><span class="ic" style="--c:#0EA5E9">W</span><div><b>Form website</b><small>Yêu cầu báo giá</small></div><em>đang nhận</em></li>
         <li class="src" data-src="3"><span class="ic" style="--c:#16A34A">X</span><div><b>Excel, Google Sheet</b><small>Danh thiếp hội chợ</small></div><em>đang nhận</em></li>
       </ul>
 
       <div class="dupc" id="hubDup">
         <p>✓ Đã gộp khách trùng</p>
-        <div><span class="mini">Zalo</span><span class="mini">Hotline</span><span class="arr">→</span><span class="mini one">1 khách</span></div>
+        <div><span class="mini">Zalo</span><span class="mini">Form web</span><span class="arr">→</span><span class="mini one">1 khách</span></div>
       </div>
 
       <div class="mid">
@@ -115,16 +128,16 @@
         <div class="hcard" id="hubIn">
           <p class="hcard-h">Khách mới <span class="live">● trực tiếp</span></p>
           <ul class="hub-list" id="hubList">
-            <li><span class="av" style="background:#7c3aed">M</span><div class="nm"><b>Mỹ Linh</b><small>Sao Bắc Đẩu</small></div><span class="chip">Prospect</span><span class="score">B1</span></li>
-            <li><span class="av" style="background:#c026d3">K</span><div class="nm"><b>Khánh Duy</b><small>VT Tiên Phong</small></div><span class="chip">Hotline</span><span class="score">B2</span></li>
-            <li><span class="av" style="background:#0ea5e9">Đ</span><div class="nm"><b>Đức Minh</b><small>VT Á Châu</small></div><span class="chip">Form web</span><span class="score">C2</span></li>
+            <li><span class="av" style="background:#7c3aed">M</span><div class="nm"><b>Mỹ Linh</b><small>Sao Bắc Đẩu</small></div><span class="chip">Prospect</span><span class="score warm">Ấm</span></li>
+            <li><span class="av" style="background:#c026d3">K</span><div class="nm"><b>Khánh Duy</b><small>VT Tiên Phong</small></div><span class="chip">QC Facebook</span><span class="score hot">Nóng</span></li>
+            <li><span class="av" style="background:#0ea5e9">Đ</span><div class="nm"><b>Đức Minh</b><small>VT Á Châu</small></div><span class="chip">Form web</span><span class="score cold">Lạnh</span></li>
           </ul>
         </div>
         <div class="hcard std" id="hubStd">
           <p class="hcard-h warm">Khách chuẩn hóa</p>
-          <div class="std-who"><span class="av" id="stdAv">T</span><div><b id="stdName">Thu Trang</b><small id="stdSub">An Phát · Zalo OA</small></div><em id="stdScore">A1</em></div>
+          <div class="std-who"><span class="av" id="stdAv">T</span><div><b id="stdName">Thu Trang</b><small id="stdSub">An Phát · Zalo OA</small></div><em id="stdScore" class="score hot">Nóng</em></div>
           <div class="std-tiles">
-            <div><b id="stdAi">A1</b><small>Điểm AI</small></div>
+            <div><b id="stdAi">Nóng</b><small>Mức độ quan tâm</small></div>
             <div><b id="stdSale">Thu Hà</b><small>Sale phụ trách</small></div>
             <div class="t"><b id="hubTimer">15:00</b><small>Còn lại để gọi</small></div>
           </div>
@@ -153,7 +166,7 @@
 
       <div class="lane-l">Khách đến từ</div>
       <div class="row-in">
-        <span class="ch">Facebook</span><span class="ch">Zalo</span><span class="ch">Website</span><span class="ch">Hotline</span><span class="ch">Hội chợ</span>
+        <span class="ch">Facebook</span><span class="ch">Zalo</span><span class="ch">Website</span><span class="ch">Quảng cáo</span><span class="ch">Hội chợ</span>
       </div>
 
       <div class="lane-l">Khách hàng</div>
@@ -204,7 +217,7 @@
   <div class="wrap">
     <div class="sec-head">
       <p class="part">Phần 3/4 · Chi tiết từng bước</p>
-      <h2 id="h-ht">Đi cùng chị Trang, Công ty An Phát, mua thiết bị cho văn phòng mới</h2>
+      <h2 id="h-ht">Đi cùng một khách doanh nghiệp đang chuyển văn phòng, cần thiết bị cho 40 nhân viên</h2>
     </div>
   </div>
 
@@ -228,7 +241,7 @@
       <div class="p-copy">
         <p class="p-count">Bước 1/4 <span class="app-tag p">Prospect</span></p>
         <h3>Hỏi giá</h3>
-        <p class="who">Chị Trang nhắn Zalo hỏi giá ghế văn phòng lúc 21 giờ.</p>
+        <p class="who">Khách nhắn Zalo hỏi giá ghế văn phòng lúc 21 giờ.</p>
         <p class="ba b"><span>Hôm nay</span>Tin nằm trong Zalo riêng của một sale, không ai trả lời.</p>
         <p class="ba a"><span>Với Base CRM</span>Tin Zalo, Facebook, web về một hộp thư chung. Ngoài giờ có AI trả lời.</p>
       </div>
@@ -251,7 +264,7 @@
       <div class="p-copy">
         <p class="p-count">Bước 2/4 <span class="app-tag l">Lead</span></p>
         <h3>Được gọi lại</h3>
-        <p class="who">Chị Trang chờ được gọi, đang hỏi thêm 2 nơi khác.</p>
+        <p class="who">Khách chờ được gọi, đồng thời hỏi thêm 2 nơi khác.</p>
         <p class="ba b"><span>Hôm nay</span>Chia khách bằng tay, hôm sau mới gọi. Đối thủ gọi trước.</p>
         <p class="ba a"><span>Với Base CRM</span>Tự chia khách, đếm 15 phút. Gọi lại xác nhận nhu cầu, đủ điều kiện thì chuyển sang Sales.</p>
       </div>
@@ -270,7 +283,7 @@
           <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/ai-uu-tien.webp" width="1800" height="990" loading="lazy" alt="Sáng có 240 khách mới, AI giải thích vì sao gọi khách này trước"></button>
         </figure>
         <figure class="shot raw" data-cap="Bước 2 · Lead · Hồ sơ khách">
-          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/lead-hoso.webp" width="1996" height="1286" loading="lazy" alt="Hồ sơ chị Thu Trang trong Lead: nguồn, lịch sử tương tác, AI đánh giá, người gọi lại"></button>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/lead-hoso.webp" width="1996" height="1286" loading="lazy" alt="Hồ sơ một khách trong Lead: nguồn, lịch sử tương tác, AI đánh giá, người gọi lại"></button>
         </figure>
       </div>
     </article>
@@ -279,7 +292,7 @@
       <div class="p-copy">
         <p class="p-count">Bước 3/4 <span class="app-tag s">Sales</span></p>
         <h3>Được tư vấn</h3>
-        <p class="who">Sale hẹn khảo sát văn phòng mới của chị Trang.</p>
+        <p class="who">Sale hẹn đến khảo sát văn phòng mới của khách.</p>
         <p class="ba b"><span>Hôm nay</span>Sale không biết khách đã nói gì trước đó, phải hỏi lại từ đầu.</p>
         <p class="ba a"><span>Với Base CRM</span>Khách sang Sales giữ đủ lịch sử. AI tóm tắt cần biết gì trước khi gọi.</p>
       </div>
@@ -294,7 +307,7 @@
       <div class="p-copy">
         <p class="p-count">Bước 4/4 <span class="app-tag s">Sales</span></p>
         <h3>Báo giá, chốt đơn</h3>
-        <p class="who">Chị Trang nhận báo giá, thương lượng rồi đồng ý mua.</p>
+        <p class="who">Khách nhận báo giá, thương lượng rồi đồng ý mua.</p>
         <p class="ba b"><span>Hôm nay</span>Gửi báo giá xong quên theo. Không ai biết đơn đang ở đâu.</p>
         <p class="ba a"><span>Với Base CRM</span>Bảng quy trình bán: thấy mỗi khách đang ở bước nào, đơn nào đang chậm.</p>
       </div>
@@ -349,6 +362,6 @@
 
 <p class="keys" aria-hidden="true">Phím <kbd>1</kbd>–<kbd>4</kbd> chuyển phần · <kbd>←</kbd><kbd>→</kbd> chuyển bước</p>
 
-<script src="app.js?v=16"></script>
+<script src="app.js?v=18"></script>
 </body>
 </html>
