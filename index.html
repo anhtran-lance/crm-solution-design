@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
 <a class="skip" href="#tong-quan">Bỏ qua thanh điều hướng</a>
@@ -69,11 +69,90 @@
 <!-- ============ 2. LƯU ĐỒ GIẢI PHÁP ============ -->
 <section id="giai-phap" class="sec flow-sec" data-name="Lưu đồ giải pháp" aria-labelledby="h-gp">
   <div class="wrap">
-    <div class="flow-head">
-      <div>
-        <p class="part">Phần 2/4 · Lưu đồ giải pháp</p>
-        <h2 id="h-gp">Ba ứng dụng, một hành trình khách</h2>
+    <div class="sec-head">
+      <p class="part">Phần 2/4 · Lưu đồ giải pháp</p>
+      <h2 id="h-gp">Ba ứng dụng, một hồ sơ khách, một quy trình bán</h2>
+    </div>
+
+    <!-- Khối 1: một cửa tiếp nhận -->
+    <h3 class="blk-h" id="mot-cua"><b>1</b>Khách từ mọi kênh vào một cửa</h3>
+    <div class="hub" id="hub">
+      <svg class="hub-lines" id="hubLines" aria-hidden="true"></svg>
+      <div class="grid-bg" aria-hidden="true"></div>
+
+      <!-- Tâm -->
+      <div class="core-wrap" id="hubCore" aria-hidden="true">
+        <span class="ring r1"><i style="--a:20deg;--c:#6366F1"></i></span>
+        <span class="ring r2"><i style="--a:200deg;--c:#A855F7"></i><i style="--a:320deg;--c:#17936a"></i></span>
+        <span class="ring r3"><i style="--a:110deg;--c:#F97316"></i></span>
+        <span class="ring-l l-top">Base CRM</span>
+        <span class="ring-l l-left">Khách đến</span>
+        <span class="ring-l l-right">Đi tiếp</span>
+        <div class="core">
+          <small>Lead</small>
+          <span class="spark">✦</span>
+          <b>Một hồ sơ<br>khách hàng</b>
+        </div>
       </div>
+
+      <!-- Dòng vào / ra -->
+      <div class="tick in" aria-label="Khách đến từ các kênh">
+        <div class="tick-track">
+          <span><i style="--c:#0068FF"></i>Zalo: <b>hỏi giá ghế công thái học</b></span>
+          <span><i style="--c:#F97316"></i>Hotline: <b>An Phát gọi lại</b></span>
+          <span><i style="--c:#0EA5E9"></i>Website: <b>form báo giá máy in</b></span>
+          <span><i style="--c:#1877F2"></i>Facebook: <b>hỏi máy chiếu</b></span>
+          <span><i style="--c:#16A34A"></i>Hội chợ: <b>danh thiếp nhập từ Excel</b></span>
+        </div>
+      </div>
+      <div class="tick out" aria-label="Khách đi tiếp vào quy trình bán">
+        <div class="tick-track">
+          <span>[ ĐÃ CHIA ] <b>Thu Trang → Thu Hà</b></span>
+          <span>[ ĐÃ GỌI ] <b>An Phát · sau 4 phút</b></span>
+          <span>[ BÁO GIÁ ] <b>40 ghế · An Phát</b></span>
+          <span>[ ĐÃ GỘP ] <b>Zalo + Hotline → 1 khách</b></span>
+        </div>
+      </div>
+
+      <!-- 01 Prospect -->
+      <a class="acard c1" href="#buoc-1" data-card="0">
+        <p class="acard-h"><span class="n">01</span>Prospect<em>Nhận tin</em></p>
+        <ul>
+          <li>Zalo, Facebook, website về một hộp thư</li>
+          <li>AI trả lời ngoài giờ</li>
+          <li>Không còn tin bị sót</li>
+        </ul>
+      </a>
+
+      <!-- 02 Lead -->
+      <a class="acard c2" href="#buoc-2" data-card="1">
+        <p class="acard-h"><span class="n">02</span>Lead<em>Một cửa tiếp nhận</em></p>
+        <ul>
+          <li>Gộp khách trùng giữa các kênh</li>
+          <li>Chấm điểm A–C, chia sale, đếm 15 phút</li>
+        </ul>
+        <div class="std">
+          <div class="std-who"><span class="av">T</span><div><b>Thu Trang</b><small>An Phát · Zalo + Hotline</small></div><em>A1</em></div>
+          <div class="std-tiles">
+            <div><b>Thu Hà</b><small>Sale phụ trách</small></div>
+            <div class="t"><b id="hubTimer">14:52</b><small>Còn lại để gọi</small></div>
+          </div>
+        </div>
+      </a>
+
+      <!-- 03 Sales -->
+      <a class="acard c3" href="#buoc-4" data-card="2">
+        <p class="acard-h"><span class="n">03</span>Sales<em>Một quy trình bán</em></p>
+        <ol class="pipe">
+          <li>Nhận thông tin</li><li>Liên hệ</li><li>Khảo sát</li><li>Báo giá</li><li>Đàm phán</li><li>Chốt đơn</li>
+        </ol>
+      </a>
+      <p class="hub-note">Tên khách, thời gian là dữ liệu minh họa</p>
+    </div>
+
+    <!-- Khối 2: hành trình 4 bước -->
+    <div class="blk-row">
+      <h3 class="blk-h"><b>2</b>Rồi đi qua 4 bước, mỗi bước một ứng dụng</h3>
       <div class="mode" role="radiogroup" aria-label="Chế độ xem lưu đồ">
         <button type="button" role="radio" aria-checked="false" data-mode="before">Hôm nay</button>
         <button type="button" role="radio" aria-checked="true" data-mode="after">Với Base CRM</button>
@@ -113,15 +192,6 @@
           <p class="app-h"><img src="assets/brand/app-sales.svg" alt="" width="22" height="22">Sales</p>
           <div class="mods"><a href="#buoc-4" class="mod"><span class="a">Theo từng giai đoạn đến khi chốt</span><span class="b">Báo giá xong quên theo</span></a></div>
         </div>
-      </div>
-
-      <div class="lane-l">Dữ liệu</div>
-      <div class="row-data">
-        <div class="data-a">
-          <strong>Một hồ sơ khách hàng</strong>
-          <span>Prospect → Lead → Sales tự chuyển, không nhập lại</span>
-        </div>
-        <div class="data-b"><span>Zalo cá nhân</span><span>Excel riêng</span><span>Sổ tay</span></div>
       </div>
 
       <div class="lane-l">Giám đốc thấy</div>
@@ -279,6 +349,6 @@
 
 <p class="keys" aria-hidden="true">Phím <kbd>1</kbd>–<kbd>4</kbd> chuyển phần · <kbd>←</kbd><kbd>→</kbd> chuyển bước</p>
 
-<script src="app.js?v=9"></script>
+<script src="app.js?v=12"></script>
 </body>
 </html>

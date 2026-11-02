@@ -2,9 +2,9 @@
 
 **Surface:** Solution design Base CRM cho công ty phân phối thiết bị văn phòng (bàn ghế, máy photocopy, máy in, máy chiếu), đội 10 sale, bán B2B. Trình bày 10 phút cho khách chưa từng dùng CRM. Tình huống giả định.
 
-**Phạm vi:** khách chỉ dùng 3 ứng dụng Prospect, Lead, Sales. Không nhắc tới ứng dụng khác (báo giá tự động, tồn kho, hợp đồng, chăm sóc sau bán...).
+**Phạm vi:** khách chỉ dùng 3 ứng dụng Prospect, Lead, Sales và một quy trình bán (Nhận thông tin → Liên hệ → Khảo sát → Báo giá → Đàm phán → Chốt đơn). Không nhắc tới ứng dụng khác (báo giá tự động, tồn kho, hợp đồng, chăm sóc sau bán...).
 
-**Mạch nội dung (4 phần, ~10 phút):** Tổng quan (CRM là gì, 1 câu) → Lưu đồ giải pháp (kênh vào → 4 bước khách → khối Prospect / Lead / Sales → một hồ sơ khách → giám đốc thấy gì; nút "Hôm nay"/"Với Base CRM") → Chi tiết 4 bước (Hỏi giá: Prospect · Được gọi lại, Được tư vấn: Lead · Báo giá, chốt đơn: Sales) → Góc quản lý (doanh số dự kiến trong Sales). Không có phần triển khai hay chốt việc: tài liệu chỉ trình bày giải pháp.
+**Mạch nội dung (4 phần, ~10 phút):** Tổng quan (CRM là gì, 1 câu) → Lưu đồ giải pháp (khối 1 "Một cửa tiếp nhận": sơ đồ theo phong cách kiến trúc Agent của base.vn — vòng tròn trung tâm "Một hồ sơ khách hàng", thẻ 01 Prospect / 02 Lead / 03 Sales sáng lần lượt, dải chip khách vào/ra; khối 2: kênh vào → 4 bước khách → khối Prospect / Lead / Sales → một hồ sơ khách → giám đốc thấy gì; nút "Hôm nay"/"Với Base CRM") → Chi tiết 4 bước (Hỏi giá: Prospect · Được gọi lại, Được tư vấn: Lead · Báo giá, chốt đơn: Sales) → Góc quản lý (doanh số dự kiến trong Sales). Không có phần triển khai hay chốt việc: tài liệu chỉ trình bày giải pháp.
 
 **Nguyên tắc chữ:** mỗi bước tối đa ~30 chữ; ảnh hệ thống là nội dung chính.
 
@@ -17,3 +17,5 @@
 **Ngôn ngữ:** từ nghiệp vụ của khách (khách hỏi giá, chia khách, báo giá, doanh số dự kiến). Tránh từ hệ thống (lead, deal, pipeline, SLA); tên ứng dụng Base chỉ xuất hiện trên thanh tiêu đề ảnh.
 
 **Truth rules:** không bịa khách hàng, doanh số, trích dẫn. Chế độ "Hôm nay" mô tả các điểm vướng thường gặp, cần xác nhận với khách.
+
+**Ảnh của khách khác:** không dùng ảnh workspace của khách thật (ví dụ BOSSI); cấu trúc được vẽ lại bằng dữ liệu minh họa.

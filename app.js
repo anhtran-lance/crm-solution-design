@@ -173,6 +173,77 @@
     if (btn) btn.click();
   }));
 
+  /* ---------------- Một cửa tiếp nhận: đường nối, thẻ sáng lần lượt, đồng hồ ---------------- */
+  const hub = $('#hub');
+  if (hub) {
+    const svg = $('#hubLines'), core = $('#hubCore');
+    const cards = $$('.acard', hub);
+    const NS = 'http://www.w3.org/2000/svg';
+    let paths = [];
+
+    function drawHub() {
+      svg.innerHTML = '';
+      paths = [];
+      if (getComputedStyle(svg).display === 'none') return;
+      const h = hub.getBoundingClientRect();
+      const c = core.getBoundingClientRect();
+      const cx = c.left - h.left, cy = c.top - h.top, R = 88;
+      svg.setAttribute('viewBox', `0 0 ${h.width} ${h.height}`);
+      cards.forEach((card, i) => {
+        const r = card.getBoundingClientRect();
+        let x1, y1, x2, y2, d;
+        if (i === 0) { x1 = r.right - h.left; y1 = r.bottom - h.top - 24; x2 = cx - R * .72; y2 = cy - R * .7; }
+        else if (i === 1) { x1 = r.left - h.left; y1 = r.bottom - h.top - 24; x2 = cx + R * .72; y2 = cy - R * .7; }
+        else { x1 = r.left - h.left + r.width / 2; y1 = r.top - h.top; x2 = cx; y2 = cy + R; }
+        d = i < 2
+          ? `M${x1},${y1} C${(x1 + x2) / 2},${y1} ${x2},${(y1 + y2) / 2} ${x2},${y2}`
+          : `M${x1},${y1} C${x1},${y1 - 40} ${x2},${y2 + 40} ${x2},${y2}`;
+        const p = document.createElementNS(NS, 'path');
+        p.setAttribute('d', d);
+        p.setAttribute('class', 'hub-path');
+        p.style.setProperty('--hc', getComputedStyle(card).getPropertyValue('--hc'));
+        svg.appendChild(p);
+        paths.push(p);
+      });
+      light(lit);
+    }
+
+    let lit = 1, cycle = null;
+    function light(i) {
+      lit = i;
+      cards.forEach((c, k) => c.classList.toggle('on', k === i));
+      paths.forEach((p, k) => p.classList.toggle('on', k === i));
+    }
+
+    // Dải chip chạy liền mạch: nhân đôi nội dung
+    $$('.tick-track', hub).forEach((t) => {
+      const clone = t.innerHTML;
+      t.insertAdjacentHTML('beforeend', clone);
+      [...t.children].slice(t.children.length / 2).forEach((el) => el.setAttribute('aria-hidden', 'true'));
+    });
+
+    // Đồng hồ đếm ngược thời gian gọi lại
+    const timer = $('#hubTimer');
+    let secs = 14 * 60 + 52, tick = null;
+    const fmt = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+
+    function start() {
+      if (reduce) return;
+      if (!cycle) cycle = setInterval(() => light((lit + 1) % cards.length), 2800);
+      if (!tick) tick = setInterval(() => { secs = secs > 0 ? secs - 1 : 15 * 60; timer.textContent = fmt(secs); }, 1000);
+    }
+    function stop() { clearInterval(cycle); clearInterval(tick); cycle = tick = null; }
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((ents) => ents.forEach((en) => (en.isIntersecting ? start() : stop()))).observe(hub);
+    } else start();
+
+    let rz;
+    addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(drawHub, 150); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawHub);
+    drawHub();
+  }
+
   /* ---------------- Phóng to ảnh ---------------- */
   const lb = $('#lb'), lbImg = $('#lbImg'), lbCap = $('#lbCap'), lbClose = $('#lbClose');
   let lastFocus = null;
