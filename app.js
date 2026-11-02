@@ -1,7 +1,8 @@
 /* Base CRM · Solution design
    Mục tiêu UX: người xem luôn biết mình đang ở phần nào, bước nào.
    - Thanh điều hướng: tô phần đang xem, đánh dấu phần đã qua, thanh tiến độ.
-   - Hành trình: 6 bước dạng tab, thanh bước dính khi cuộn, có "Bước x/6", link sâu #buoc-x.
+   - Lưu đồ giải pháp: chuyển "Hôm nay" / "Với Base CRM", bấm ô để tới bước chi tiết.
+   - Chi tiết: 6 bước dạng tab, thanh bước dính khi cuộn, có "Bước x/6", link sâu #buoc-x.
    - Phóng to ảnh: đóng lại thì về đúng chỗ cũ.
 */
 (() => {
@@ -44,7 +45,7 @@
       if (i === idx) t.setAttribute('aria-current', 'true'); else t.removeAttribute('aria-current');
       t.classList.toggle('done', i < idx);
     });
-    whereSec.textContent = `Phần ${idx + 1}/6 · ${sections[idx].dataset.name}`;
+    whereSec.textContent = `Phần ${idx + 1}/${sections.length} · ${sections[idx].dataset.name}`;
     // Gợi ý phím tắt chỉ hiện ở phần mở đầu, không che nội dung các phần sau
     keys.classList.toggle('hide', idx !== 0);
     updateWhereStep();
@@ -75,7 +76,7 @@
   const railBtns = $$('#rail button');
   const fill = $('#railFill');
   const prev = $('#prevStep'), next = $('#nextStep');
-  const footPrev = $('#footPrev'), footNext = $('#footNext'), footInfo = $('#footInfo');
+  const footPrev = $('#footPrev'), footNext = $('#footNext');
   const panelsBox = $('#panels');
   const total = panels.length;
   let step = 1;
@@ -109,7 +110,6 @@
     [next, footNext].forEach((b) => (b.disabled = n === total));
     footNext.textContent = n === total ? 'Hết hành trình' : `Bước sau: ${panels[n].dataset.title} →`;
     footPrev.textContent = n === 1 ? '← Bước trước' : `← ${panels[n - 2].dataset.title}`;
-    footInfo.textContent = `Bước ${n}/${total} · ${panels[n - 1].dataset.title}`;
     updateWhereStep();
     syncHash();
     if (opts.init) return;
@@ -131,12 +131,17 @@
   footPrev.addEventListener('click', () => setStep(step - 1, { scroll: true }));
   footNext.addEventListener('click', () => setStep(step + 1, { scroll: true }));
 
-  // Link tới một bước (#buoc-3) từ bất kỳ đâu, ví dụ thẻ ở phần Hiện trạng
+  // Link tới một bước (#buoc-3) từ bất kỳ đâu, ví dụ ô trong lưu đồ giải pháp
   document.addEventListener('click', (e) => {
     const a = e.target.closest('a[href^="#buoc-"]');
     if (!a) return;
     e.preventDefault();
     setStep(+a.getAttribute('href').split('-')[1], { scroll: true });
+  });
+
+  addEventListener('hashchange', () => {
+    const h = location.hash.match(/^#buoc-(\d)$/);
+    if (h) setStep(+h[1], { scroll: true });
   });
 
   /* ---------------- Ảnh trong từng bước ---------------- */
@@ -149,13 +154,29 @@
     }));
   });
 
+  /* ---------------- Lưu đồ: Hôm nay / Với Base CRM ---------------- */
+  const flow = $('#flow');
+  const modeBtns = $$('.mode button');
+  modeBtns.forEach((b) => b.addEventListener('click', () => {
+    const after = b.dataset.mode === 'after';
+    flow.classList.toggle('is-after', after);
+    flow.classList.toggle('is-before', !after);
+    modeBtns.forEach((x) => x.setAttribute('aria-checked', x === b ? 'true' : 'false'));
+  }));
+
+  // Ô "Giám đốc thấy" mở đúng câu hỏi ở phần Góc quản lý
+  $$('.out[data-mgr]').forEach((a) => a.addEventListener('click', () => {
+    const btn = $$('#mgr .shot-tabs button')[+a.dataset.mgr];
+    if (btn) btn.click();
+  }));
+
   /* ---------------- Phóng to ảnh ---------------- */
   const lb = $('#lb'), lbImg = $('#lbImg'), lbCap = $('#lbCap'), lbClose = $('#lbClose');
   let lastFocus = null;
   function openLb(btn) {
     const img = $('img', btn);
     const fig = btn.closest('figure');
-    const where = current >= 0 ? `Phần ${current + 1}/6 · ${sections[current].dataset.name}` : '';
+    const where = current >= 0 ? `Phần ${current + 1}/${sections.length} · ${sections[current].dataset.name}` : '';
     const label = fig.dataset.cap || $('.win-bar span', fig).textContent;
     lbCap.textContent = where && !fig.dataset.cap ? `${where} · ${label}` : label;
     lbImg.src = img.currentSrc || img.src;
@@ -184,7 +205,7 @@
       return;
     }
     if (e.altKey || e.ctrlKey || e.metaKey || /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
-    if (/^[1-6]$/.test(e.key)) {
+    if (/^[1-9]$/.test(e.key) && +e.key <= sections.length) {
       const s = sections[+e.key - 1];
       if (s) window.scrollTo({ top: s.getBoundingClientRect().top + window.scrollY - cssNum('--hh'), behavior: reduce ? 'auto' : 'smooth' });
     } else if ((e.key === 'ArrowRight' || e.key === 'ArrowLeft') && current === journeyIdx) {
@@ -206,6 +227,13 @@
   /* ---------------- Khởi tạo ---------------- */
   const m = location.hash.match(/^#buoc-(\d)$/);
   setStep(m ? +m[1] : 1, { init: true });
-  if (m) requestAnimationFrame(() => scrollToPanels());
+  if (m) scrollToPanels();
+  else {
+    // Link tới một phần (#giai-phap...) phải mở đúng phần đó trước khi địa chỉ được cập nhật
+    const target = location.hash.length > 1 && document.getElementById(location.hash.slice(1));
+    if (target && target.matches('main > section.sec')) {
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - cssNum('--hh'), behavior: 'auto' });
+    }
+  }
   updateNav();
 })();
