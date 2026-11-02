@@ -23,6 +23,7 @@
   const whereStep = $('#whereStep');
   const bar = $('#bar');
   const keys = $('.keys');
+  const railWrap = $('#railWrap');
   let current = -1;
 
   function activeIndex() {
@@ -48,6 +49,8 @@
     whereSec.textContent = `Phần ${idx + 1}/${sections.length} · ${sections[idx].dataset.name}`;
     // Gợi ý phím tắt chỉ hiện ở phần mở đầu, không che nội dung các phần sau
     keys.classList.toggle('hide', idx !== 0);
+    // Thanh bước chỉ hiện khi đang ở phần Chi tiết từng bước
+    railWrap.classList.toggle('off', idx !== journeyIdx);
     updateWhereStep();
     syncHash();
     // Giữ tab đang xem trong khung (điện thoại), không làm cuộn trang

@@ -2,11 +2,13 @@
 
 **Surface:** Solution design Base CRM cho công ty phân phối thiết bị văn phòng (bàn ghế, máy photocopy, máy in, máy chiếu), đội 10 sale, bán B2B. Trình bày 10 phút cho khách chưa từng dùng CRM. Tình huống giả định.
 
-**Mạch nội dung (4 phần, ~10 phút):** Tổng quan (CRM là gì, 1 câu) → Lưu đồ giải pháp (kênh vào → 6 bước khách → Base CRM xử lý → một hồ sơ khách chung → giám đốc thấy gì; nút chuyển "Hôm nay"/"Với Base CRM") → Chi tiết từng bước (1 câu khách, Hôm nay, Với Base CRM, ảnh hệ thống) → Góc quản lý (3 câu hỏi của giám đốc, mỗi câu một màn hình). Không có phần triển khai hay chốt việc: tài liệu chỉ trình bày giải pháp.
+**Phạm vi:** khách chỉ dùng 3 ứng dụng Prospect, Lead, Sales. Không nhắc tới ứng dụng khác (báo giá tự động, tồn kho, hợp đồng, chăm sóc sau bán...).
+
+**Mạch nội dung (4 phần, ~10 phút):** Tổng quan (CRM là gì, 1 câu) → Lưu đồ giải pháp (kênh vào → 4 bước khách → khối Prospect / Lead / Sales → một hồ sơ khách → giám đốc thấy gì; nút "Hôm nay"/"Với Base CRM") → Chi tiết 4 bước (Hỏi giá: Prospect · Được gọi lại, Được tư vấn: Lead · Báo giá, chốt đơn: Sales) → Góc quản lý (doanh số dự kiến trong Sales). Không có phần triển khai hay chốt việc: tài liệu chỉ trình bày giải pháp.
 
 **Nguyên tắc chữ:** mỗi bước tối đa ~30 chữ; ảnh hệ thống là nội dung chính.
 
-**Định vị người xem:** thanh tab dính (phần đang xem, phần đã qua, "Phần x/4 › Bước y/6"), thanh tiến độ, thanh 6 bước dính trong phần hành trình, địa chỉ trang đổi theo vị trí (#buoc-3 mở thẳng bước 3), phóng to ảnh rồi Esc về đúng chỗ, phím 1–4 và ←/→ khi trình bày.
+**Định vị người xem:** thanh tab dính (phần đang xem, phần đã qua, "Phần x/4 › Bước y/4"), thanh tiến độ, thanh 4 bước dính trong phần hành trình, địa chỉ trang đổi theo vị trí (#buoc-3 mở thẳng bước 3), phóng to ảnh rồi Esc về đúng chỗ, phím 1–4 và ←/→ khi trình bày.
 
 **Ảnh hệ thống:** chụp từ base.vn/platform/crm ngày 02/11/2026, lưu ở `assets/he-thong/`. Dữ liệu trên ảnh là dữ liệu mẫu của Base.
 
