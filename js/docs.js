@@ -22,7 +22,7 @@
         <td>${p.items.map((it) => {
           const st = STAGES.find((x) => x.id === it.id);
           const notes = st ? st.notes : it.id === "tong-ket" ? SUMMARY.notes : it.notes;
-          return `<div class="sc"><a href="index.html#${anchorOf(it.id)}">${esc(it.label)}${st ? ` · ${esc(st.nav)}` : ""}</a> <span class="fine">${fmt(it.min)}${st ? ` · ${st.steps.length} bước thao tác` : ""}</span>
+          return `<div class="sc"><a href="./#${anchorOf(it.id)}">${esc(it.label)}${st ? ` · ${esc(st.nav)}` : ""}</a> <span class="fine">${fmt(it.min)}${st ? ` · ${st.steps.length} bước thao tác` : ""}</span>
             <ul>${notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul></div>`;
         }).join("")}</td></tr>`;
     }).join("");
