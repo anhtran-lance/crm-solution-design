@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=18">
+<link rel="stylesheet" href="style.css?v=20">
 </head>
 <body>
 <a class="skip" href="#tong-quan">Bỏ qua thanh điều hướng</a>
@@ -70,12 +70,15 @@
     </div>
   </div>
   <div class="wrap">
-    <ol class="agenda" aria-label="Lộ trình trình bày 10 phút">
-      <li><a href="#tong-quan"><b>1</b>Tổng quan<small>1 phút</small></a></li>
-      <li><a href="#giai-phap"><b>2</b>Lưu đồ giải pháp<small>3 phút</small></a></li>
-      <li><a href="#hanh-trinh"><b>3</b>Chi tiết từng bước<small>5 phút</small></a></li>
-      <li><a href="#quan-ly"><b>4</b>Góc quản lý<small>1 phút</small></a></li>
-    </ol>
+    <div class="agenda" aria-label="Lộ trình trình bày 10 phút">
+      <p class="ag-l">Lộ trình<b>10 phút</b></p>
+      <ol class="ag-bar">
+        <li style="--m:1"><a href="#tong-quan"><b>1</b><span>Tổng quan</span><small>1′</small></a></li>
+        <li style="--m:3"><a href="#giai-phap"><b>2</b><span>Lưu đồ giải pháp</span><small>3′</small></a></li>
+        <li style="--m:5"><a href="#hanh-trinh"><b>3</b><span>Chi tiết từng bước</span><small>5′</small></a></li>
+        <li style="--m:1"><a href="#quan-ly"><b>4</b><span>Góc quản lý</span><small>1′</small></a></li>
+      </ol>
+    </div>
   </div>
 </section>
 
@@ -217,7 +220,7 @@
   <div class="wrap">
     <div class="sec-head">
       <p class="part">Phần 3/4 · Chi tiết từng bước</p>
-      <h2 id="h-ht">Đi cùng một khách doanh nghiệp đang chuyển văn phòng, cần thiết bị cho 40 nhân viên</h2>
+      <h2 id="h-ht">Đi cùng một khách doanh nghiệp chuyển văn phòng mới</h2>
     </div>
   </div>
 
@@ -362,6 +365,6 @@
 
 <p class="keys" aria-hidden="true">Phím <kbd>1</kbd>–<kbd>4</kbd> chuyển phần · <kbd>←</kbd><kbd>→</kbd> chuyển bước</p>
 
-<script src="app.js?v=18"></script>
+<script src="app.js?v=19"></script>
 </body>
 </html>
