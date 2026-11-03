@@ -9,6 +9,16 @@ Tạo một trang HTML (một file `index.html` + `style.css` + `app.js` + ảnh
 
 Bộ khung đã hoàn thiện nằm trong `template/` (tình huống mẫu: công ty phân phối thiết bị văn phòng, 10 sale). **Bắt đầu từ template, đổi nội dung theo khách** — đừng viết lại từ đầu, vì template đã qua nhiều vòng sửa UI/UX với người dùng thật (xem "Bài học" bên dưới).
 
+## Trước tiên — lấy thiết kế mới nhất từ skill `base-web-design-system`
+
+Skill `base-web-design-system` giữ hệ thiết kế (màu, chữ, hiệu ứng, 13 mẫu bố cục), danh mục 69 app và script chụp giao diện thật của base.vn. Đọc `SKILL.md` của nó trước, rồi:
+- So token trong `template/style.css` với `references/tokens.md` của skill đó; nếu web đã đổi màu / font thì cập nhật biến trong template.
+- Muốn thêm hiệu ứng / mẫu bố cục: dùng `assets/base.css` + `assets/effects.js` của skill đó thay vì tự viết.
+- Kiểm tra app khách mua trong `references/products.md` (đúng tên, đúng vai, đã ra mắt hay "Coming soon").
+- Chụp ảnh mới bằng `scripts/capture_app.js` của skill đó (tự dò khung, không phụ thuộc tên khối).
+
+Nếu skill đó không có trong môi trường, dùng `template/` và `scripts/capture_base.js` của skill này — vẫn đủ để làm.
+
 ## Bước 0 — Hỏi trước khi làm
 
 Hỏi gọn trong một lượt (dùng AskUserQuestion nếu có), vì mỗi câu trả lời đổi cả bản thiết kế:
@@ -54,7 +64,7 @@ Hành trình 4 bước mặc định: **Hỏi giá** (Prospect) → **Được g
 
 ## Ảnh hệ thống
 
-Ảnh "thật" trên base.vn là giao diện dựng bằng HTML, không phải file ảnh — phải chụp bằng trình duyệt. Dùng `scripts/capture_base.js` (Playwright, Chromium có sẵn):
+Ảnh "thật" trên base.vn là giao diện dựng bằng HTML, không phải file ảnh — phải chụp bằng trình duyệt. Ưu tiên `scripts/capture_app.js` của skill `base-web-design-system` (tự dò mọi khung giao diện trên `/app/prospect`, `/app/lead`, `/app/sales`, `/platform/crm`, kèm tiêu đề section cho từng ảnh). Script dự phòng của skill này, `scripts/capture_base.js`, chụp đúng các khung đã biết vị trí:
 
 ```bash
 node <skill>/scripts/capture_base.js <thư-mục-ra>

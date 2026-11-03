@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Base design system · Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+  body{margin:0;background:#fff}
+  .grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:center}
+  .hero-shot{position:relative}
+  .hero-shot .bds-toast{position:absolute}
+  .t1{left:-24px;bottom:40px}.t2{right:-16px;top:56px}
+  .mock{padding:16px;display:grid;gap:10px;font-family:var(--bds-font-ui);font-size:13px}
+  .row{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--bds-border);border-radius:10px}
+  .row b{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .av{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;color:#fff;font-weight:700;font-size:12px}
+  .arch{position:relative;height:520px;border-radius:24px;border:1px solid var(--bds-border);background:#fbfbfe;overflow:hidden}
+  .arch .bds-rings{position:absolute;left:50%;top:50%}
+  .arch .bds-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+  .arch .bds-ncard{position:absolute;width:260px;background:#fff}
+  .n1{left:28px;top:32px}.n2{right:28px;top:32px}.n3{left:50%;bottom:28px;transform:translateX(-50%)}
+  .tick{display:inline-flex;gap:6px;align-items:center;padding:5px 12px;border-radius:999px;background:#fff;border:1px solid var(--bds-border);font-size:12.5px;white-space:nowrap}
+  .apps{display:grid;grid-template-columns:repeat(8,1fr);gap:10px}
+  .app{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 6px;border-radius:12px;font-size:12px;color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.08);transition:all var(--bds-state)}
+  .app.on{background:rgba(255,255,255,.08);border-color:rgba(147,197,253,.6);box-shadow:0 0 30px rgba(31,98,232,.45);color:#fff}
+  .screen{padding:18px;border-radius:16px;background:#fff;color:var(--bds-ink);min-height:230px}
+  @media (max-width:900px){.grid2{grid-template-columns:minmax(0,1fr)}.apps{grid-template-columns:repeat(4,1fr)}.arch{height:auto;padding:16px;display:grid;gap:12px}.arch .bds-rings,.arch svg{display:none}.arch .bds-core,.arch .bds-ncard{position:static;transform:none;width:auto;margin:0 auto}}
+</style>
+</head>
+<body class="bds">
+
+<!-- Mẫu 1: hero chia đôi + cửa sổ sản phẩm + thông báo nổi -->
+<section class="bds-section" style="overflow:hidden">
+  <div class="bds-aurora" style="opacity:.35"><i></i><i></i><i></i></div>
+  <div class="bds-wrap grid2" style="position:relative" id="hero">
+    <div>
+      <span class="bds-eyebrow pill">Base CRM · Demo hệ thiết kế</span>
+      <h1 class="bds-h1" style="margin-top:16px">Một nơi cho mọi khách. <span class="bds-grad-text">Không sót cơ hội nào.</span></h1>
+      <p class="bds-lead" style="margin-top:16px">Đoạn mô tả ngắn, tối đa hai dòng. Nội dung là của tài liệu đang làm, không chép từ web.</p>
+      <div style="display:flex;gap:12px;margin-top:24px"><a class="bds-btn dark" href="#">Bắt đầu →</a><a class="bds-btn ghost" href="#">Xem quy trình</a></div>
+    </div>
+    <div class="hero-shot" data-depth="10">
+      <div class="bds-window">
+        <div class="bds-window-bar"><i></i><i></i><i></i><span class="url"><b>lead.base.vn</b> /leads</span></div>
+        <div class="mock">
+          <div class="row bds-reveal"><span class="av" style="background:#17936a">T</span><b>Thu Trang · An Phát</b><span class="bds-chip is-err">Nóng</span><span class="bds-mono">04:12</span></div>
+          <div class="row bds-reveal"><span class="av" style="background:#7c3aed">M</span><b>Mỹ Linh · Sao Bắc Đẩu</b><span class="bds-chip is-warn">Ấm</span><span class="bds-mono">02:10</span></div>
+          <div class="row bds-reveal"><span class="av" style="background:#0ea5e9">V</span><b>Văn Bình · Halden</b><span class="bds-chip">Lạnh</span><span class="bds-mono">11:48</span></div>
+          <div class="bds-bar"><i style="--v:72%"></i></div>
+          <span class="bds-mono">[ ĐÃ ĐỊNH TUYẾN ] Thu Trang → Thu Hà · <b data-count="94" data-suffix="%">0</b> đúng hạn</span>
+        </div>
+      </div>
+      <div class="bds-toast cycle t1"><img src="app-icons/prospect.svg" alt=""><div><b>Tin Zalo mới</b><small>Hỏi giá 40 ghế · 21:04</small></div></div>
+      <div class="bds-toast cycle t2"><img src="app-icons/lead.svg" alt=""><div><b>Đã chia cho sale</b><small><span class="bds-live">trực tiếp</span></small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Mẫu 5: lưới icon app trên nền navy -->
+<section class="bds-section bds-dark" style="overflow:hidden">
+  <div class="bds-gridbg"></div>
+  <div class="bds-wrap" style="position:relative;text-align:center">
+    <span class="bds-eyebrow">Hệ sinh thái</span>
+    <h2 class="bds-h2" style="margin:12px 0 32px">Các ứng dụng <span class="bds-grad-text">trên một nền tảng</span></h2>
+    <div class="apps" id="apps">
+      <div class="app"><img class="bds-app-ic" src="app-icons/prospect.svg" alt="">Prospect</div>
+      <div class="app"><img class="bds-app-ic" src="app-icons/lead.svg" alt="">Lead</div>
+      <div class="app"><img class="bds-app-ic" src="app-icons/sales.svg" alt="">Sales</div>
+      <div class="app"><img class="bds-app-ic" src="app-icons/commerce.svg" alt="">Commerce</div>
+      <div class="app"><img class="bds-app-ic" src="app-icons/workflow.svg" alt="">Workflow</div>
+      <div class="app"><img class="bds-app-ic" src="app-icons/task.svg" alt="">Task</div>
+      <div class="app"><img class="bds-app-ic" src="app-icons/hris.svg" alt="">HRIS</div>
+      <div class="app"><img class="bds-app-ic" src="app-icons/payroll.svg" alt="">Payroll</div>
+    </div>
+    <div class="bds-marquee" style="margin-top:32px"><div class="bds-marquee-track" style="--dur:26s">
+      <span class="tick" style="color:var(--bds-text)">Zalo: hỏi giá máy in</span><span class="tick" style="color:var(--bds-text)">Form web: báo giá máy chiếu</span><span class="tick" style="color:var(--bds-text)">Excel: 412 danh thiếp hội chợ</span><span class="tick" style="color:var(--bds-text)">Facebook: hỏi ghế công thái học</span>
+    </div></div>
+  </div>
+</section>
+
+<!-- Mẫu 7: kiến trúc vòng tròn + đường nối + thẻ đánh số -->
+<section class="bds-section">
+  <div class="bds-wrap">
+    <span class="bds-eyebrow">Kiến trúc</span>
+    <h2 class="bds-h2" style="margin:12px 0 28px">Một tâm điều phối</h2>
+    <div class="arch" id="arch">
+      <div class="bds-gridbg"></div>
+      <svg class="bds-lines" id="archLines"></svg>
+      <div class="bds-rings"><span class="ring" style="width:250px;height:250px"><i style="--a:20deg;--c:#6366F1;--r:125px"></i></span><span class="ring" style="width:340px;height:340px"><i style="--a:200deg;--c:#A855F7;--r:170px"></i></span><span class="ring" style="width:440px;height:440px"><i style="--a:110deg;--c:#F97316;--r:220px"></i></span></div>
+      <div class="bds-core" id="archCore"><small>Lead</small><b>Một hồ sơ<br>khách hàng</b></div>
+      <div class="bds-ncard n1" style="--hc:#6366F1"><p class="bds-ncard-h"><span class="n">01</span>Nguồn</p><ul><li>Zalo, Facebook, web</li><li>Excel hội chợ</li></ul></div>
+      <div class="bds-ncard n2" style="--hc:#A855F7"><p class="bds-ncard-h"><span class="n">02</span>Tiếp nhận</p><ul><li>Gộp trùng, chấm điểm</li><li>Chia sale, đếm 15 phút</li></ul></div>
+      <div class="bds-ncard n3" style="--hc:#17936a"><p class="bds-ncard-h"><span class="n">03</span>Sales</p><ul><li>Tư vấn, báo giá, chốt</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- Mẫu 9: accordion trái + màn hình phải, nền tối -->
+<section class="bds-section bds-dark">
+  <div class="bds-wrap grid2">
+    <div>
+      <span class="bds-eyebrow">Năng lực</span>
+      <h2 class="bds-h2" style="margin:12px 0 24px">Ba việc Lead làm thay bạn</h2>
+      <div class="bds-acc" id="acc">
+        <div class="bds-acc-item"><b>Gộp khách trùng</b><p>Một người hỏi qua nhiều kênh vẫn là một khách.</p></div>
+        <div class="bds-acc-item"><b>Chia đúng người</b><p>Theo khu vực, nhóm hàng hoặc lần lượt.</p></div>
+        <div class="bds-acc-item"><b>Đếm giờ gọi lại</b><p>Quá 15 phút chưa gọi thì báo trưởng nhóm.</p></div>
+      </div>
+    </div>
+    <div class="bds-stage" id="stage">
+      <div class="screen"><b>Đã gộp khách trùng</b><p class="bds-mono">Zalo + Form web → 1 khách</p><div class="bds-typing"><i></i><i></i><i></i></div></div>
+      <div class="screen"><b>Chia cho Thu Hà</b><p class="bds-mono">Khu vực miền Bắc · nhóm hàng Ghế</p></div>
+      <div class="screen"><b>Còn <span id="clock">15:00</span> để gọi</b><p class="bds-mono">Tự báo trưởng nhóm khi quá hạn</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Mẫu 13: CTA -->
+<section class="bds-section"><div class="bds-wrap"><div class="bds-cta bds-sheen"><h2 class="bds-h2">Dải kết trang</h2><p style="opacity:.85;margin:12px auto 22px;max-width:520px">Một câu kêu gọi ngắn.</p><a class="bds-btn" style="background:#fff;color:var(--bds-ink);border-color:#fff" href="#">Hành động →</a></div></div></section>
+
+<script src="effects.js"></script>
+<script>
+  BDS.reveal(); BDS.countUp(); BDS.marquee();
+  BDS.cycle('.hero-shot .bds-toast', 2400, document.getElementById('hero'));
+  BDS.parallax(document.getElementById('hero'));
+  BDS.cycle('#apps .app', 1400, document.getElementById('apps'));
+  BDS.accordionStage('#acc .bds-acc-item', '#stage > .screen', 4000);
+  // Kiến trúc: nối 3 thẻ vào tâm, sáng lần lượt, chấm chạy theo đường
+  const arch = document.getElementById('arch'), svg = document.getElementById('archLines'), core = document.getElementById('archCore');
+  const cards = [...arch.querySelectorAll('.bds-ncard')]; let paths = [];
+  function draw() { svg.innerHTML = ''; if (getComputedStyle(svg).display === 'none') return;
+    paths = cards.map((c, i) => BDS.connect(svg, i < 2 ? (i === 0 ? c : core) : core, i < 2 ? (i === 0 ? core : c) : c, { side: i < 2 ? 'h' : 'v', color: getComputedStyle(c).getPropertyValue('--hc') })); }
+  draw(); addEventListener('resize', draw);
+  BDS.cycle(cards, 2600, arch, (i) => { paths.forEach((p, k) => p.classList.toggle('on', k === i)); BDS.travel(paths[i]); });
+</script>
+</body>
+</html>
