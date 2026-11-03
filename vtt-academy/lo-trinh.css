@@ -90,7 +90,7 @@
 .tzc-n{margin-top:12px;font-size:13.5px;color:var(--ink-2)}
 .tzc-l{display:grid;gap:6px;margin-top:12px}
 .tzc-l li{display:flex;gap:10px;font-size:14px;padding:8px 10px;border-radius:10px;background:var(--bg-2)}
-.tzc-l b{flex:none;width:110px}
+.tzc-l b{flex:none;width:120px}
 
 @media (max-width:1080px){
   .phases{grid-template-columns:repeat(2,minmax(0,1fr))}
