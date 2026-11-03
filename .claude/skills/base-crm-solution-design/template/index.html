@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="vi" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giải pháp Base CRM · Phân phối thiết bị văn phòng</title>
+<meta name="description" content="Solution design Base CRM với 3 ứng dụng Prospect, Lead, Sales cho công ty phân phối thiết bị văn phòng có 10 sale.">
+<link rel="icon" type="image/png" href="assets/brand/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20">
+</head>
+<body>
+<a class="skip" href="#tong-quan">Bỏ qua thanh điều hướng</a>
+
+<header class="top" id="top">
+  <div class="top-in">
+    <a class="logo" href="#tong-quan" aria-label="Về đầu tài liệu">
+      <img src="assets/brand/logo-base.png" width="120" height="37" alt="Base.vn">
+    </a>
+    <nav class="tabs" id="tabs" aria-label="Các phần của tài liệu">
+      <a href="#tong-quan"><b>1</b><span>Tổng quan</span></a>
+      <a href="#giai-phap"><b>2</b><span>Lưu đồ giải pháp</span></a>
+      <a href="#hanh-trinh"><b>3</b><span>Chi tiết từng bước</span></a>
+      <a href="#quan-ly"><b>4</b><span>Góc quản lý</span></a>
+    </nav>
+    <p class="where" id="where" aria-live="polite"><span id="whereSec">Phần 1/4</span><span id="whereStep"></span></p>
+  </div>
+  <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+</header>
+
+<main>
+
+<!-- ============ 1. TỔNG QUAN ============ -->
+<section id="tong-quan" class="sec hero" data-name="Tổng quan" aria-labelledby="h1">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="aurora"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+    <div class="dots"></div>
+  </div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="part">Phần 1/4 · Tổng quan</p>
+      <h1 id="h1">Không sót khách nào, <em>từ lúc hỏi giá đến lúc chốt đơn</em></h1>
+      <p class="lead">Base CRM cho công ty phân phối thiết bị văn phòng · đội 10 sale</p>
+      <p class="what"><b>CRM là gì?</b> Cuốn sổ khách hàng chung của cả công ty. Ghi một lần, cả đội cùng thấy, hệ thống tự nhắc việc.</p>
+      <ul class="apps" id="heroApps" aria-label="Ba ứng dụng trong giải pháp">
+        <li><img src="assets/brand/app-prospect.svg" alt="" width="28" height="28"><div><b>Prospect</b><span>Nhận mọi tin hỏi giá</span></div></li>
+        <li><img src="assets/brand/app-lead.svg" alt="" width="28" height="28"><div><b>Lead</b><span>Chia khách, gọi lại đúng hạn</span></div></li>
+        <li><img src="assets/brand/app-sales.svg" alt="" width="28" height="28"><div><b>Sales</b><span>Tư vấn đến khi chốt đơn</span></div></li>
+      </ul>
+      <div class="cta">
+        <a class="btn" href="#giai-phap">Xem lưu đồ giải pháp <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="hero-shots" id="heroShots" aria-label="Ảnh giao diện 3 ứng dụng Base CRM">
+      <div class="hrings" data-depth="6" aria-hidden="true">
+        <span class="hr r1"><i style="--a:30deg;--c:#8fe3bf"></i></span>
+        <span class="hr r2"><i style="--a:160deg;--c:#a8c4ff"></i><i style="--a:290deg;--c:#c4b5fd"></i></span>
+        <span class="hr r3"><i style="--a:80deg;--c:#fdba74"></i></span>
+      </div>
+      <div class="hs hs-l" data-depth="14" data-app="0"><img src="assets/he-thong/prospect-hopthu.webp" width="586" height="993" alt="Prospect: hộp thư chung"></div>
+      <div class="hs hs-r" data-depth="18" data-app="2"><img src="assets/he-thong/sales-cohoi.webp" width="575" height="993" alt="Sales: một cơ hội bán đi qua các giai đoạn"></div>
+      <div class="hs hs-c" data-depth="8" data-app="1"><img src="assets/he-thong/lead-hoso.webp" width="1996" height="1286" alt="Lead: danh sách khách mới và hồ sơ một khách"></div>
+
+      <div class="toast t1" data-app="0" aria-hidden="true"><img src="assets/brand/app-prospect.svg" alt="" width="26" height="26"><div><b>Tin Zalo mới</b><small>Hỏi giá 40 ghế công thái học · 21:04</small></div></div>
+      <div class="toast t2" data-app="1" aria-hidden="true"><img src="assets/brand/app-lead.svg" alt="" width="26" height="26"><div><b>Đã chia cho sale</b><small><span class="score hot">Nóng</span> còn 15:00 để gọi lại</small></div></div>
+      <div class="toast t3" data-app="2" aria-hidden="true"><img src="assets/brand/app-sales.svg" alt="" width="26" height="26"><div><b>Chuyển sang Sales</b><small>Đủ điều kiện · hẹn khảo sát</small></div></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="agenda" aria-label="Lộ trình trình bày 10 phút">
+      <ol class="ag-bar">
+        <li style="--m:1"><a href="#tong-quan"><b>1</b><span>Tổng quan</span><small>1′</small></a></li>
+        <li style="--m:3"><a href="#giai-phap"><b>2</b><span>Lưu đồ giải pháp</span><small>3′</small></a></li>
+        <li style="--m:5"><a href="#hanh-trinh"><b>3</b><span>Chi tiết từng bước</span><small>5′</small></a></li>
+        <li style="--m:1"><a href="#quan-ly"><b>4</b><span>Góc quản lý</span><small>1′</small></a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. LƯU ĐỒ GIẢI PHÁP ============ -->
+<section id="giai-phap" class="sec flow-sec" data-name="Lưu đồ giải pháp" aria-labelledby="h-gp">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="part">Phần 2/4 · Lưu đồ giải pháp</p>
+      <h2 id="h-gp">Ba ứng dụng, một hồ sơ khách, một quy trình bán</h2>
+    </div>
+
+    <!-- Khối 1: một cửa tiếp nhận -->
+    <h3 class="blk-h" id="mot-cua"><b>1</b>Mọi nguồn khách vào một cửa: Lead</h3>
+    <div class="hub" id="hub">
+      <svg class="hub-lines" id="hubLines" aria-hidden="true"></svg>
+      <div class="grid-bg" aria-hidden="true"></div>
+
+      <p class="col-h h-src">Nguồn<small>Khách đến từ đâu</small></p>
+      <p class="col-h h-mid">Lead · Tiếp nhận<small>Một cửa duy nhất</small></p>
+      <p class="col-h h-out">Khách đã chuẩn hóa → Sales<small>Đích đến</small></p>
+
+      <ul class="srcs" aria-label="Các nguồn khách">
+        <li class="src" data-src="0"><img class="ic" src="assets/brand/app-prospect.svg" alt="" width="30" height="30"><div><b>Prospect</b><small>Zalo OA · Facebook · chat web</small></div><em>đang nhận</em></li>
+        <li class="src" data-src="1"><span class="ic" style="--c:#1877F2">f</span><div><b>Quảng cáo Facebook</b><small>Form đăng ký tư vấn</small></div><em>đang nhận</em></li>
+        <li class="src" data-src="2"><span class="ic" style="--c:#0EA5E9">W</span><div><b>Form website</b><small>Yêu cầu báo giá</small></div><em>đang nhận</em></li>
+        <li class="src" data-src="3"><span class="ic" style="--c:#16A34A">X</span><div><b>Excel, Google Sheet</b><small>Danh thiếp hội chợ</small></div><em>đang nhận</em></li>
+      </ul>
+
+      <div class="dupc" id="hubDup">
+        <p>✓ Đã gộp khách trùng</p>
+        <div><span class="mini">Zalo</span><span class="mini">Form web</span><span class="arr">→</span><span class="mini one">1 khách</span></div>
+      </div>
+
+      <div class="mid">
+        <div class="core-wrap" id="hubCore" aria-hidden="true">
+          <span class="ring r1"><i style="--a:20deg;--c:#6366F1"></i></span>
+          <span class="ring r2"><i style="--a:200deg;--c:#A855F7"></i><i style="--a:320deg;--c:#17936a"></i></span>
+          <div class="core">
+            <img src="assets/brand/app-lead.svg" alt="" width="34" height="34">
+            <b>Tiếp nhận</b>
+            <small>Lead</small>
+          </div>
+        </div>
+        <ol class="proc">
+          <li>Gộp trùng</li><li>Chuẩn hóa</li><li>Chấm điểm</li><li>Chia sale</li>
+        </ol>
+      </div>
+
+      <div class="outs">
+        <div class="hcard" id="hubIn">
+          <p class="hcard-h">Khách mới <span class="live">● trực tiếp</span></p>
+          <ul class="hub-list" id="hubList">
+            <li><span class="av" style="background:#7c3aed">M</span><div class="nm"><b>Mỹ Linh</b><small>Sao Bắc Đẩu</small></div><span class="chip">Prospect</span><span class="score warm">Ấm</span></li>
+            <li><span class="av" style="background:#c026d3">K</span><div class="nm"><b>Khánh Duy</b><small>VT Tiên Phong</small></div><span class="chip">QC Facebook</span><span class="score hot">Nóng</span></li>
+            <li><span class="av" style="background:#0ea5e9">Đ</span><div class="nm"><b>Đức Minh</b><small>VT Á Châu</small></div><span class="chip">Form web</span><span class="score cold">Lạnh</span></li>
+          </ul>
+        </div>
+        <div class="hcard std" id="hubStd">
+          <p class="hcard-h warm">Khách chuẩn hóa</p>
+          <div class="std-who"><span class="av" id="stdAv">T</span><div><b id="stdName">Thu Trang</b><small id="stdSub">An Phát · Zalo OA</small></div><em id="stdScore" class="score hot">Nóng</em></div>
+          <div class="std-tiles">
+            <div><b id="stdAi">Nóng</b><small>Mức độ quan tâm</small></div>
+            <div><b id="stdSale">Thu Hà</b><small>Sale phụ trách</small></div>
+            <div class="t"><b id="hubTimer">15:00</b><small>Còn lại để gọi</small></div>
+          </div>
+        </div>
+        <div class="dst" id="hubDst">
+          <p class="dst-h"><img src="assets/brand/app-sales.svg" alt="" width="22" height="22">Sales · Quy trình bán</p>
+          <ol class="pipe">
+            <li class="cur">Đủ điều kiện <b id="dstCount">12</b></li><li>Khảo sát, tư vấn</li><li>Báo giá</li><li>Đàm phán</li><li>Chốt đơn</li>
+          </ol>
+        </div>
+      </div>
+      <p class="hub-note">Tên khách, điểm, thời gian là dữ liệu minh họa</p>
+    </div>
+
+    <!-- Khối 2: hành trình 4 bước -->
+    <div class="blk-row">
+      <h3 class="blk-h"><b>2</b>Rồi đi qua 4 bước, mỗi bước một ứng dụng</h3>
+      <div class="mode" role="radiogroup" aria-label="Chế độ xem lưu đồ">
+        <button type="button" role="radio" aria-checked="false" data-mode="before">Hôm nay</button>
+        <button type="button" role="radio" aria-checked="true" data-mode="after">Với Base CRM</button>
+      </div>
+    </div>
+
+    <div class="flow-scroll">
+    <div class="flow is-after" id="flow">
+
+      <div class="lane-l">Khách đến từ</div>
+      <div class="row-in">
+        <span class="ch">Facebook</span><span class="ch">Zalo</span><span class="ch">Website</span><span class="ch">Quảng cáo</span><span class="ch">Hội chợ</span>
+      </div>
+
+      <div class="lane-l">Khách hàng</div>
+      <ol class="row-steps">
+        <li><b>1</b>Hỏi giá</li>
+        <li><b>2</b>Được gọi lại</li>
+        <li><b>3</b>Được tư vấn</li>
+        <li><b>4</b>Báo giá, chốt đơn</li>
+      </ol>
+
+      <div class="lane-l"><span class="only-after">Base CRM</span><span class="only-before">Đội bán hàng</span></div>
+      <div class="row-apps">
+        <div class="app-blk p">
+          <p class="app-h"><img src="assets/brand/app-prospect.svg" alt="" width="22" height="22">Prospect</p>
+          <div class="mods"><a href="#buoc-1" class="mod"><span class="a">Hộp thư chung. AI trả lời ngoài giờ</span><span class="b">Tin nằm trong Zalo riêng, sót khách</span></a></div>
+        </div>
+        <div class="app-blk l">
+          <p class="app-h"><img src="assets/brand/app-lead.svg" alt="" width="22" height="22">Lead</p>
+          <div class="mods"><a href="#buoc-2" class="mod"><span class="a">Tự chia khách, gọi lại trong 15 phút, xác nhận nhu cầu</span><span class="b">Chia tay qua Zalo, gọi chậm</span></a></div>
+        </div>
+        <div class="app-blk s span2">
+          <p class="app-h"><img src="assets/brand/app-sales.svg" alt="" width="22" height="22">Sales</p>
+          <div class="mods">
+            <a href="#buoc-3" class="mod"><span class="a">Sale tư vấn với đủ lịch sử, AI tóm tắt trước khi gọi</span><span class="b">Đổi người là hỏi lại từ đầu</span></a>
+            <a href="#buoc-4" class="mod"><span class="a">Theo từng giai đoạn đến khi chốt</span><span class="b">Báo giá xong quên theo</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lane-l">Giám đốc thấy</div>
+      <div class="row-out">
+        <div class="out-a">
+          <a href="#buoc-1" class="out">Tin chưa ai trả lời</a>
+          <a href="#buoc-2" class="out">Khách mới đã được gọi chưa</a>
+          <a href="#quan-ly" class="out">Doanh số dự kiến tháng</a>
+        </div>
+        <div class="out-b">Phải gọi hỏi từng sale</div>
+      </div>
+    </div>
+    </div>
+
+    <p class="flow-hint">Bấm vào một ô để xem màn hình thật của bước đó.</p>
+  </div>
+</section>
+
+<!-- ============ 3. CHI TIẾT TỪNG BƯỚC ============ -->
+<section id="hanh-trinh" class="sec journey" data-name="Chi tiết từng bước" aria-labelledby="h-ht">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="part">Phần 3/4 · Chi tiết từng bước</p>
+      <h2 id="h-ht">Đi cùng một khách doanh nghiệp chuyển văn phòng mới</h2>
+    </div>
+  </div>
+
+  <div class="rail-wrap" id="railWrap">
+    <div class="wrap rail-in">
+      <button class="nav-btn" id="prevStep" type="button" aria-label="Bước trước">←</button>
+      <ol class="rail" id="rail" role="tablist" aria-label="Bốn bước trong hành trình khách">
+        <li role="presentation"><button role="tab" id="t1" aria-controls="buoc-1" data-step="1"><b>1</b><span>Hỏi giá<small>Prospect</small></span></button></li>
+        <li role="presentation"><button role="tab" id="t2" aria-controls="buoc-2" data-step="2"><b>2</b><span>Được gọi lại<small>Lead</small></span></button></li>
+        <li role="presentation"><button role="tab" id="t3" aria-controls="buoc-3" data-step="3"><b>3</b><span>Được tư vấn<small>Sales</small></span></button></li>
+        <li role="presentation"><button role="tab" id="t4" aria-controls="buoc-4" data-step="4"><b>4</b><span>Báo giá, chốt đơn<small>Sales</small></span></button></li>
+      </ol>
+      <button class="nav-btn" id="nextStep" type="button" aria-label="Bước sau">→</button>
+    </div>
+    <div class="rail-line" aria-hidden="true"><i id="railFill"></i></div>
+  </div>
+
+  <div class="wrap panels" id="panels">
+
+    <article class="panel" id="buoc-1" role="tabpanel" aria-labelledby="t1" data-step="1" data-title="Hỏi giá">
+      <div class="p-copy">
+        <p class="p-count">Bước 1/4 <span class="app-tag p">Prospect</span></p>
+        <h3>Hỏi giá</h3>
+        <p class="who">Khách nhắn Zalo hỏi giá ghế văn phòng lúc 21 giờ.</p>
+        <p class="ba b"><span>Hôm nay</span>Tin nằm trong Zalo riêng của một sale, không ai trả lời.</p>
+        <p class="ba a"><span>Với Base CRM</span>Tin Zalo, Facebook, web về một hộp thư chung. Ngoài giờ có AI trả lời.</p>
+      </div>
+      <div class="p-shots" data-shots>
+        <div class="shot-tabs" role="tablist" aria-label="Màn hình bước 1">
+          <button role="tab" aria-selected="true">Hộp thư chung</button>
+          <button role="tab" aria-selected="false">AI trả lời ngoài giờ</button>
+        </div>
+        <figure class="shot raw tall is-on" data-cap="Bước 1 · Prospect · Hộp thư chung">
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/prospect-hopthu.webp" width="586" height="993" loading="lazy" alt="Hộp thư chung: tin nhắn từ Zalo, WhatsApp, Messenger, Instagram, TikTok về một chỗ"></button>
+        </figure>
+        <figure class="win shot" data-cap="Bước 1 · Prospect · AI trả lời">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Prospect · Hộp thư</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/prospect.webp" width="1182" height="424" loading="lazy" alt="Tin nhắn có nhãn Trợ lý AI đã trả lời sau 45 giây"></button>
+        </figure>
+      </div>
+    </article>
+
+    <article class="panel" id="buoc-2" role="tabpanel" aria-labelledby="t2" data-step="2" data-title="Được gọi lại">
+      <div class="p-copy">
+        <p class="p-count">Bước 2/4 <span class="app-tag l">Lead</span></p>
+        <h3>Được gọi lại</h3>
+        <p class="who">Khách chờ được gọi, đồng thời hỏi thêm 2 nơi khác.</p>
+        <p class="ba b"><span>Hôm nay</span>Chia khách bằng tay, hôm sau mới gọi. Đối thủ gọi trước.</p>
+        <p class="ba a"><span>Với Base CRM</span>Tự chia khách, đếm 15 phút. Gọi lại xác nhận nhu cầu, đủ điều kiện thì chuyển sang Sales.</p>
+      </div>
+      <div class="p-shots" data-shots>
+        <div class="shot-tabs" role="tablist" aria-label="Màn hình bước 2">
+          <button role="tab" aria-selected="true">Chia khách</button>
+          <button role="tab" aria-selected="false">Gọi ai trước</button>
+          <button role="tab" aria-selected="false">Hồ sơ khách</button>
+        </div>
+        <figure class="win shot is-on" data-cap="Bước 2 · Lead · Chia khách">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Lead · Chia khách</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/lead.webp" width="1424" height="538" loading="lazy" alt="Mỗi khách có sale phụ trách và đồng hồ đếm ngược thời gian gọi"></button>
+        </figure>
+        <figure class="win shot" data-cap="Bước 2 · Lead · Gọi ai trước">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Lead · AI xếp ưu tiên</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/ai-uu-tien.webp" width="1800" height="990" loading="lazy" alt="Sáng có 240 khách mới, AI giải thích vì sao gọi khách này trước"></button>
+        </figure>
+        <figure class="shot raw" data-cap="Bước 2 · Lead · Hồ sơ khách">
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/lead-hoso.webp" width="1996" height="1286" loading="lazy" alt="Hồ sơ một khách trong Lead: nguồn, lịch sử tương tác, AI đánh giá, người gọi lại"></button>
+        </figure>
+      </div>
+    </article>
+
+    <article class="panel" id="buoc-3" role="tabpanel" aria-labelledby="t3" data-step="3" data-title="Được tư vấn">
+      <div class="p-copy">
+        <p class="p-count">Bước 3/4 <span class="app-tag s">Sales</span></p>
+        <h3>Được tư vấn</h3>
+        <p class="who">Sale hẹn đến khảo sát văn phòng mới của khách.</p>
+        <p class="ba b"><span>Hôm nay</span>Sale không biết khách đã nói gì trước đó, phải hỏi lại từ đầu.</p>
+        <p class="ba a"><span>Với Base CRM</span>Khách sang Sales giữ đủ lịch sử. AI tóm tắt cần biết gì trước khi gọi.</p>
+      </div>
+      <div class="p-shots" data-shots>
+        <figure class="shot raw is-on" data-cap="Bước 3 · Sales · Hồ sơ khách và Copilot">
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/sales-hoso.webp" width="1800" height="1273" loading="lazy" alt="Hồ sơ khách trong Sales: người phụ trách, hoạt động gần nhất, liên hệ; bên phải Copilot trả lời cần biết gì trước khi gọi"></button>
+        </figure>
+      </div>
+    </article>
+
+    <article class="panel" id="buoc-4" role="tabpanel" aria-labelledby="t4" data-step="4" data-title="Báo giá, chốt đơn">
+      <div class="p-copy">
+        <p class="p-count">Bước 4/4 <span class="app-tag s">Sales</span></p>
+        <h3>Báo giá, chốt đơn</h3>
+        <p class="who">Khách nhận báo giá, thương lượng rồi đồng ý mua.</p>
+        <p class="ba b"><span>Hôm nay</span>Gửi báo giá xong quên theo. Không ai biết đơn đang ở đâu.</p>
+        <p class="ba a"><span>Với Base CRM</span>Bảng quy trình bán: thấy mỗi khách đang ở bước nào, đơn nào đang chậm.</p>
+      </div>
+      <div class="p-shots" data-shots>
+        <div class="shot-tabs" role="tablist" aria-label="Màn hình bước 4">
+          <button role="tab" aria-selected="true">Bảng quy trình bán</button>
+          <button role="tab" aria-selected="false">Một đơn đã chốt</button>
+        </div>
+        <figure class="shot raw is-on" data-cap="Bước 4 · Sales · Bảng quy trình bán">
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/sales-bang.webp" width="1902" height="578" loading="lazy" alt="Bảng quy trình bán chia cột theo giai đoạn, mỗi thẻ là một khách, có giá trị và số ngày đang chậm"></button>
+        </figure>
+        <figure class="shot raw tall" data-cap="Bước 4 · Sales · Cơ hội bán">
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/sales-cohoi.webp" width="575" height="993" loading="lazy" alt="Cơ hội bán An Phát đi qua các giai đoạn: đủ điều kiện, gửi báo giá, đàm phán, thắng"></button>
+        </figure>
+      </div>
+    </article>
+
+    <div class="panel-foot">
+      <button class="btn ghost sm" id="footPrev" type="button">← Bước trước</button>
+      <a class="back" href="#giai-phap">↑ Về lưu đồ</a>
+      <button class="btn sm" id="footNext" type="button">Bước sau →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. GÓC QUẢN LÝ ============ -->
+<section id="quan-ly" class="sec alt" data-name="Góc quản lý" aria-labelledby="h-ql">
+  <div class="wrap mgr-grid">
+    <div>
+      <p class="part">Phần 4/4 · Góc quản lý</p>
+      <h2 id="h-ql">“Tháng này về bao nhiêu?”</h2>
+      <p class="mgr-sub">Mở <b>Sales</b> là thấy doanh số dự kiến của từng sale: phần chắc chắn và phần còn khả năng. Không cần gọi hỏi.</p>
+    </div>
+    <figure class="win">
+      <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Sales · Doanh số dự kiến</span></div>
+      <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/sales.webp" width="1422" height="692" loading="lazy" alt="Chỉ tiêu, dự báo, phần chắc chắn và phần còn khả năng theo từng sale"></button>
+    </figure>
+  </div>
+  <div class="wrap"><p class="source">Ảnh giao diện chụp từ <a href="https://base.vn/platform/crm" target="_blank" rel="noopener">base.vn/platform/crm</a> ngày 02/11/2026. Tên khách, số liệu là dữ liệu mẫu.</p></div>
+</section>
+
+</main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lbCap" hidden>
+  <div class="lb-top">
+    <p id="lbCap"></p>
+    <button type="button" class="lb-x" id="lbClose" aria-label="Đóng (Esc)">✕</button>
+  </div>
+  <div class="lb-body"><img id="lbImg" alt=""></div>
+  <p class="lb-hint">Bấm ra ngoài hoặc nhấn Esc để quay lại đúng chỗ đang xem</p>
+</div>
+
+<p class="keys" aria-hidden="true">Phím <kbd>1</kbd>–<kbd>4</kbd> chuyển phần · <kbd>←</kbd><kbd>→</kbd> chuyển bước</p>
+
+<script src="app.js?v=19"></script>
+</body>
+</html>
