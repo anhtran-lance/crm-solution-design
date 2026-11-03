@@ -435,6 +435,11 @@ img.ic{background:none}
 .add{display:flex;align-items:center;gap:8px;padding:9px 11px;border-radius:12px;font-size:13px;font-weight:600;line-height:1.3;color:var(--ink);text-decoration:none;background:#fff;border:1.5px solid var(--e,#cbd5e1);transition:transform .2s,box-shadow .2s}
 .add img{flex:none;border-radius:5px}
 a.add:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.row-auto{grid-column:2 / -1;display:grid}
+.flow.six .mod::after{display:none}
+.add.m,.add.c,.add.u{position:relative}
+.add.m::before,.add.c::before,.add.u::before{content:"";position:absolute;left:50%;bottom:100%;width:2px;height:34px;background:var(--e)}
+.is-before .add::before{background:repeating-linear-gradient(180deg,var(--warn) 0 3px,transparent 3px 7px)}
 .add.m{--e:#8B5CF6}.add.c{--e:#4F46E5}.add.u{--e:#0D9488}
 .add.auto{--e:#1F62E8;justify-content:center;background:linear-gradient(90deg,#EEF4FF,#F4EEFF);border-style:solid;font-weight:500}
 .add.auto b{font-weight:700}
