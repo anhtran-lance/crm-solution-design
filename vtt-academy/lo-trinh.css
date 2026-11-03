@@ -137,4 +137,4 @@
 .sx select.done{background-color:#d9f2c9;color:#2f6b12}
 .sx select.doing{background-color:#fde9a8;color:#7a5a00}
 .sx select:disabled{cursor:default;opacity:1}
-.sx-hint{margin-top:10px;font-size:13px;color:var(--ink-3)}
+

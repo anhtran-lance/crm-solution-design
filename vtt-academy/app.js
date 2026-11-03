@@ -477,17 +477,57 @@
 
   /* ---------------- Các buổi làm việc: bảng sửa trực tiếp, lưu chung (db) ---------------- */
   (() => {
-    const body = $('#sxBody'), table = $('#sx'), state = $('#sxState'), hint = $('#sxHint');
+    const body = $('#sxBody'), table = $('#sx'), state = $('#sxState');
     if (!body) return;
     const N = 5;
     const STATUS = ['To do', 'Doing', 'Done'];
     // Nội dung mặc định khi chưa có dữ liệu lưu (hoặc mở ngoài Claude)
     const DEF = [
-      { ten: 'Khởi động, tạo tài khoản', hinhthuc: 'Online', thoigian: '26–31/10', trangthai: 'To do', noidung: '- Thống nhất lộ trình triển khai\n- Tạo tài khoản, hướng dẫn đăng nhập', thamdu: '- Base: Đội triển khai\n- VTT: Quản lý, PIC', chuanbi: '- Danh sách tài khoản (tên, email, vai trò)\n- Quyền quản trị Fanpage, Zalo, WhatsApp, Instagram, Telegram, website' },
-      { ten: 'Họp khảo sát', hinhthuc: 'Online', thoigian: '15:00 VN · 09:00 Đức\nTuần 02–07/11', trangthai: 'To do', noidung: '- Chốt hành trình hồ sơ, trường cần điền mỗi bước\n- Chốt kênh cần kết nối\n- Quy tắc chia người, thời gian gọi lại', thamdu: '- Base: Đội triển khai\n- VTT: Quản lý, PIC', chuanbi: '- File Excel hồ sơ đang theo dõi\n- Vài hồ sơ mẫu\n- Danh sách người dùng, ai phụ trách bước nào' },
-      { ten: 'Đào tạo nhân sự tư vấn', hinhthuc: 'Online / Offline', thoigian: 'Tuần 09–14/11\nThống nhất sau', trangthai: 'To do', noidung: '- Nhận tin, chia người, gọi lại\n- Cập nhật thẻ hồ sơ qua từng bước\n- Thực hành với hồ sơ thật', thamdu: '- Base: Đội triển khai\n- VTT: Nhân sự tư vấn', chuanbi: '- Laptop, điện thoại đăng nhập sẵn\n- Hồ sơ thật để thực hành' },
-      { ten: 'Đào tạo quản lý, chạy thử', hinhthuc: 'Online', thoigian: '15:00 VN · 09:00 Đức\nTuần 09–14/11', trangthai: 'To do', noidung: '- Xem tổng quan hồ sơ, việc quá hạn\n- Việc nội bộ, phê duyệt, nhắc tự động\n- Chạy thử toàn hành trình', thamdu: '- Base: Đội triển khai\n- VTT: Quản lý', chuanbi: '- Danh sách việc nội bộ thường gặp\n- Quy trình phê duyệt (mua sắm, chi phí)' },
-      { ten: 'Review hệ thống', hinhthuc: 'Online', thoigian: 'Thống nhất sau\n(sau 16/11)', trangthai: 'To do', noidung: '- Review hệ thống sau khi dùng\n- Chỉnh cấu hình theo điểm vướng', thamdu: '- Base: Đội triển khai\n- VTT: Quản lý, PIC', chuanbi: '- Ghi lại điểm vướng trong quá trình dùng' },
+      {
+            "ten": "Khảo sát, thiết lập cơ bản",
+            "hinhthuc": "Online",
+            "thoigian": "15:00 VN · 09:00 Đức\nTuần 02–07/11",
+            "trangthai": "To do",
+            "noidung": "- Khảo sát, chốt mục tiêu, lộ trình\n- Chốt hành trình hồ sơ, các kênh cần kết nối, danh sách người dùng\n- Thiết lập cơ bản và kết nối kênh chăm sóc khách hàng",
+            "thamdu": "- Base: Đội triển khai\n- VTT: Quản lý, PIC",
+            "chuanbi": "- Danh sách người dùng (tên, email, vai trò)\n- Quyền quản trị Fanpage, Zalo, WhatsApp, Instagram, Telegram, website\n- File Excel hồ sơ đang theo dõi"
+      },
+      {
+            "ten": "Kiểm thử hệ thống",
+            "hinhthuc": "Online",
+            "thoigian": "Tuần 09–14/11\nThống nhất sau",
+            "trangthai": "To do",
+            "noidung": "- Chạy thử hành trình hồ sơ với dữ liệu mẫu\n- Kiểm tra tin từ các kênh về hộp thư chung\n- Ghi nhận điểm cần chỉnh",
+            "thamdu": "- Base: Đội triển khai\n- VTT: PIC",
+            "chuanbi": "- Vài hồ sơ mẫu\n- Tài khoản các kênh đã kết nối"
+      },
+      {
+            "ten": "Đào tạo (dự kiến)",
+            "hinhthuc": "Online / Offline",
+            "thoigian": "Tuần 09–14/11\nThống nhất sau",
+            "trangthai": "To do",
+            "noidung": "- Hướng dẫn nhân sự thao tác hằng ngày\n- Thực hành với hồ sơ thật",
+            "thamdu": "- Base: Đội triển khai\n- VTT: Nhân sự tư vấn, quản lý",
+            "chuanbi": "- Laptop, điện thoại đăng nhập sẵn\n- Hồ sơ thật để thực hành"
+      },
+      {
+            "ten": "Technical hand-off",
+            "hinhthuc": "Online",
+            "thoigian": "Trước 16/11\nThống nhất sau",
+            "trangthai": "To do",
+            "noidung": "- Bàn giao cấu hình, tài khoản quản trị\n- Hướng dẫn tự chỉnh trường, quy trình, nhắc tự động",
+            "thamdu": "- Base: Đội triển khai\n- VTT: Quản lý, PIC",
+            "chuanbi": "- Người phụ trách quản trị hệ thống phía VTT"
+      },
+      {
+            "ten": "Review",
+            "hinhthuc": "Online",
+            "thoigian": "Thống nhất sau\n(sau 16/11)",
+            "trangthai": "To do",
+            "noidung": "- Review hệ thống sau khi dùng\n- Chỉnh cấu hình theo điểm vướng",
+            "thamdu": "- Base: Đội triển khai\n- VTT: Quản lý, PIC",
+            "chuanbi": "- Ghi lại điểm vướng trong quá trình dùng"
+      }
     ];
     const COLS = [['ten', 'nm', 'Tên buổi'], ['hinhthuc', 'hf', 'Online / Offline'], ['thoigian', 'tg2', 'Thời gian'], ['trangthai', 'st', ''], ['noidung', 'ct', 'Nội dung triển khai'], ['thamdu', 'tp', 'Thành phần'], ['chuanbi', 'pp', 'Cần chuẩn bị']];
     const rows = DEF.map((d) => ({ ...d }));
@@ -554,7 +594,7 @@
     });
 
     build(); paint(); setEditable(false);
-    const off = () => { setState(''); hint.textContent = 'Mở trang trong Claude để sửa trực tiếp và lưu chung.'; };
+    const off = () => setState('');
     if (!(window.claude && window.claude.use)) { off(); return; }
     const timer = setTimeout(() => { if (!ref) off(); }, 10000);
     (async () => {
@@ -575,7 +615,6 @@
           first = false;
           setEditable(can !== false);
           setState(can === false ? 'Chỉ xem' : 'Đã đồng bộ', can === false ? '' : 'ok');
-          if (can === false) hint.textContent = 'Bạn đang ở quyền xem. Người có quyền sửa sẽ cập nhật bảng này.';
         }
       }, () => { clearTimeout(timer); setState('Mất kết nối, tải lại trang để đồng bộ', 'err'); });
     })();
