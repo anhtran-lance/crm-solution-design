@@ -53,7 +53,7 @@ Chỉ đưa app khách mua. Vai trò từng app (kiểm lại trong `products.md
 | App | Vai trong hành trình | Ghi chú |
 |---|---|---|
 | **Meeting** | Lịch hẹn phỏng vấn / khảo sát, gửi lời mời, biên bản | Ảnh: `meeting-lich.webp`, `meeting-tao.webp` |
-| **Contract** | Hợp đồng, thư mời; phê duyệt nhiều bước trước khi ký; khóa nội dung khi đã ký | Ảnh: `contract-pheduyet.webp`, `contract-daky.webp` |
+| **Contract** | Hợp đồng **do chính khách soạn và ký** (với đối tác, nhà cung cấp, khách B2B): phê duyệt nhiều bước, khóa khi ký, gia hạn | Ảnh: `contract-pheduyet.webp`, `contract-daky.webp` (mang chất B2B). Hợp đồng/thư mời khách **nhận từ bên thứ ba** (vd. doanh nghiệp gửi học viên) chỉ là **file trong hồ sơ** Sales — không đưa Contract vào hành trình. Khách không thấy đau ở phần hợp đồng thì bỏ hẳn Contract khỏi trang dù đã mua |
 | **Task** | Việc có người làm, hạn, file, @nhắc; việc ngoài hồ sơ (marketing, chương trình, mua sắm) và phê duyệt nhiều bước | Ảnh: `task-bang.webp`, `task-xuyen.webp` |
 | **Success** | Chăm sóc sau bán / sau khi "giao" (học viên đã bay, khách đã dùng) | Ảnh trên base.vn là ví dụ phần mềm SaaS, không hợp ngành khác → chỉ mô tả + icon |
 | **Automation** | Chạy suốt hành trình: nhắc khi hồ sơ N ngày không tương tác, tự tạo việc khi đổi bước, nhắc trước hạn, gửi email | Web ghi "Coming soon" → không có ảnh; thể hiện bằng dải riêng và dòng `.cf-auto` trong màn hình dựng lại |
@@ -66,7 +66,7 @@ Cách đưa vào trang mà vẫn giữ 4 phần:
 - Hero: giữ 3 app chính có hiệu ứng; app phụ hiện thành hàng nhãn `.more-apps` ("Đi kèm").
 - Thời lượng 10–15 phút: 1′ / 4′ / 7′ / 2′.
 
-Ví dụ đầy đủ (tuyển sinh du học, đi làm tại Đức, 6 bước, 8 app): `examples/vtt-academy/` — chép `index.html` + `app.js` đè lên bản sao của `template/` (style và ảnh đã có sẵn trong template).
+Ví dụ đầy đủ (tuyển sinh du học, đi làm tại Đức, 6 bước, 7 app — Contract đã bỏ theo phản hồi): `examples/vtt-academy/` — chép `index.html` + `app.js` đè lên bản sao của `template/` (style và ảnh đã có sẵn trong template).
 
 ## Hành trình hồ sơ (giáo dục, tuyển sinh, du học, xuất khẩu lao động)
 
@@ -157,3 +157,4 @@ Commit + push nếu đang trong repo; đăng thành Artifact (index.html + style
 - Lưu đồ nhiều làn: vạch nối từ mọi ô xuống dù bên dưới trống → trông lỗi. Chỉ vẽ nối ở cột có app đi kèm (`.flow.six .mod::after` tắt, `.add::before` vẽ lên).
 - Gộp làn "Đi kèm" với dải Automation trong một hàng → nhãn làn lệch. Tách làn "Tự động".
 - Coi Zalo cá nhân là nguồn phải nhập tay → sai: Zalo cá nhân kết nối được vào Prospect.
+- Đặt Contract vào bước "ghép doanh nghiệp, ký hợp đồng" của hành trình học viên → không hợp: trung tâm giáo dục không soạn/ký hợp đồng đó, đó là thư mời đính kèm hồ sơ. Đưa app vào trang theo **nỗi đau của khách**, không phải theo danh sách app đã mua.

@@ -51,7 +51,6 @@
       </ul>
       <p class="more-apps"><span>Đi kèm</span>
         <i><img src="assets/brand/app-meeting.svg" alt="" width="18" height="18">Meeting</i>
-        <i><img src="assets/brand/app-contract.svg" alt="" width="18" height="18">Contract</i>
         <i><img src="assets/brand/app-task.svg" alt="" width="18" height="18">Task</i>
         <i><img src="assets/brand/app-success.svg" alt="" width="18" height="18">Success</i>
         <i><img src="assets/brand/app-automation.svg" alt="" width="18" height="18">Automation</i>
@@ -184,7 +183,7 @@
         <li><b>2</b>Được gọi lại</li>
         <li><b>3</b>Nộp hồ sơ, phỏng vấn</li>
         <li><b>4</b>Học tiếng, thi chứng chỉ</li>
-        <li><b>5</b>Ghép doanh nghiệp, ký hợp đồng</li>
+        <li><b>5</b>Ghép doanh nghiệp, nhận thư mời</li>
         <li><b>6</b>Dịch thuật, visa, bay</li>
       </ol>
 
@@ -215,7 +214,7 @@
       <div class="lane-l">Đi kèm</div>
       <div class="row-add">
         <a href="#buoc-3" class="add m" style="grid-column:3"><img src="assets/brand/app-meeting.svg" alt="" width="18" height="18"><span class="a">Meeting · lịch phỏng vấn</span><span class="b">Hẹn qua tin nhắn</span></a>
-        <a href="#buoc-5" class="add c" style="grid-column:5"><img src="assets/brand/app-contract.svg" alt="" width="18" height="18"><span class="a">Contract · hợp đồng, phê duyệt</span><span class="b">Hợp đồng file Word</span></a>
+        <a href="#buoc-5" class="add m" style="grid-column:5"><img src="assets/brand/app-meeting.svg" alt="" width="18" height="18"><span class="a">Meeting · phỏng vấn doanh nghiệp</span><span class="b">Hẹn lịch qua chat</span></a>
         <a href="#buoc-6" class="add u" style="grid-column:6"><img src="assets/brand/app-success.svg" alt="" width="18" height="18"><span class="a">Success · hỗ trợ sau khi bay</span><span class="b">Mất liên lạc sau khi bay</span></a>
 
       </div>
@@ -259,7 +258,7 @@
         <li role="presentation"><button role="tab" id="t2" aria-controls="buoc-2" data-step="2"><b>2</b><span>Được gọi lại<small>Lead</small></span></button></li>
         <li role="presentation"><button role="tab" id="t3" aria-controls="buoc-3" data-step="3"><b>3</b><span>Hồ sơ, phỏng vấn<small>Sales · Meeting</small></span></button></li>
         <li role="presentation"><button role="tab" id="t4" aria-controls="buoc-4" data-step="4"><b>4</b><span>Học tiếng, thi<small>Sales</small></span></button></li>
-        <li role="presentation"><button role="tab" id="t5" aria-controls="buoc-5" data-step="5"><b>5</b><span>Ghép DN, hợp đồng<small>Sales · Contract</small></span></button></li>
+        <li role="presentation"><button role="tab" id="t5" aria-controls="buoc-5" data-step="5"><b>5</b><span>Ghép DN, thư mời<small>Sales · Meeting</small></span></button></li>
         <li role="presentation"><button role="tab" id="t6" aria-controls="buoc-6" data-step="6"><b>6</b><span>Visa, bay<small>Task · Success</small></span></button></li>
       </ol>
       <button class="nav-btn" id="nextStep" type="button" aria-label="Bước sau">→</button>
@@ -403,25 +402,24 @@
     </article>
 
     <!-- Bước 5 -->
-    <article class="panel" id="buoc-5" role="tabpanel" aria-labelledby="t5" data-step="5" data-title="Ghép doanh nghiệp, ký hợp đồng">
+    <article class="panel" id="buoc-5" role="tabpanel" aria-labelledby="t5" data-step="5" data-title="Ghép doanh nghiệp, nhận thư mời">
       <div class="p-copy">
-        <p class="p-count">Bước 5/6 <span class="app-tag s">Sales</span><span class="app-tag c">Contract</span></p>
-        <h3>Ghép doanh nghiệp, ký hợp đồng</h3>
+        <p class="p-count">Bước 5/6 <span class="app-tag s">Sales</span><span class="app-tag m">Meeting</span></p>
+        <h3>Ghép doanh nghiệp, nhận thư mời</h3>
         <p class="who">Có B1, bạn ấy được giới thiệu tới một doanh nghiệp Đức, phỏng vấn 2 lần rồi nhận thư mời.</p>
-        <p class="ba b"><span>Hôm nay</span>Hỏi nhau qua chat: đã gửi doanh nghiệp nào, phỏng vấn mấy lần. Hợp đồng là file Word.</p>
-        <p class="ba a"><span>Với Base CRM</span>Lọc hồ sơ theo ngành, trình độ để ghép doanh nghiệp. Hợp đồng, thư mời lưu trên Contract, có phê duyệt trước khi ký.</p>
+        <p class="ba b"><span>Hôm nay</span>Hỏi nhau qua chat: đã gửi doanh nghiệp nào, phỏng vấn mấy lần, thư mời nằm ở đâu.</p>
+        <p class="ba a"><span>Với Base CRM</span>Lọc hồ sơ theo ngành, trình độ để ghép doanh nghiệp. Lịch phỏng vấn trên Meeting; thư mời đính kèm ngay trong hồ sơ.</p>
       </div>
       <div class="p-shots" data-shots>
         <div class="shot-tabs" role="tablist" aria-label="Màn hình bước 5">
           <button role="tab" aria-selected="true">Ghép doanh nghiệp</button>
-          <button role="tab" aria-selected="false">Phê duyệt hợp đồng</button>
-          <button role="tab" aria-selected="false">Hợp đồng đã ký</button>
+          <button role="tab" aria-selected="false">Hẹn phỏng vấn</button>
         </div>
         <figure class="shot mock is-on" data-cap="Bước 5 · Sales · Ghép doanh nghiệp">
           <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Sales · Lý Thị Mai · Ausbildung</span></div>
           <div class="cf">
-            <div class="cf-g"><p>Ghép doanh nghiệp Đức và phỏng vấn với doanh nghiệp <small>2 trường</small></p>
-              <dl><dt>Ngày phỏng vấn doanh nghiệp</dt><dd>10/11/2026</dd><dt>Số lần phỏng vấn doanh nghiệp</dt><dd>2</dd></dl></div>
+            <div class="cf-g"><p>Ghép doanh nghiệp Đức và phỏng vấn với doanh nghiệp <small>3 trường</small></p>
+              <dl><dt>Ngày phỏng vấn doanh nghiệp</dt><dd>10/11/2026</dd><dt>Số lần phỏng vấn doanh nghiệp</dt><dd>2</dd><dt>Thư mời / hợp đồng học nghề</dt><dd><span class="file">📎 Thu_moi_Ausbildung.pdf</span></dd></dl></div>
             <div class="match">
               <p class="match-h">Lọc nhanh để ghép doanh nghiệp</p>
               <p class="pills"><i class="on">Ausbildung</i><i class="on">Cơ khí</i><i class="on">Đạt B1</i></p>
@@ -429,11 +427,8 @@
             </div>
           </div>
         </figure>
-        <figure class="shot raw" data-cap="Bước 5 · Contract · Phê duyệt">
-          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/contract-pheduyet.webp" width="1526" height="956" loading="lazy" alt="Hợp đồng chờ phê duyệt theo thứ tự, thấy ai đã duyệt, đang chờ ai"></button>
-        </figure>
-        <figure class="shot raw" data-cap="Bước 5 · Contract · Đã ký">
-          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/contract-daky.webp" width="1246" height="912" loading="lazy" alt="Hợp đồng đã ký khóa nội dung, vẫn đính kèm tài liệu và bình luận được"></button>
+        <figure class="shot raw tall" data-cap="Bước 5 · Meeting · Hẹn phỏng vấn doanh nghiệp">
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/meeting-tao.webp" width="1020" height="1114" loading="lazy" alt="Tạo cuộc hẹn, chọn khung giờ, báo trùng lịch, gửi lời mời"></button>
         </figure>
       </div>
     </article>
@@ -534,7 +529,7 @@
       </figure>
     </div>
   </div>
-  <div class="wrap"><p class="source">Ảnh giao diện chụp từ base.vn (/platform/crm ngày 02/11/2026; /app/contract, /app/meeting, /app/task ngày 03/11/2026), tên và số liệu là dữ liệu mẫu. Bảng hồ sơ, thẻ hồ sơ dựng lại theo cấu hình demo cho VTT Academy, dữ liệu minh họa.</p></div>
+  <div class="wrap"><p class="source">Ảnh giao diện chụp từ base.vn (/platform/crm ngày 02/11/2026; /app/meeting, /app/task ngày 03/11/2026), tên và số liệu là dữ liệu mẫu. Bảng hồ sơ, thẻ hồ sơ dựng lại theo cấu hình demo cho VTT Academy, dữ liệu minh họa.</p></div>
 </section>
 
 </main>
