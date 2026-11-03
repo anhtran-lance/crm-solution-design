@@ -422,7 +422,7 @@
   }
 
   /* ---------------- Hai tab: Solution design / Lộ trình triển khai ---------------- */
-  const isRm = (h) => h === '#lo-trinh' || /^#gd-\d$/.test(h);
+  const isRm = (h) => h === '#lo-trinh' || h === '#cac-buoi' || /^#gd-\d$/.test(h);
   function setView(v, target) {
     view = v;
     viewSd.hidden = v !== 'sd';
@@ -473,6 +473,112 @@
       n.textContent = `Theo lịch, hôm nay ${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')} đang ở giai đoạn ${i + 1}: ${P[i][2]}`;
       n.hidden = false;
     }
+  })();
+
+  /* ---------------- Các buổi làm việc: bảng sửa trực tiếp, lưu chung (db) ---------------- */
+  (() => {
+    const body = $('#sxBody'), table = $('#sx'), state = $('#sxState'), hint = $('#sxHint');
+    if (!body) return;
+    const N = 5;
+    const STATUS = ['To do', 'Doing', 'Done'];
+    // Nội dung mặc định khi chưa có dữ liệu lưu (hoặc mở ngoài Claude)
+    const DEF = [
+      { ten: 'Khởi động, tạo tài khoản', hinhthuc: 'Online', thoigian: '26–31/10', trangthai: 'To do', noidung: '- Thống nhất lộ trình triển khai\n- Tạo tài khoản, hướng dẫn đăng nhập', thamdu: '- Base: Đội triển khai\n- VTT: Quản lý, PIC', chuanbi: '- Danh sách tài khoản (tên, email, vai trò)\n- Quyền quản trị Fanpage, Zalo, WhatsApp, Instagram, Telegram, website' },
+      { ten: 'Họp khảo sát', hinhthuc: 'Online', thoigian: '15:00 VN · 09:00 Đức\nTuần 02–07/11', trangthai: 'To do', noidung: '- Chốt hành trình hồ sơ, trường cần điền mỗi bước\n- Chốt kênh cần kết nối\n- Quy tắc chia người, thời gian gọi lại', thamdu: '- Base: Đội triển khai\n- VTT: Quản lý, PIC', chuanbi: '- File Excel hồ sơ đang theo dõi\n- Vài hồ sơ mẫu\n- Danh sách người dùng, ai phụ trách bước nào' },
+      { ten: 'Đào tạo nhân sự tư vấn', hinhthuc: 'Online / Offline', thoigian: 'Tuần 09–14/11\nThống nhất sau', trangthai: 'To do', noidung: '- Nhận tin, chia người, gọi lại\n- Cập nhật thẻ hồ sơ qua từng bước\n- Thực hành với hồ sơ thật', thamdu: '- Base: Đội triển khai\n- VTT: Nhân sự tư vấn', chuanbi: '- Laptop, điện thoại đăng nhập sẵn\n- Hồ sơ thật để thực hành' },
+      { ten: 'Đào tạo quản lý, chạy thử', hinhthuc: 'Online', thoigian: '15:00 VN · 09:00 Đức\nTuần 09–14/11', trangthai: 'To do', noidung: '- Xem tổng quan hồ sơ, việc quá hạn\n- Việc nội bộ, phê duyệt, nhắc tự động\n- Chạy thử toàn hành trình', thamdu: '- Base: Đội triển khai\n- VTT: Quản lý', chuanbi: '- Danh sách việc nội bộ thường gặp\n- Quy trình phê duyệt (mua sắm, chi phí)' },
+      { ten: 'Review hệ thống', hinhthuc: 'Online', thoigian: 'Thống nhất sau\n(sau 16/11)', trangthai: 'To do', noidung: '- Review hệ thống sau khi dùng\n- Chỉnh cấu hình theo điểm vướng', thamdu: '- Base: Đội triển khai\n- VTT: Quản lý, PIC', chuanbi: '- Ghi lại điểm vướng trong quá trình dùng' },
+    ];
+    const COLS = [['ten', 'nm', 'Tên buổi'], ['hinhthuc', 'hf', 'Online / Offline'], ['thoigian', 'tg2', 'Thời gian'], ['trangthai', 'st', ''], ['noidung', 'ct', 'Nội dung triển khai'], ['thamdu', 'tp', 'Thành phần'], ['chuanbi', 'pp', 'Cần chuẩn bị']];
+    const rows = DEF.map((d) => ({ ...d }));
+    let ref = null, editable = false;
+    const cls = (v) => (v === 'Done' ? 'done' : v === 'Doing' ? 'doing' : '');
+    const setState = (t, k) => { state.textContent = t; state.className = 'sx-state' + (k ? ' ' + k : ''); };
+
+    function build() {
+      body.innerHTML = '';
+      for (let i = 0; i < N; i++) {
+        const tr = document.createElement('tr');
+        const no = document.createElement('td'); no.className = 'no'; no.textContent = 'BUỔI ' + (i + 1); tr.appendChild(no);
+        COLS.forEach(([f, c, ph]) => {
+          const td = document.createElement('td'); td.className = c;
+          if (f === 'trangthai') {
+            const sel = document.createElement('select'); sel.dataset.i = i; sel.setAttribute('aria-label', `Trạng thái buổi ${i + 1}`);
+            STATUS.forEach((o) => { const op = document.createElement('option'); op.textContent = o; sel.appendChild(op); });
+            td.appendChild(sel);
+          } else {
+            const div = document.createElement('div'); div.dataset.f = f; div.dataset.i = i; div.dataset.ph = ph;
+            div.setAttribute('role', 'textbox'); div.setAttribute('aria-label', `${ph} · buổi ${i + 1}`); div.setAttribute('aria-multiline', 'true');
+            td.appendChild(div);
+          }
+          tr.appendChild(td);
+        });
+        body.appendChild(tr);
+      }
+    }
+    function paint() {
+      $$('[data-f]', body).forEach((el) => {
+        if (el === document.activeElement) return;
+        const v = rows[+el.dataset.i][el.dataset.f] || '';
+        if (el.innerText !== v) el.textContent = v;
+      });
+      $$('select', body).forEach((s) => { const v = rows[+s.dataset.i].trangthai || STATUS[0]; s.value = v; s.className = cls(v); });
+    }
+    function setEditable(on) {
+      editable = on;
+      table.classList.toggle('edit', on);
+      $$('[data-f]', body).forEach((el) => { el.contentEditable = on ? 'true' : 'false'; });
+      $$('select', body).forEach((s) => (s.disabled = !on));
+    }
+    async function save(i, f, v) {
+      if ((rows[i][f] || '') === v) return;
+      rows[i][f] = v;
+      if (!ref) return;
+      setState('Đang lưu…');
+      try { await ref.doc('b' + (i + 1)).set({ ...rows[i], thu_tu: i + 1 }); setState('Đã lưu', 'ok'); }
+      catch (e) { setState('Không lưu được' + (e && e.code ? ' (' + e.code + ')' : ''), 'err'); }
+    }
+    body.addEventListener('focusout', (e) => {
+      const el = e.target.closest('[data-f]');
+      if (el && editable) save(+el.dataset.i, el.dataset.f, el.innerText.replace(/\n+$/, ''));
+    });
+    body.addEventListener('paste', (e) => {
+      if (!e.target.closest('[data-f]')) return;
+      e.preventDefault();
+      document.execCommand('insertText', false, (e.clipboardData || window.clipboardData).getData('text/plain'));
+    });
+    body.addEventListener('keydown', (e) => { if (e.key === 'Escape' && e.target.closest('[data-f]')) e.target.blur(); });
+    body.addEventListener('change', (e) => {
+      const s = e.target.closest('select'); if (!s) return;
+      s.className = cls(s.value); save(+s.dataset.i, 'trangthai', s.value);
+    });
+
+    build(); paint(); setEditable(false);
+    const off = () => { setState(''); hint.textContent = 'Mở trang trong Claude để sửa trực tiếp và lưu chung.'; };
+    if (!(window.claude && window.claude.use)) { off(); return; }
+    const timer = setTimeout(() => { if (!ref) off(); }, 10000);
+    (async () => {
+      const db = await window.claude.use('db').catch(() => null);
+      if (!db) { clearTimeout(timer); off(); return; }
+      ref = db.collection('buoi');
+      const user = await window.claude.use('user').catch(() => null);
+      const can = user ? await user.can('data.write') : null;
+      let first = true;
+      ref.onSnapshot((snap) => {
+        clearTimeout(timer);
+        snap.docs.forEach((d) => {
+          const m = /^b(\d)$/.exec(d.id); const i = m ? +m[1] - 1 : -1;
+          if (i >= 0 && i < N && d.exists) Object.assign(rows[i], d.data());
+        });
+        paint();
+        if (first) {
+          first = false;
+          setEditable(can !== false);
+          setState(can === false ? 'Chỉ xem' : 'Đã đồng bộ', can === false ? '' : 'ok');
+          if (can === false) hint.textContent = 'Bạn đang ở quyền xem. Người có quyền sửa sẽ cập nhật bảng này.';
+        }
+      }, () => { clearTimeout(timer); setState('Mất kết nối, tải lại trang để đồng bộ', 'err'); });
+    })();
   })();
 
   /* ---------------- Khởi tạo ---------------- */

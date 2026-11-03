@@ -168,10 +168,6 @@ h2{font-size:clamp(26px,3.2vw,38px);font-weight:700}
 .row-steps li{position:relative;display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;background:var(--bg-2);font-weight:600;font-size:14px;line-height:1.25}
 .row-steps b{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;font-size:12px}
 .row-steps li:not(:last-child)::after{content:"";position:absolute;right:calc(var(--g) * -1);top:50%;width:var(--g);height:2px;background:var(--ink-3);transform:translateY(-50%)}
-.is-after .row-steps b{animation:pulse 4s infinite}
-.is-after .row-steps li:nth-child(2) b{animation-delay:1s}
-.is-after .row-steps li:nth-child(3) b{animation-delay:2s}
-.is-after .row-steps li:nth-child(4) b{animation-delay:3s}
 @keyframes pulse{0%,18%{background:var(--brand);box-shadow:0 0 0 6px rgba(31,98,232,.18)}26%,100%{background:var(--ink);box-shadow:none}}
 .row-steps li:not(:last-child)::before{content:"";position:absolute;right:calc(var(--g) * -1 - 1px);top:50%;transform:translateY(-50%);border-left:6px solid var(--ink-3);border-top:5px solid transparent;border-bottom:5px solid transparent;z-index:1}
 .is-before .row-steps li:not(:last-child)::before{border-left-color:var(--warn)}
@@ -427,8 +423,6 @@ img.ic{background:none}
 .flow.six .row-steps,.flow.six .row-apps,.row-add{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--g)}
 .row-add{grid-column:2 / -1;align-items:stretch}
 .flow.six .row-steps li{font-size:13.5px}
-.is-after .row-steps li:nth-child(5) b{animation-delay:4s}
-.is-after .row-steps li:nth-child(6) b{animation-delay:5s}
 .app-blk.span3{grid-column:span 3}
 .span3 .mods{grid-template-columns:repeat(3,1fr)}
 .app-blk.t{--tint:#FFF4E5;--edge:#EA8A0B}
@@ -556,6 +550,17 @@ a.add:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
   .appr-s{grid-template-columns:repeat(2,1fr)}
   .more-apps{font-size:12px}
 }
+
+/* Lưu đồ: cả khối bước sáng lần lượt */
+.flow.six.is-after .row-steps li{animation:stepGlow 6s infinite}
+.flow.six.is-after .row-steps li b{animation:stepDot 6s infinite}
+.flow.six.is-after .row-steps li:nth-child(2),.flow.six.is-after .row-steps li:nth-child(2) b{animation-delay:1s}
+.flow.six.is-after .row-steps li:nth-child(3),.flow.six.is-after .row-steps li:nth-child(3) b{animation-delay:2s}
+.flow.six.is-after .row-steps li:nth-child(4),.flow.six.is-after .row-steps li:nth-child(4) b{animation-delay:3s}
+.flow.six.is-after .row-steps li:nth-child(5),.flow.six.is-after .row-steps li:nth-child(5) b{animation-delay:4s}
+.flow.six.is-after .row-steps li:nth-child(6),.flow.six.is-after .row-steps li:nth-child(6) b{animation-delay:5s}
+@keyframes stepGlow{0%,15%{background:var(--brand);color:#fff;box-shadow:0 0 0 4px rgba(31,98,232,.18),0 10px 24px rgba(31,98,232,.3);transform:translateY(-2px)}22%,100%{background:var(--bg-2);color:var(--ink);box-shadow:none;transform:none}}
+@keyframes stepDot{0%,15%{background:#fff;color:var(--brand)}22%,100%{background:var(--ink);color:#fff}}
 
 /* Hai tab trên cùng */
 .next-tab{margin-top:36px}
