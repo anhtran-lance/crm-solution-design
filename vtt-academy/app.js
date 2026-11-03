@@ -17,8 +17,10 @@
 
   /* ---------------- Phần đang xem ---------------- */
   const sections = $$('main > section.sec');
-  const tabs = $$('#tabs a');
-  const tabsBox = $('#tabs');
+  const viewTabs = $$('#tabs a');
+  const where = $('#where');
+  const viewSd = $('#view-sd'), viewRm = $('#view-rm');
+  let view = 'sd';
   const whereSec = $('#whereSec');
   const whereStep = $('#whereStep');
   const bar = $('#bar');
@@ -39,13 +41,10 @@
     const max = document.body.scrollHeight - window.innerHeight;
     bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
 
+    if (view !== 'sd') return;
     const idx = activeIndex();
     if (idx === current) return;
     current = idx;
-    tabs.forEach((t, i) => {
-      if (i === idx) t.setAttribute('aria-current', 'true'); else t.removeAttribute('aria-current');
-      t.classList.toggle('done', i < idx);
-    });
     whereSec.textContent = `Phần ${idx + 1}/${sections.length} · ${sections[idx].dataset.name}`;
     // Gợi ý phím tắt chỉ hiện ở phần mở đầu, không che nội dung các phần sau
     keys.classList.toggle('hide', idx !== 0);
@@ -53,14 +52,11 @@
     railWrap.classList.toggle('off', idx !== journeyIdx);
     updateWhereStep();
     syncHash();
-    // Giữ tab đang xem trong khung (điện thoại), không làm cuộn trang
-    const t = tabs[idx];
-    tabsBox.scrollTo({ left: t.offsetLeft - tabsBox.offsetLeft - (tabsBox.clientWidth - t.offsetWidth) / 2, behavior: reduce ? 'auto' : 'smooth' });
   }
 
   // Địa chỉ trang luôn trỏ đúng chỗ đang xem: gửi link hay tải lại đều mở đúng phần/bước
   function syncHash() {
-    if (!history.replaceState || current < 0) return;
+    if (!history.replaceState || current < 0 || view !== 'sd') return;
     const id = current === journeyIdx ? 'buoc-' + step : sections[current].id;
     if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
   }
@@ -143,6 +139,7 @@
   });
 
   addEventListener('hashchange', () => {
+    if (routeView()) return;
     const h = location.hash.match(/^#buoc-(\d)$/);
     if (h) setStep(+h[1], { scroll: true });
   });
@@ -404,6 +401,7 @@
       return;
     }
     if (e.altKey || e.ctrlKey || e.metaKey || /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+    if (view !== 'sd') return;
     if (/^[1-9]$/.test(e.key) && +e.key <= sections.length) {
       const s = sections[+e.key - 1];
       if (s) window.scrollTo({ top: s.getBoundingClientRect().top + window.scrollY - cssNum('--hh'), behavior: reduce ? 'auto' : 'smooth' });
@@ -423,9 +421,64 @@
     $$('.rv').forEach((el) => el.classList.add('in'));
   }
 
+  /* ---------------- Hai tab: Solution design / Lộ trình triển khai ---------------- */
+  const isRm = (h) => h === '#lo-trinh' || /^#gd-\d$/.test(h);
+  function setView(v, target) {
+    view = v;
+    viewSd.hidden = v !== 'sd';
+    viewRm.hidden = v !== 'rm';
+    viewTabs.forEach((t) => { if (t.dataset.view === v) t.setAttribute('aria-current', 'true'); else t.removeAttribute('aria-current'); });
+    where.hidden = v !== 'sd';
+    if (v !== 'sd') railWrap.classList.add('off');
+    keys.classList.toggle('hide', v !== 'sd');
+    const el = target && document.getElementById(target);
+    const top = !el || el.id === 'lo-trinh' || el.id === 'tong-quan';
+    window.scrollTo({ top: top ? 0 : el.getBoundingClientRect().top + window.scrollY - cssNum('--hh') - 16, behavior: 'instant' });
+    current = -1;
+    updateNav();
+  }
+  // Trả về true nếu địa chỉ thuộc tab Lộ trình (đã xử lý)
+  function routeView() {
+    if (isRm(location.hash)) { setView('rm', location.hash.slice(1)); return true; }
+    if (view === 'rm') setView('sd', location.hash.slice(1));
+    return false;
+  }
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || a.getAttribute('href').startsWith('#buoc-')) return;
+    const h = a.getAttribute('href');
+    if (isRm(h)) {
+      e.preventDefault();
+      history.replaceState(null, '', h);
+      setView('rm', h.slice(1));
+    } else if (a.dataset.view === 'sd' || view === 'rm') {
+      e.preventDefault();
+      history.replaceState(null, '', h);
+      setView('sd', h.slice(1));
+    }
+  });
+
+  // Lộ trình: vạch "Hôm nay" và giai đoạn đang diễn ra theo lịch
+  (() => {
+    const start = new Date(2026, 9, 26), today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const d = Math.round((today - start) / 864e5) + 1;
+    const g = $('#gToday');
+    if (g && d >= 1 && d <= 42) { g.style.setProperty('--s', d); g.hidden = false; }
+    const P = [[1, 6, 'Hợp đồng, khởi tạo'], [8, 13, 'Họp khảo sát'], [15, 20, 'Thiết lập, đào tạo'], [22, 999, 'Vận hành chính thức']];
+    const i = P.findIndex(([a, b]) => d >= a && d <= b);
+    if (i >= 0) {
+      $('#gd-' + (i + 1)).classList.add('now');
+      const n = $('#rmNow');
+      n.textContent = `Theo lịch, hôm nay ${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')} đang ở giai đoạn ${i + 1}: ${P[i][2]}`;
+      n.hidden = false;
+    }
+  })();
+
   /* ---------------- Khởi tạo ---------------- */
   const m = location.hash.match(/^#buoc-(\d)$/);
   setStep(m ? +m[1] : 1, { init: true });
+  if (isRm(location.hash)) { setView('rm', location.hash.slice(1)); return; }
   if (m) scrollToPanels();
   else {
     // Link tới một phần (#giai-phap...) phải mở đúng phần đó trước khi địa chỉ được cập nhật

@@ -96,6 +96,15 @@ Kiểm lại phép đếm (tổng theo chương trình phải khớp số thẻ)
 
 **Không thêm** phần triển khai 90 ngày, "bước tiếp theo", hiện trạng riêng — người dùng thấy rối và lạc đề. Hiện trạng đã nằm trong chế độ "Hôm nay".
 
+### Tab 2 "Lộ trình triển khai" — chỉ khi người dùng đưa lịch
+
+Khi người dùng đưa kế hoạch triển khai (các mốc ngày), làm thành **tab thứ 2**, không chen vào 4 phần:
+- Thanh trên cùng chỉ còn 2 tab: **Solution design** (4 phần cũ, vẫn có "Phần x/4 › Bước y" bên phải) và **Lộ trình triển khai**. Hai khối là `<main id="view-sd">` và `<div id="view-rm" hidden>`; địa chỉ `#lo-trinh`, `#gd-N` mở tab 2, mọi địa chỉ khác về tab 1. Cuối phần "Góc quản lý" có nút "Xem lộ trình triển khai →".
+- Nội dung tab 2: mở đầu (tiêu đề theo ngày vận hành, 4 ô số), **dòng thời gian dạng Gantt** theo ngày (mốc ◇, vùng cao điểm, vạch "Hôm nay" tính theo ngày mở trang), thẻ từng giai đoạn (ngày có thứ · hình thức · Base làm · khách chuẩn bị · kết quả), khung buổi họp khảo sát và **giờ họp hai múi giờ** nếu khách ở nước ngoài.
+- Làm bản riêng (`lo-trinh.html`) cho người dùng duyệt trước, duyệt xong mới gộp. Ví dụ: `examples/vtt-academy/` (`index.html`, `app.js`, `lo-trinh.css`).
+- Chỉ ghi "đang diễn ra theo lịch", không khẳng định giai đoạn nào đã xong.
+- Từ ngữ: "họp khảo sát" thay "workshop"; hình thức đào tạo để "Online / Offline" khi chưa chốt. Giờ họp: hỏi rõ là giờ nước nào, ghi cả hai (Đức giờ mùa đông lệch Việt Nam 6 tiếng, mùa hè 5 tiếng).
+
 ## Viết chữ
 
 - Ngôn ngữ nghiệp vụ của khách: "khách hỏi giá", "chia khách", "gọi lại", "báo giá", "doanh số dự kiến". Tránh lead, deal, pipeline, SLA, trigger trong lời văn.
@@ -158,3 +167,4 @@ Commit + push nếu đang trong repo; đăng thành Artifact (index.html + style
 - Gộp làn "Đi kèm" với dải Automation trong một hàng → nhãn làn lệch. Tách làn "Tự động".
 - Coi Zalo cá nhân là nguồn phải nhập tay → sai: Zalo cá nhân kết nối được vào Prospect.
 - Đặt Contract vào bước "ghép doanh nghiệp, ký hợp đồng" của hành trình học viên → không hợp: trung tâm giáo dục không soạn/ký hợp đồng đó, đó là thư mời đính kèm hồ sơ. Đưa app vào trang theo **nỗi đau của khách**, không phải theo danh sách app đã mua.
+- Gọi buổi gặp khách là "workshop" → khách thấy nặng nề; dùng "họp khảo sát".

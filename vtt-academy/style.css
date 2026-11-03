@@ -557,6 +557,14 @@ a.add:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
   .more-apps{font-size:12px}
 }
 
+/* Hai tab trên cùng */
+.next-tab{margin-top:36px}
+.view-rm[hidden]{display:none}
+@media (max-width:640px){
+  .tabs.views a span{display:inline;font-size:13px}
+  .tabs.views a b{display:none}
+}
+
 /* ---------- Màn hình vừa ---------- */
 @media (max-width:1120px){
   .where{display:none}

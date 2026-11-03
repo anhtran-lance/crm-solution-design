@@ -9,7 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=vtt1">
+<link rel="stylesheet" href="style.css?v=vtt3">
+<link rel="stylesheet" href="lo-trinh.css?v=2">
 </head>
 <body>
 <a class="skip" href="#tong-quan">Bỏ qua thanh điều hướng</a>
@@ -19,18 +20,16 @@
     <a class="logo" href="#tong-quan" aria-label="Về đầu tài liệu">
       <img src="assets/brand/logo-base.png" width="120" height="37" alt="Base.vn">
     </a>
-    <nav class="tabs" id="tabs" aria-label="Các phần của tài liệu">
-      <a href="#tong-quan"><b>1</b><span>Tổng quan</span></a>
-      <a href="#giai-phap"><b>2</b><span>Lưu đồ giải pháp</span></a>
-      <a href="#hanh-trinh"><b>3</b><span>Chi tiết từng bước</span></a>
-      <a href="#quan-ly"><b>4</b><span>Góc quản lý</span></a>
+    <nav class="tabs views" id="tabs" aria-label="Tài liệu">
+      <a href="#tong-quan" data-view="sd" aria-current="true"><b>1</b><span>Solution design</span></a>
+      <a href="#lo-trinh" data-view="rm"><b>2</b><span>Lộ trình triển khai</span></a>
     </nav>
     <p class="where" id="where" aria-live="polite"><span id="whereSec">Phần 1/4</span><span id="whereStep"></span></p>
   </div>
   <div class="bar" aria-hidden="true"><i id="bar"></i></div>
 </header>
 
-<main>
+<main id="view-sd">
 
 <!-- ============ 1. TỔNG QUAN ============ -->
 <section id="tong-quan" class="sec hero" data-name="Tổng quan" aria-labelledby="h1">
@@ -529,10 +528,177 @@
       </figure>
     </div>
   </div>
+  <div class="wrap next-tab"><a class="btn" href="#lo-trinh">Xem lộ trình triển khai <span aria-hidden="true">→</span></a></div>
   <div class="wrap"><p class="source">Ảnh giao diện chụp từ base.vn (/platform/crm ngày 02/11/2026; /app/meeting, /app/task ngày 03/11/2026), tên và số liệu là dữ liệu mẫu. Bảng hồ sơ, thẻ hồ sơ dựng lại theo cấu hình demo cho VTT Academy, dữ liệu minh họa.</p></div>
 </section>
 
 </main>
+
+<!-- ============ TAB 2. LỘ TRÌNH TRIỂN KHAI ============ -->
+<div id="view-rm" class="view-rm" hidden>
+<section id="lo-trinh" class="rm" aria-labelledby="rm-h">
+
+  <!-- Mở đầu -->
+  <div class="rm-hero">
+    <div class="wrap">
+      <p class="part">Lộ trình triển khai Base CRM</p>
+      <h1 id="rm-h">3 tuần chuẩn bị, <em>vận hành chính thức từ 16/11</em></h1>
+      <p class="rm-sub">Kịp trước tháng 12 bận rộn cuối năm. Quản lý ở Đức họp online; nhân sự tại Việt Nam được đào tạo online hoặc tại chỗ.</p>
+      <ul class="rm-facts">
+        <li><b>4</b><span>giai đoạn</span></li>
+        <li><b>1–2</b><span>buổi họp khảo sát online</span></li>
+        <li><b>Online / Offline</b><span>đào tạo nhân sự</span></li>
+        <li class="tz"><b>15:00 <small>VN</small> · 09:00 <small>Đức</small></b><span>khung họp online</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Dòng thời gian -->
+  <div class="wrap rm-block">
+    <div class="rm-row-h">
+      <h2>Dòng thời gian</h2>
+      <p class="rm-now" id="rmNow" hidden></p>
+    </div>
+    <div class="gantt-scroll">
+      <div class="gantt" id="gantt" style="--days:42">
+        <div class="g-lab g-head">Giai đoạn</div>
+        <div class="g-weeks">
+          <span style="--s:1">T2 26/10</span><span style="--s:8">T2 02/11</span><span style="--s:15">T2 09/11</span><span style="--s:22">T2 16/11</span><span style="--s:29">T2 23/11</span><span style="--s:36">T2 30/11</span>
+        </div>
+
+        <div class="g-lab"><b>1</b>Hợp đồng, khởi tạo</div>
+        <div class="g-track"><a href="#gd-1" class="g-bar c1" style="--s:1;--e:7">26–31/10</a></div>
+
+        <div class="g-lab"><b>2</b><span>Họp khảo sát<small>online, 1–2 buổi</small></span></div>
+        <div class="g-track"><a href="#gd-2" class="g-bar c2" style="--s:8;--e:14">02–07/11</a></div>
+
+        <div class="g-lab"><b>3</b><span>Thiết lập, đào tạo<small>đào tạo online / offline</small></span></div>
+        <div class="g-track"><a href="#gd-3" class="g-bar c3" style="--s:15;--e:21">09–14/11</a></div>
+
+        <div class="g-lab"><b>4</b>Vận hành chính thức</div>
+        <div class="g-track">
+          <a href="#gd-4" class="g-bar c4 open" style="--s:22;--e:43">Từ 16/11 · dừng Excel</a>
+          <span class="g-sub" style="--s:22;--e:36">2 tuần hỗ trợ sát</span>
+        </div>
+
+        <div class="g-lab g-ms-l">Mốc</div>
+        <div class="g-track g-ms">
+          <span class="ms" style="--s:6"><i></i>Tài khoản sẵn sàng</span>
+          <span class="ms" style="--s:13"><i></i>Chốt cấu hình</span>
+          <span class="ms go" style="--s:22"><i></i>Bắt đầu dùng</span>
+        </div>
+
+        <div class="g-peak" style="--s:37" aria-hidden="true"><span>Tháng 12 · cao điểm</span></div>
+        <div class="g-today" id="gToday" hidden><span>Hôm nay</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 giai đoạn -->
+  <div class="wrap rm-block">
+    <div class="rm-row-h"><h2>Mỗi giai đoạn làm gì</h2></div>
+    <ol class="phases">
+
+      <li class="ph c1" id="gd-1">
+        <p class="ph-top"><b>1</b><span>T2 26/10 – T7 31/10</span></p>
+        <h3>Hợp đồng và khởi tạo hệ thống</h3>
+        <p class="ph-how"><i>Online</i>Base và VTT</p>
+        <div class="ph-col">
+          <p class="ph-h">Base làm</p>
+          <ul><li>Hoàn tất thủ tục hợp đồng</li><li>Khởi tạo hệ thống, giao diện tiếng Việt</li><li>Tạo tài khoản cho VTT</li></ul>
+        </div>
+        <div class="ph-col vtt">
+          <p class="ph-h">VTT chuẩn bị</p>
+          <ul><li>Danh sách người dùng: tên, email, vai trò</li><li>Quyền quản trị Fanpage, Zalo, WhatsApp, Instagram, Telegram, website</li><li>File Excel hồ sơ đang theo dõi</li></ul>
+        </div>
+        <p class="ph-out">Kết quả: mọi người đăng nhập được</p>
+      </li>
+
+      <li class="ph c2" id="gd-2">
+        <p class="ph-top"><b>2</b><span>T2 02/11 – T7 07/11</span></p>
+        <h3>Họp khảo sát</h3>
+        <p class="ph-how"><i>Online 15:00 VN · 09:00 Đức</i>1–2 buổi</p>
+        <div class="ph-col">
+          <p class="ph-h">Cùng chốt</p>
+          <ul><li>Hành trình hồ sơ: các giai đoạn, trường cần điền ở mỗi bước</li><li>Các kênh cần kết nối</li><li>Danh sách người dùng và ai phụ trách bước nào</li></ul>
+        </div>
+        <div class="ph-col vtt">
+          <p class="ph-h">VTT chuẩn bị</p>
+          <ul><li>Người quyết định có mặt ở buổi chốt</li><li>Vài hồ sơ mẫu để đi thử hành trình</li></ul>
+        </div>
+        <p class="ph-out">Kết quả: biên bản chốt cấu hình, VTT xác nhận</p>
+      </li>
+
+      <li class="ph c3" id="gd-3">
+        <p class="ph-top"><b>3</b><span>T2 09/11 – T7 14/11</span></p>
+        <h3>Thiết lập và đào tạo</h3>
+        <p class="ph-how"><i>Online / Offline</i>đào tạo nhân sự VTT</p>
+        <div class="ph-col">
+          <p class="ph-h">Base làm</p>
+          <ul><li>Thiết lập theo biên bản: kênh chat, chia người, quy trình hồ sơ, việc, nhắc tự động, form website</li><li>Đưa dữ liệu Excel cũ vào hệ thống</li><li>Đào tạo nhân sự, chạy thử với hồ sơ thật</li></ul>
+        </div>
+        <div class="ph-col vtt">
+          <p class="ph-h">VTT chuẩn bị</p>
+          <ul><li>Nhân sự dành thời gian học, có laptop và điện thoại</li><li>Quản lý ở Đức xem màn hình tổng quan qua buổi online</li></ul>
+        </div>
+        <p class="ph-out">Kết quả: nhân sự tự thao tác được</p>
+      </li>
+
+      <li class="ph c4" id="gd-4">
+        <p class="ph-top"><b>4</b><span>Từ T2 16/11</span></p>
+        <h3>Vận hành chính thức</h3>
+        <p class="ph-how"><i>Online 15:00 VN · 09:00 Đức</i>hỗ trợ hằng tuần</p>
+        <div class="ph-col">
+          <p class="ph-h">Base làm</p>
+          <ul><li>2 tuần đầu hỗ trợ sát, gỡ vướng trong ngày</li><li>Họp online hằng tuần xem số hồ sơ, việc quá hạn</li><li>Chỉnh cấu hình khi có điểm chưa hợp</li></ul>
+        </div>
+        <div class="ph-col vtt">
+          <p class="ph-h">VTT cam kết</p>
+          <ul><li>Mọi hồ sơ mới nhập vào Base, dừng Excel</li><li>Ghi lại điểm vướng để xử lý trong buổi họp tuần</li></ul>
+        </div>
+        <p class="ph-out">Kết quả: sẵn sàng cho tháng 12</p>
+      </li>
+    </ol>
+  </div>
+
+  <!-- Họp khảo sát + giờ họp -->
+  <div class="wrap rm-block rm-two">
+    <div class="ws">
+      <h2>Họp khảo sát: chốt 3 việc</h2>
+      <ol class="ws-list">
+        <li>
+          <p class="ws-t"><b>Buổi 1</b><span>~90 phút</span></p>
+          <p class="ws-n">Hành trình hồ sơ</p>
+          <p class="ws-d">Đi lại từng giai đoạn từ nhận hồ sơ đến bay. Mỗi bước cần điền gì, trường nào bắt buộc, ai phụ trách. Phân loại Ausbildung, Fachkraft, du học.</p>
+        </li>
+        <li>
+          <p class="ws-t"><b>Buổi 2</b><span>~60 phút · nếu cần</span></p>
+          <p class="ws-n">Kênh kết nối và người dùng</p>
+          <p class="ws-d">Kênh nào nối vào hộp thư chung, chia người ra sao, bao lâu phải gọi lại, nhắc khi hồ sơ bao nhiêu ngày không tương tác. Danh sách người dùng và quyền.</p>
+        </li>
+      </ol>
+      <p class="ws-note">Nếu chốt được hết trong buổi 1 thì bỏ buổi 2.</p>
+    </div>
+
+    <div class="tzc">
+      <h2>Giờ họp online</h2>
+      <div class="clocks">
+        <div><small>Việt Nam</small><b>15:00</b><span>UTC+7</span></div>
+        <i aria-hidden="true">=</i>
+        <div><small>Đức</small><b>09:00</b><span>UTC+1 · giờ mùa đông</span></div>
+      </div>
+      <p class="tzc-n">Đức đã chuyển sang giờ mùa đông từ 25/10, hai nước lệch 6 tiếng suốt thời gian triển khai.</p>
+      <ul class="tzc-l">
+        <li><b>Họp khảo sát</b>1–2 buổi, tuần 02–07/11</li>
+        <li><b>Xem tổng quan</b>trong tuần 09–14/11</li>
+        <li><b>Họp tuần</b>sau ngày 16/11</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wrap"><p class="source">Lịch dự kiến, có thể điều chỉnh sau buổi họp khảo sát.</p></div>
+</section>
+</div>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lbCap" hidden>
   <div class="lb-top">
@@ -545,6 +711,6 @@
 
 <p class="keys" aria-hidden="true">Phím <kbd>1</kbd>–<kbd>4</kbd> chuyển phần · <kbd>←</kbd><kbd>→</kbd> chuyển bước</p>
 
-<script src="app.js?v=vtt1"></script>
+<script src="app.js?v=vtt3"></script>
 </body>
 </html>

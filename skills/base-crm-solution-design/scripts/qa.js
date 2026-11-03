@@ -26,7 +26,7 @@ const pass = (m) => console.log('✓', m);
   await p.goto(URL); await p.waitForTimeout(1500);
   await p.screenshot({ path: path.join(OUT, '1-tong-quan.png') });
 
-  await p.click('#tabs a[href="#giai-phap"]'); await p.waitForTimeout(1300);
+  await p.locator('a[href="#giai-phap"]:visible').first().click(); await p.waitForTimeout(1300);
   let w = await where();
   w.where.includes('2/') ? pass('Tab Lưu đồ → "Phần 2"') : fail('Tab Lưu đồ không cập nhật vị trí: ' + w.where);
   const hub = p.locator('#hub');
