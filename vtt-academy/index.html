@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="vi" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Base CRM · VTT Academy</title>
+<meta name="description" content="Solution design Base CRM cho VTT Academy: gom hồ sơ ứng viên du học và đi làm tại Đức về một nơi, theo dõi từ tin nhắn đầu tiên đến ngày bay.">
+<link rel="icon" type="image/png" href="assets/brand/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=vtt1">
+</head>
+<body>
+<a class="skip" href="#tong-quan">Bỏ qua thanh điều hướng</a>
+
+<header class="top" id="top">
+  <div class="top-in">
+    <a class="logo" href="#tong-quan" aria-label="Về đầu tài liệu">
+      <img src="assets/brand/logo-base.png" width="120" height="37" alt="Base.vn">
+    </a>
+    <nav class="tabs" id="tabs" aria-label="Các phần của tài liệu">
+      <a href="#tong-quan"><b>1</b><span>Tổng quan</span></a>
+      <a href="#giai-phap"><b>2</b><span>Lưu đồ giải pháp</span></a>
+      <a href="#hanh-trinh"><b>3</b><span>Chi tiết từng bước</span></a>
+      <a href="#quan-ly"><b>4</b><span>Góc quản lý</span></a>
+    </nav>
+    <p class="where" id="where" aria-live="polite"><span id="whereSec">Phần 1/4</span><span id="whereStep"></span></p>
+  </div>
+  <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+</header>
+
+<main>
+
+<!-- ============ 1. TỔNG QUAN ============ -->
+<section id="tong-quan" class="sec hero" data-name="Tổng quan" aria-labelledby="h1">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="aurora"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+    <div class="dots"></div>
+  </div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="part">Phần 1/4 · Tổng quan</p>
+      <h1 id="h1">Không sót hồ sơ nào, <em>từ tin nhắn đầu tiên đến ngày bay</em></h1>
+      <p class="lead">Base CRM cho VTT Academy · du học và đi làm tại Đức · đội 3 người, sẵn sàng mở rộng</p>
+      <p class="what"><b>CRM là gì?</b> Cuốn sổ hồ sơ ứng viên chung của cả trung tâm, giao diện tiếng Việt. Ghi một lần, cả đội thấy hồ sơ đang ở bước nào, ai phụ trách, hệ thống tự nhắc việc.</p>
+      <ul class="apps" id="heroApps" aria-label="Ba ứng dụng chính">
+        <li><img src="assets/brand/app-prospect.svg" alt="" width="28" height="28"><div><b>Prospect</b><span>Gom tin mọi kênh</span></div></li>
+        <li><img src="assets/brand/app-lead.svg" alt="" width="28" height="28"><div><b>Lead</b><span>Chia người, gọi lại</span></div></li>
+        <li><img src="assets/brand/app-sales.svg" alt="" width="28" height="28"><div><b>Sales</b><span>Theo hồ sơ đến bay</span></div></li>
+      </ul>
+      <p class="more-apps"><span>Đi kèm</span>
+        <i><img src="assets/brand/app-meeting.svg" alt="" width="18" height="18">Meeting</i>
+        <i><img src="assets/brand/app-contract.svg" alt="" width="18" height="18">Contract</i>
+        <i><img src="assets/brand/app-task.svg" alt="" width="18" height="18">Task</i>
+        <i><img src="assets/brand/app-success.svg" alt="" width="18" height="18">Success</i>
+        <i><img src="assets/brand/app-automation.svg" alt="" width="18" height="18">Automation</i>
+      </p>
+      <div class="cta">
+        <a class="btn" href="#giai-phap">Xem lưu đồ giải pháp <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="hero-shots" id="heroShots" aria-label="Ảnh giao diện 3 ứng dụng Base CRM">
+      <div class="hrings" data-depth="6" aria-hidden="true">
+        <span class="hr r1"><i style="--a:30deg;--c:#8fe3bf"></i></span>
+        <span class="hr r2"><i style="--a:160deg;--c:#a8c4ff"></i><i style="--a:290deg;--c:#c4b5fd"></i></span>
+        <span class="hr r3"><i style="--a:80deg;--c:#fdba74"></i></span>
+      </div>
+      <div class="hs hs-l" data-depth="14" data-app="0"><img src="assets/he-thong/prospect-hopthu.webp" width="586" height="993" alt="Prospect: hộp thư chung nhiều kênh"></div>
+      <div class="hs hs-r" data-depth="18" data-app="2"><img src="assets/he-thong/sales-cohoi.webp" width="575" height="993" alt="Sales: một hồ sơ đi qua các giai đoạn"></div>
+      <div class="hs hs-c" data-depth="8" data-app="1"><img src="assets/he-thong/lead-hoso.webp" width="1996" height="1286" alt="Lead: danh sách người mới liên hệ và hồ sơ một người"></div>
+
+      <div class="toast t1" data-app="0" aria-hidden="true"><img src="assets/brand/app-prospect.svg" alt="" width="26" height="26"><div><b>Tin Messenger mới</b><small>Hỏi Ausbildung điều dưỡng · 21:04</small></div></div>
+      <div class="toast t2" data-app="1" aria-hidden="true"><img src="assets/brand/app-lead.svg" alt="" width="26" height="26"><div><b>Đã chia cho tư vấn viên</b><small><span class="score hot">Nóng</span> còn 30:00 để gọi lại</small></div></div>
+      <div class="toast t3" data-app="2" aria-hidden="true"><img src="assets/brand/app-sales.svg" alt="" width="26" height="26"><div><b>Thành hồ sơ ứng viên</b><small>Ausbildung · Nhận &amp; sàng lọc hồ sơ</small></div></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="agenda" aria-label="Các phần trình bày">
+      <ol class="ag-bar">
+        <li style="--m:1"><a href="#tong-quan"><b>1</b><span>Tổng quan</span><small>1′</small></a></li>
+        <li style="--m:4"><a href="#giai-phap"><b>2</b><span>Lưu đồ giải pháp</span><small>4′</small></a></li>
+        <li style="--m:7"><a href="#hanh-trinh"><b>3</b><span>Chi tiết từng bước</span><small>7′</small></a></li>
+        <li style="--m:2"><a href="#quan-ly"><b>4</b><span>Góc quản lý</span><small>2′</small></a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. LƯU ĐỒ GIẢI PHÁP ============ -->
+<section id="giai-phap" class="sec flow-sec" data-name="Lưu đồ giải pháp" aria-labelledby="h-gp">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="part">Phần 2/4 · Lưu đồ giải pháp</p>
+      <h2 id="h-gp">Một hồ sơ ứng viên, đi từ tin nhắn đến ngày bay</h2>
+    </div>
+
+    <!-- Khối 1: một cửa tiếp nhận -->
+    <h3 class="blk-h" id="mot-cua"><b>1</b>Mọi kênh liên hệ vào một cửa: Lead</h3>
+    <div class="hub" id="hub">
+      <svg class="hub-lines" id="hubLines" aria-hidden="true"></svg>
+      <div class="grid-bg" aria-hidden="true"></div>
+
+      <p class="col-h h-src">Nguồn<small>Học viên đến từ đâu</small></p>
+      <p class="col-h h-mid">Lead · Tiếp nhận<small>Một cửa duy nhất</small></p>
+      <p class="col-h h-out">Thành hồ sơ → Sales<small>Đích đến</small></p>
+
+      <ul class="srcs" aria-label="Các nguồn học viên">
+        <li class="src" data-src="0"><img class="ic" src="assets/brand/app-prospect.svg" alt="" width="30" height="30"><div><b>Prospect</b><small>Messenger · Zalo OA · WhatsApp · Instagram · Telegram</small></div><em>đang nhận</em></li>
+        <li class="src" data-src="1"><span class="ic" style="--c:#0EA5E9">W</span><div><b>Form tiếng Việt</b><small>Website WordPress, fanpage · gửi kèm email</small></div><em>đang nhận</em></li>
+        <li class="src" data-src="2"><span class="ic" style="--c:#111827">T</span><div><b>Quảng cáo, TikTok</b><small>Form đăng ký tư vấn</small></div><em>đang nhận</em></li>
+        <li class="src" data-src="3"><span class="ic" style="--c:#16A34A">+</span><div><b>Zalo cá nhân, cộng tác viên</b><small>Nhập nhanh hoặc gửi link form</small></div><em>đang nhận</em></li>
+      </ul>
+
+      <div class="dupc" id="hubDup">
+        <p>✓ Đã gộp người trùng</p>
+        <div><span class="mini">Messenger</span><span class="mini">Form web</span><span class="arr">→</span><span class="mini one">1 hồ sơ</span></div>
+      </div>
+
+      <div class="mid">
+        <div class="core-wrap" id="hubCore" aria-hidden="true">
+          <span class="ring r1"><i style="--a:20deg;--c:#6366F1"></i></span>
+          <span class="ring r2"><i style="--a:200deg;--c:#A855F7"></i><i style="--a:320deg;--c:#17936a"></i></span>
+          <div class="core">
+            <img src="assets/brand/app-lead.svg" alt="" width="34" height="34">
+            <b>Tiếp nhận</b>
+            <small>Lead</small>
+          </div>
+        </div>
+        <ol class="proc">
+          <li>Gộp trùng</li><li>Đủ thông tin</li><li>Phân loại</li><li>Chia người</li>
+        </ol>
+      </div>
+
+      <div class="outs">
+        <div class="hcard" id="hubIn">
+          <p class="hcard-h">Người mới liên hệ <span class="live">● trực tiếp</span></p>
+          <ul class="hub-list" id="hubList">
+            <li><span class="av" style="background:#7c3aed">T</span><div class="nm"><b>Thảo Vy</b><small>Du học · đại học</small></div><span class="chip">Prospect</span><span class="score warm">Ấm</span></li>
+            <li><span class="av" style="background:#c026d3">Q</span><div class="nm"><b>Quang Huy</b><small>Fachkraft · cơ khí</small></div><span class="chip">TikTok</span><span class="score hot">Nóng</span></li>
+            <li><span class="av" style="background:#0ea5e9">N</span><div class="nm"><b>Ngọc Ánh</b><small>Chưa rõ nhu cầu</small></div><span class="chip">Form web</span><span class="score cold">Lạnh</span></li>
+          </ul>
+        </div>
+        <div class="hcard std" id="hubStd">
+          <p class="hcard-h warm">Đã đủ thông tin</p>
+          <div class="std-who"><span class="av" id="stdAv">M</span><div><b id="stdName">Minh Châu</b><small id="stdSub">Ausbildung điều dưỡng · Messenger</small></div><em id="stdScore" class="score hot">Nóng</em></div>
+          <div class="std-tiles">
+            <div><b id="stdAi">Nóng</b><small>Mức quan tâm</small></div>
+            <div><b id="stdSale">Hiền</b><small>Tư vấn viên</small></div>
+            <div class="t"><b id="hubTimer">30:00</b><small>Còn lại để gọi</small></div>
+          </div>
+        </div>
+        <div class="dst" id="hubDst">
+          <p class="dst-h"><img src="assets/brand/app-sales.svg" alt="" width="22" height="22">Sales · Hồ sơ ứng viên</p>
+          <ol class="pipe">
+            <li class="cur">Sàng lọc <b id="dstCount">3</b></li><li>Phỏng vấn</li><li>Học tiếng</li><li>Chứng chỉ</li><li>Ghép DN</li><li>Visa, bay</li>
+          </ol>
+        </div>
+      </div>
+      <p class="hub-note">Tên, mức quan tâm, thời gian là dữ liệu minh họa</p>
+    </div>
+
+    <!-- Khối 2: hành trình 6 bước -->
+    <div class="blk-row">
+      <h3 class="blk-h"><b>2</b>Rồi đi qua 6 bước, ứng dụng nào lo bước nào</h3>
+      <div class="mode" role="radiogroup" aria-label="Chế độ xem lưu đồ">
+        <button type="button" role="radio" aria-checked="false" data-mode="before">Hôm nay</button>
+        <button type="button" role="radio" aria-checked="true" data-mode="after">Với Base CRM</button>
+      </div>
+    </div>
+
+    <div class="flow-scroll">
+    <div class="flow six is-after" id="flow">
+
+      <div class="lane-l">Học viên đến từ</div>
+      <div class="row-in">
+        <span class="ch">Fanpage</span><span class="ch">Zalo</span><span class="ch">WhatsApp</span><span class="ch">Instagram</span><span class="ch">Website</span><span class="ch">TikTok</span><span class="ch">Cộng tác viên</span>
+      </div>
+
+      <div class="lane-l">Học viên</div>
+      <ol class="row-steps">
+        <li><b>1</b>Nhắn tin, đăng ký</li>
+        <li><b>2</b>Được gọi lại</li>
+        <li><b>3</b>Nộp hồ sơ, phỏng vấn</li>
+        <li><b>4</b>Học tiếng, thi chứng chỉ</li>
+        <li><b>5</b>Ghép doanh nghiệp, ký hợp đồng</li>
+        <li><b>6</b>Dịch thuật, visa, bay</li>
+      </ol>
+
+      <div class="lane-l"><span class="only-after">Base CRM</span><span class="only-before">Đội tư vấn</span></div>
+      <div class="row-apps">
+        <div class="app-blk p">
+          <p class="app-h"><img src="assets/brand/app-prospect.svg" alt="" width="22" height="22">Prospect</p>
+          <div class="mods"><a href="#buoc-1" class="mod"><span class="a">Mọi kênh chat về một hộp thư. Form tiếng Việt</span><span class="b">Tin rải rác fanpage, Zalo riêng. Form tiếng Đức khó điền</span></a></div>
+        </div>
+        <div class="app-blk l">
+          <p class="app-h"><img src="assets/brand/app-lead.svg" alt="" width="22" height="22">Lead</p>
+          <div class="mods"><a href="#buoc-2" class="mod"><span class="a">Tự chia người, nhắc gọi lại, hỏi du học hay đi làm</span><span class="b">Ghi Excel tay, quên gọi lại</span></a></div>
+        </div>
+        <div class="app-blk s span3">
+          <p class="app-h"><img src="assets/brand/app-sales.svg" alt="" width="22" height="22">Sales · thẻ hồ sơ ứng viên</p>
+          <div class="mods">
+            <a href="#buoc-3" class="mod"><span class="a">CV, giấy tờ đính kèm. Kết quả sàng lọc</span><span class="b">File nằm khắp Drive, Zalo</span></a>
+            <a href="#buoc-4" class="mod"><span class="a">Khóa học, học phí, ngày thi A2/B1/B2</span><span class="b">Không nhớ ai thi ngày nào</span></a>
+            <a href="#buoc-5" class="mod"><span class="a">Doanh nghiệp Đức, lịch phỏng vấn</span><span class="b">Hỏi nhau qua chat</span></a>
+          </div>
+        </div>
+        <div class="app-blk t">
+          <p class="app-h"><img src="assets/brand/app-task.svg" alt="" width="22" height="22">Task</p>
+          <div class="mods"><a href="#buoc-6" class="mod"><span class="a">Việc dịch thuật, công chứng, visa có hạn, @nhắc</span><span class="b">Theo dõi bằng trí nhớ</span></a></div>
+        </div>
+      </div>
+
+      <div class="lane-l">Đi kèm</div>
+      <div class="row-add">
+        <a href="#buoc-3" class="add m" style="grid-column:3"><img src="assets/brand/app-meeting.svg" alt="" width="18" height="18"><span class="a">Meeting · lịch phỏng vấn</span><span class="b">Hẹn qua tin nhắn</span></a>
+        <a href="#buoc-5" class="add c" style="grid-column:5"><img src="assets/brand/app-contract.svg" alt="" width="18" height="18"><span class="a">Contract · hợp đồng, phê duyệt</span><span class="b">Hợp đồng file Word</span></a>
+        <a href="#buoc-6" class="add u" style="grid-column:6"><img src="assets/brand/app-success.svg" alt="" width="18" height="18"><span class="a">Success · hỗ trợ sau khi bay</span><span class="b">Mất liên lạc sau khi bay</span></a>
+        <div class="add auto" style="grid-column:1 / -1"><img src="assets/brand/app-automation.svg" alt="" width="18" height="18"><span class="a"><b>Automation</b> chạy suốt hành trình: nhắc khi hồ sơ nhiều ngày không tương tác · tự tạo việc khi đổi bước · gửi email xác nhận</span><span class="b">Mọi việc nhắc nhau bằng miệng</span></div>
+      </div>
+
+      <div class="lane-l">Quản lý thấy</div>
+      <div class="row-out">
+        <div class="out-a">
+          <a href="#buoc-1" class="out">Tin chưa ai trả lời</a>
+          <a href="#buoc-2" class="out">Người mới đã được gọi chưa</a>
+          <a href="#quan-ly" class="out" data-mgr="0">Bao nhiêu hồ sơ ở mỗi bước, ai phụ trách</a>
+          <a href="#quan-ly" class="out" data-mgr="1">Việc nào quá hạn, chờ duyệt</a>
+        </div>
+        <div class="out-b">Mở Excel, hỏi từng người</div>
+      </div>
+    </div>
+    </div>
+
+    <p class="flow-hint">Bấm vào một ô để xem màn hình của bước đó.</p>
+  </div>
+</section>
+
+<!-- ============ 3. CHI TIẾT TỪNG BƯỚC ============ -->
+<section id="hanh-trinh" class="sec journey" data-name="Chi tiết từng bước" aria-labelledby="h-ht">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="part">Phần 3/4 · Chi tiết từng bước</p>
+      <h2 id="h-ht">Đi cùng một bạn muốn sang Đức học nghề điều dưỡng</h2>
+    </div>
+  </div>
+
+  <div class="rail-wrap" id="railWrap">
+    <div class="wrap rail-in">
+      <button class="nav-btn" id="prevStep" type="button" aria-label="Bước trước">←</button>
+      <ol class="rail six" id="rail" role="tablist" aria-label="Sáu bước trong hành trình học viên">
+        <li role="presentation"><button role="tab" id="t1" aria-controls="buoc-1" data-step="1"><b>1</b><span>Nhắn tin<small>Prospect</small></span></button></li>
+        <li role="presentation"><button role="tab" id="t2" aria-controls="buoc-2" data-step="2"><b>2</b><span>Được gọi lại<small>Lead</small></span></button></li>
+        <li role="presentation"><button role="tab" id="t3" aria-controls="buoc-3" data-step="3"><b>3</b><span>Hồ sơ, phỏng vấn<small>Sales · Meeting</small></span></button></li>
+        <li role="presentation"><button role="tab" id="t4" aria-controls="buoc-4" data-step="4"><b>4</b><span>Học tiếng, thi<small>Sales</small></span></button></li>
+        <li role="presentation"><button role="tab" id="t5" aria-controls="buoc-5" data-step="5"><b>5</b><span>Ghép DN, hợp đồng<small>Sales · Contract</small></span></button></li>
+        <li role="presentation"><button role="tab" id="t6" aria-controls="buoc-6" data-step="6"><b>6</b><span>Visa, bay<small>Task · Success</small></span></button></li>
+      </ol>
+      <button class="nav-btn" id="nextStep" type="button" aria-label="Bước sau">→</button>
+    </div>
+    <div class="rail-line" aria-hidden="true"><i id="railFill"></i></div>
+  </div>
+
+  <div class="wrap panels" id="panels">
+
+    <!-- Bước 1 -->
+    <article class="panel" id="buoc-1" role="tabpanel" aria-labelledby="t1" data-step="1" data-title="Nhắn tin, đăng ký">
+      <div class="p-copy">
+        <p class="p-count">Bước 1/6 <span class="app-tag p">Prospect</span></p>
+        <h3>Nhắn tin, đăng ký</h3>
+        <p class="who">Bạn học viên nhắn fanpage lúc 21 giờ hỏi chương trình Ausbildung điều dưỡng.</p>
+        <p class="ba b"><span>Hôm nay</span>Tin nằm rải rác ở fanpage, Zalo, WhatsApp. Form tiếng Đức làm học viên ngại điền.</p>
+        <p class="ba a"><span>Với Base CRM</span>Messenger, Zalo OA, WhatsApp, Instagram, Telegram về một hộp thư. Form tiếng Việt gắn website.</p>
+        <p class="note">Messenger chỉ kết nối được <b>Fanpage</b>, không kết nối Facebook cá nhân. Khách nhắn Zalo cá nhân: nhân viên gửi link form hoặc nhập nhanh vào hệ thống.</p>
+      </div>
+      <div class="p-shots" data-shots>
+        <div class="shot-tabs" role="tablist" aria-label="Màn hình bước 1">
+          <button role="tab" aria-selected="true">Hộp thư chung</button>
+          <button role="tab" aria-selected="false">Form tiếng Việt</button>
+          <button role="tab" aria-selected="false">Trả lời ngoài giờ</button>
+        </div>
+        <figure class="shot raw tall is-on" data-cap="Bước 1 · Prospect · Hộp thư chung">
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/prospect-hopthu.webp" width="586" height="993" loading="lazy" alt="Hộp thư chung: tin nhắn từ Zalo, WhatsApp, Messenger, Instagram về một chỗ"></button>
+        </figure>
+        <figure class="shot mock" data-cap="Bước 1 · Form đăng ký tiếng Việt">
+          <div class="win-bar"><i></i><i></i><i></i><span>vttacademy.vn · Đăng ký tư vấn du học, đi làm tại Đức</span></div>
+          <div class="fm">
+            <p class="fm-h">Đăng ký tư vấn miễn phí</p>
+            <label>Họ và tên<span>Lê Minh Châu</span></label>
+            <label>Số điện thoại / Zalo<span>09xx xxx 218</span></label>
+            <label>Bạn quan tâm<span class="pills"><i class="on">Ausbildung (học nghề)</i><i>Fachkraft (đi làm)</i><i>Du học đại học</i></span></label>
+            <label>Trình độ tiếng Đức<span class="pills"><i>Chưa học</i><i class="on">A1</i><i>A2</i><i>B1</i><i>B2</i></span></label>
+            <label>Ngành mong muốn<span>Điều dưỡng</span></label>
+            <label>Tải CV (nếu có)<span class="up">📎 CV_MinhChau.pdf</span></label>
+            <p class="fm-btn">Gửi đăng ký</p>
+            <p class="fm-foot">Gửi xong: hồ sơ vào Lead, đồng thời gửi email báo cho trung tâm</p>
+          </div>
+        </figure>
+        <figure class="win shot" data-cap="Bước 1 · Prospect · Trả lời ngoài giờ">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Prospect · Hộp thư</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/prospect.webp" width="1182" height="424" loading="lazy" alt="Tin nhắn có nhãn Trợ lý AI đã trả lời"></button>
+        </figure>
+      </div>
+    </article>
+
+    <!-- Bước 2 -->
+    <article class="panel" id="buoc-2" role="tabpanel" aria-labelledby="t2" data-step="2" data-title="Được gọi lại">
+      <div class="p-copy">
+        <p class="p-count">Bước 2/6 <span class="app-tag l">Lead</span></p>
+        <h3>Được gọi lại</h3>
+        <p class="who">Bạn ấy chờ được gọi, đồng thời hỏi thêm 2 trung tâm khác.</p>
+        <p class="ba b"><span>Hôm nay</span>Ghi tên vào Excel, ai rảnh thì gọi. Có người bị quên vài ngày.</p>
+        <p class="ba a"><span>Với Base CRM</span>Tự chia người, đếm giờ gọi lại. Hỏi rõ du học hay đi làm, đủ số điện thoại và nhu cầu thì chuyển thành hồ sơ.</p>
+      </div>
+      <div class="p-shots" data-shots>
+        <div class="shot-tabs" role="tablist" aria-label="Màn hình bước 2">
+          <button role="tab" aria-selected="true">Chia người</button>
+          <button role="tab" aria-selected="false">Gọi ai trước</button>
+          <button role="tab" aria-selected="false">Lịch sử trao đổi</button>
+        </div>
+        <figure class="win shot is-on" data-cap="Bước 2 · Lead · Chia người">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Lead · Chia người</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/lead.webp" width="1424" height="538" loading="lazy" alt="Mỗi người liên hệ có người phụ trách và đồng hồ đếm ngược thời gian gọi"></button>
+        </figure>
+        <figure class="win shot" data-cap="Bước 2 · Lead · Gọi ai trước">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Lead · AI xếp ưu tiên</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/ai-uu-tien.webp" width="1800" height="990" loading="lazy" alt="AI giải thích vì sao nên gọi người này trước"></button>
+        </figure>
+        <figure class="shot raw" data-cap="Bước 2 · Lead · Lịch sử trao đổi">
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/lead-hoso.webp" width="1996" height="1286" loading="lazy" alt="Hồ sơ một người trong Lead: nguồn, lịch sử tương tác, người gọi lại"></button>
+        </figure>
+      </div>
+    </article>
+
+    <!-- Bước 3 -->
+    <article class="panel" id="buoc-3" role="tabpanel" aria-labelledby="t3" data-step="3" data-title="Nộp hồ sơ, phỏng vấn">
+      <div class="p-copy">
+        <p class="p-count">Bước 3/6 <span class="app-tag s">Sales</span><span class="app-tag m">Meeting</span></p>
+        <h3>Nộp hồ sơ, phỏng vấn</h3>
+        <p class="who">Bạn ấy gửi CV, bằng cấp, rồi hẹn phỏng vấn sàng lọc.</p>
+        <p class="ba b"><span>Hôm nay</span>File nằm trong Drive, Zalo. Không biết hồ sơ còn thiếu gì, đã phỏng vấn chưa.</p>
+        <p class="ba a"><span>Với Base CRM</span>Một thẻ hồ sơ: chương trình, ngành, nguồn, file đính kèm, kết quả sàng lọc. Lịch phỏng vấn trên Meeting.</p>
+      </div>
+      <div class="p-shots" data-shots>
+        <div class="shot-tabs" role="tablist" aria-label="Màn hình bước 3">
+          <button role="tab" aria-selected="true">Bảng hồ sơ</button>
+          <button role="tab" aria-selected="false">Thẻ hồ sơ</button>
+          <button role="tab" aria-selected="false">Lịch phỏng vấn</button>
+        </div>
+        <figure class="shot mock is-on" data-cap="Bước 3 · Sales · Bảng hồ sơ ứng viên">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Sales · Hồ sơ ứng viên · 16 hồ sơ</span></div>
+          <div class="kb" id="kb" tabindex="0" aria-label="Bảng hồ sơ theo 7 giai đoạn"></div>
+        </figure>
+        <figure class="shot mock" data-cap="Bước 3 · Sales · Thẻ hồ sơ">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Sales · Lý Thị Mai · Ausbildung</span></div>
+          <div class="cf">
+            <div class="cf-g"><p>Thông tin chung <small>6 trường</small></p>
+              <dl><dt>Chương trình</dt><dd><i class="tg b">Ausbildung</i></dd><dt>Ngành mục tiêu</dt><dd><i class="tg y">Cơ khí</i></dd><dt>Nguồn</dt><dd><i class="tg">TikTok</i></dd><dt>Người giới thiệu / cộng tác viên</dt><dd class="mu">Chọn từ danh sách</dd><dt>Phí giới thiệu từ doanh nghiệp</dt><dd class="mu">0</dd><dt>Hồ sơ ứng viên (CV, chứng chỉ, hợp đồng)</dt><dd><span class="file">📎 CV.pdf</span><span class="file">📎 Bang_THPT.pdf</span><span class="file">📎 Ho_chieu.pdf</span></dd></dl></div>
+            <div class="cf-g"><p>Phỏng vấn <small>1 trường</small></p>
+              <dl><dt>Kết quả sàng lọc *</dt><dd><i class="tg g">Đạt</i></dd></dl></div>
+          </div>
+        </figure>
+        <figure class="shot raw" data-cap="Bước 3 · Meeting · Lịch phỏng vấn">
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/meeting-lich.webp" width="1172" height="786" loading="lazy" alt="Lịch họp theo tuần, tạo cuộc hẹn và gửi lời mời"></button>
+        </figure>
+      </div>
+    </article>
+
+    <!-- Bước 4 -->
+    <article class="panel" id="buoc-4" role="tabpanel" aria-labelledby="t4" data-step="4" data-title="Học tiếng, thi chứng chỉ">
+      <div class="p-copy">
+        <p class="p-count">Bước 4/6 <span class="app-tag s">Sales</span></p>
+        <h3>Học tiếng, thi chứng chỉ</h3>
+        <p class="who">Bạn ấy vào khóa A1–B1, đóng học phí, đăng ký thi B1.</p>
+        <p class="ba b"><span>Hôm nay</span>Không nhớ ai đang học khóa nào, đã đóng đủ chưa, ngày thi khi nào.</p>
+        <p class="ba a"><span>Với Base CRM</span>Mỗi bước có trường riêng: khóa học, học phí, ngày nhập học, ngày thi, kết quả A2/B1/B2. Thiếu trường bắt buộc thì chưa qua bước.</p>
+      </div>
+      <div class="p-shots" data-shots>
+        <div class="shot-tabs" role="tablist" aria-label="Màn hình bước 4">
+          <button role="tab" aria-selected="true">Học tiếng, chứng chỉ</button>
+          <button role="tab" aria-selected="false">Trợ lý AI tóm tắt hồ sơ</button>
+        </div>
+        <figure class="shot mock is-on" data-cap="Bước 4 · Sales · Học tiếng, chứng chỉ">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Sales · Lý Thị Mai · Ausbildung</span></div>
+          <div class="cf two">
+            <div class="cf-g"><p>Đăng ký học tiếng <small>4 trường</small></p>
+              <dl><dt>Lớp / khóa tiếng *</dt><dd>Khóa A1–B1 K4/2026</dd><dt>Học phí tiếng *</dt><dd>45.000.000 đ</dd><dt>Trạng thái thanh toán *</dt><dd><i class="tg g">Đã đóng đủ</i></dd><dt>Ngày nhập học *</dt><dd>05/03/2026</dd></dl></div>
+            <div class="cf-g"><p>Đạt chứng chỉ A2/B1/B2 <small>3 trường</small></p>
+              <dl><dt>Trình độ mục tiêu *</dt><dd><i class="tg b">B1</i></dd><dt>Ngày thi *</dt><dd>15/08/2026</dd><dt>Kết quả thi chứng chỉ *</dt><dd><i class="tg g">Đạt</i></dd></dl>
+              <p class="cf-auto"><img src="assets/brand/app-automation.svg" alt="" width="16" height="16">Trước ngày thi 7 ngày: tự nhắc người phụ trách</p></div>
+          </div>
+        </figure>
+        <figure class="shot raw" data-cap="Bước 4 · Sales · Hồ sơ và Copilot">
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/sales-hoso.webp" width="1800" height="1273" loading="lazy" alt="Hồ sơ trong Sales: người phụ trách, hoạt động gần nhất; bên phải Copilot tóm tắt cần biết gì trước khi gọi"></button>
+        </figure>
+      </div>
+    </article>
+
+    <!-- Bước 5 -->
+    <article class="panel" id="buoc-5" role="tabpanel" aria-labelledby="t5" data-step="5" data-title="Ghép doanh nghiệp, ký hợp đồng">
+      <div class="p-copy">
+        <p class="p-count">Bước 5/6 <span class="app-tag s">Sales</span><span class="app-tag c">Contract</span></p>
+        <h3>Ghép doanh nghiệp, ký hợp đồng</h3>
+        <p class="who">Có B1, bạn ấy được giới thiệu tới một doanh nghiệp Đức, phỏng vấn 2 lần rồi nhận thư mời.</p>
+        <p class="ba b"><span>Hôm nay</span>Hỏi nhau qua chat: đã gửi doanh nghiệp nào, phỏng vấn mấy lần. Hợp đồng là file Word.</p>
+        <p class="ba a"><span>Với Base CRM</span>Lọc hồ sơ theo ngành, trình độ để ghép doanh nghiệp. Hợp đồng, thư mời lưu trên Contract, có phê duyệt trước khi ký.</p>
+      </div>
+      <div class="p-shots" data-shots>
+        <div class="shot-tabs" role="tablist" aria-label="Màn hình bước 5">
+          <button role="tab" aria-selected="true">Ghép doanh nghiệp</button>
+          <button role="tab" aria-selected="false">Phê duyệt hợp đồng</button>
+          <button role="tab" aria-selected="false">Hợp đồng đã ký</button>
+        </div>
+        <figure class="shot mock is-on" data-cap="Bước 5 · Sales · Ghép doanh nghiệp">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Sales · Lý Thị Mai · Ausbildung</span></div>
+          <div class="cf">
+            <div class="cf-g"><p>Ghép doanh nghiệp Đức và phỏng vấn với doanh nghiệp <small>2 trường</small></p>
+              <dl><dt>Ngày phỏng vấn doanh nghiệp</dt><dd>10/11/2026</dd><dt>Số lần phỏng vấn doanh nghiệp</dt><dd>2</dd></dl></div>
+            <div class="match">
+              <p class="match-h">Lọc nhanh để ghép doanh nghiệp</p>
+              <p class="pills"><i class="on">Ausbildung</i><i class="on">Cơ khí</i><i class="on">Đạt B1</i></p>
+              <p class="match-r">3 hồ sơ phù hợp · gửi cho doanh nghiệp đối tác</p>
+            </div>
+          </div>
+        </figure>
+        <figure class="shot raw" data-cap="Bước 5 · Contract · Phê duyệt">
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/contract-pheduyet.webp" width="1526" height="956" loading="lazy" alt="Hợp đồng chờ phê duyệt theo thứ tự, thấy ai đã duyệt, đang chờ ai"></button>
+        </figure>
+        <figure class="shot raw" data-cap="Bước 5 · Contract · Đã ký">
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/contract-daky.webp" width="1246" height="912" loading="lazy" alt="Hợp đồng đã ký khóa nội dung, vẫn đính kèm tài liệu và bình luận được"></button>
+        </figure>
+      </div>
+    </article>
+
+    <!-- Bước 6 -->
+    <article class="panel" id="buoc-6" role="tabpanel" aria-labelledby="t6" data-step="6" data-title="Dịch thuật, visa, bay">
+      <div class="p-copy">
+        <p class="p-count">Bước 6/6 <span class="app-tag t">Task</span><span class="app-tag u">Success</span></p>
+        <h3>Dịch thuật, visa, bay</h3>
+        <p class="who">Hồ sơ cần dịch thuật, công chứng, nộp visa, đặt vé. Sang Đức rồi vẫn cần hỗ trợ.</p>
+        <p class="ba b"><span>Hôm nay</span>Việc không có hạn, không rõ ai làm. Học viên đã bay thì mất liên lạc.</p>
+        <p class="ba a"><span>Với Base CRM</span>Mỗi việc có người làm, hạn, file; @nhắc người cần duyệt. Sau khi bay, câu hỏi của học viên vào Success.</p>
+      </div>
+      <div class="p-shots" data-shots>
+        <div class="shot-tabs" role="tablist" aria-label="Màn hình bước 6">
+          <button role="tab" aria-selected="true">Việc của hồ sơ</button>
+          <button role="tab" aria-selected="false">Bảng việc</button>
+          <button role="tab" aria-selected="false">Một việc, nhiều nhóm</button>
+        </div>
+        <figure class="shot mock is-on" data-cap="Bước 6 · Task · Việc của một hồ sơ">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Phan Văn Phúc · Dịch thuật, công chứng, visa</span></div>
+          <ul class="tl">
+            <li class="ok"><b>Dịch thuật CV, bằng cấp</b><span>Văn · xong 02/11</span></li>
+            <li class="ok"><b>Công chứng bản dịch</b><span>Văn · xong 05/11</span></li>
+            <li class="late"><b>Đặt lịch nộp visa</b><span>Thủy · quá hạn 1 ngày</span></li>
+            <li><b>Đặt vé máy bay</b><span>Thủy · hạn 30/11 · chờ duyệt chi</span></li>
+          </ul>
+          <div class="cm">
+            <p><span class="av" style="background:#0ea5e9">V</span><b>Văn</b> <i>@Quản lý</i> bản công chứng đã có, nhờ duyệt chi phí vé.</p>
+            <p class="cf-auto"><img src="assets/brand/app-automation.svg" alt="" width="16" height="16">Hồ sơ vào bước này: tự tạo 4 việc trên. Việc quá hạn: báo người phụ trách và quản lý.</p>
+          </div>
+        </figure>
+        <figure class="win shot" data-cap="Bước 6 · Task · Bảng việc">
+          <div class="win-bar"><i></i><i></i><i></i><span>Base Task · Việc của tôi</span></div>
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/task-bang.webp" width="1800" height="887" loading="lazy" alt="Bảng việc theo trạng thái Đang làm, Mới, Xong"></button>
+        </figure>
+        <figure class="shot raw" data-cap="Bước 6 · Task · Giao việc nhiều nhóm">
+          <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/task-xuyen.webp" width="1800" height="924" loading="lazy" alt="Một chỉ thị tách thành việc con cho từng nhóm phụ trách"></button>
+        </figure>
+      </div>
+    </article>
+
+    <div class="panel-foot">
+      <button class="btn ghost sm" id="footPrev" type="button">← Bước trước</button>
+      <a class="back" href="#giai-phap">↑ Về lưu đồ</a>
+      <button class="btn sm" id="footNext" type="button">Bước sau →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. GÓC QUẢN LÝ ============ -->
+<section id="quan-ly" class="sec alt" data-name="Góc quản lý" aria-labelledby="h-ql">
+  <div class="wrap mgr-grid" id="mgr">
+    <div>
+      <p class="part">Phần 4/4 · Góc quản lý</p>
+      <h2 id="h-ql">“Hồ sơ đang ở đâu, ai đang làm?”</h2>
+      <p class="mgr-sub">Một màn hình: số hồ sơ ở từng bước, ai phụ trách, việc nào quá hạn. Việc nội bộ không thuộc hồ sơ (chương trình, marketing, mua sắm) cũng nằm cùng chỗ, có phê duyệt nhiều bước.</p>
+    </div>
+    <div class="p-shots" data-shots>
+      <div class="shot-tabs" role="tablist" aria-label="Màn hình góc quản lý">
+        <button role="tab" aria-selected="true">Hồ sơ theo bước</button>
+        <button role="tab" aria-selected="false">Việc nội bộ, phê duyệt</button>
+        <button role="tab" aria-selected="false">Doanh thu dự kiến</button>
+      </div>
+      <figure class="shot mock is-on" data-cap="Góc quản lý · Hồ sơ theo bước">
+        <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Tổng quan hồ sơ</span></div>
+        <div class="dash">
+          <div class="kpis">
+            <div><b>16</b><small>Hồ sơ đang xử lý</small></div>
+            <div><b>10</b><small>Ausbildung</small></div>
+            <div><b>6</b><small>Fachkraft</small></div>
+            <div class="w"><b>2</b><small>Quá 5 ngày chưa tương tác</small></div>
+          </div>
+          <ul class="bars" id="bars"></ul>
+          <p class="dash-note">Số hồ sơ theo cấu hình demo · dữ liệu minh họa</p>
+        </div>
+      </figure>
+      <figure class="shot mock" data-cap="Góc quản lý · Việc nội bộ, phê duyệt">
+        <div class="win-bar"><i></i><i></i><i></i><span>Base Task · Đề xuất mua sắm</span></div>
+        <div class="appr">
+          <p class="appr-t">Mua 20 bộ giáo trình tiếng Đức B1 <small>Marketing &amp; Chương trình · 6.800.000 đ</small></p>
+          <ol class="appr-s">
+            <li class="ok"><b>Người đề xuất</b><small>Đã gửi 01/11</small></li>
+            <li class="ok"><b>Kế toán</b><small>Đã kiểm tra báo giá</small></li>
+            <li class="cur"><b>Duyệt ngân sách</b><small>Đang chờ · hạn 05/11</small></li>
+            <li><b>Mua, nhận hàng</b><small>Chưa tới</small></li>
+          </ol>
+          <ul class="appr-l">
+            <li><i class="tg">Marketing</i>Lịch đăng fanpage tháng 12 <span>Huyền · đang làm</span></li>
+            <li><i class="tg b">Chương trình</i>Cập nhật học phí khóa A1–B1 <span>Chi · mới</span></li>
+            <li><i class="tg y">Hợp đồng</i>Gia hạn hợp đồng doanh nghiệp đối tác <span class="late">Sơn · quá hạn</span></li>
+          </ul>
+        </div>
+      </figure>
+      <figure class="win shot" data-cap="Góc quản lý · Doanh thu dự kiến">
+        <div class="win-bar"><i></i><i></i><i></i><span>Base CRM · Sales · Doanh thu dự kiến</span></div>
+        <button class="zoom" type="button" aria-label="Phóng to ảnh"><img src="assets/he-thong/sales.webp" width="1422" height="692" loading="lazy" alt="Chỉ tiêu, dự báo, phần chắc chắn và phần còn khả năng theo từng người"></button>
+      </figure>
+    </div>
+  </div>
+  <div class="wrap"><p class="source">Ảnh giao diện chụp từ base.vn (/platform/crm ngày 02/11/2026; /app/contract, /app/meeting, /app/task ngày 03/11/2026), tên và số liệu là dữ liệu mẫu. Bảng hồ sơ, thẻ hồ sơ dựng lại theo cấu hình demo cho VTT Academy, dữ liệu minh họa.</p></div>
+</section>
+
+</main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lbCap" hidden>
+  <div class="lb-top">
+    <p id="lbCap"></p>
+    <button type="button" class="lb-x" id="lbClose" aria-label="Đóng (Esc)">✕</button>
+  </div>
+  <div class="lb-body"><img id="lbImg" alt=""></div>
+  <p class="lb-hint">Bấm ra ngoài hoặc nhấn Esc để quay lại đúng chỗ đang xem</p>
+</div>
+
+<p class="keys" aria-hidden="true">Phím <kbd>1</kbd>–<kbd>4</kbd> chuyển phần · <kbd>←</kbd><kbd>→</kbd> chuyển bước</p>
+
+<script src="app.js?v=vtt1"></script>
+</body>
+</html>
